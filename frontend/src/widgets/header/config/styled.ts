@@ -1,53 +1,34 @@
+import { flexSpaceBetween } from "@/shared";
 import styled from 'styled-components';
 
 export const HeaderBox = styled.header`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: #fffaf0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    ${ flexSpaceBetween };
+    width: 100%;
+    height: 6rem;
+    padding: 0 2rem;
+    background-color: ${ ({ theme }) => theme.colors.white };
+    border-bottom: ${ ({ theme }) => `0.1rem solid ${ theme.colors.gray200 }` };
+    box-shadow: ${ ({ theme }) => theme.shadows.sm };
 `
 
-export const LogoBox = styled.div`
-    font-size: 1.6rem;
-    font-weight: bold;
-
-    a {
-        text-decoration: none;
-        color: #ff5a5f;
-    }
-`
-
-export const MenuBox = styled.nav`
-    display: flex;
-    gap: 1.4rem;
-
-    a {
-        text-decoration: none;
-        color: #333;
-        font-weight: 500;
-
-        &:hover {
-            color: #ff5a5f;
-        }
-    }
-`
+export const BaseballIcon = styled.img`
+    height: 2.5rem;
+`;
 
 export const AuthBox = styled.div`
-    button,
-    a {
-        background-color: ${ ({ theme }) => theme.colors.white };
-        color: ${ ({ theme }) => theme.colors.black };
-        padding: 6px 14px;
-        border-radius: 8px;
-        font-size: 1.2rem;
-        border: none;
+    button {
+        padding: 0.9rem 1.5rem;
+        font-size: 1.1rem;
+        font-family: ${ ({ theme }) => theme.fontFamilies.Paperlogy800 };
+        color: ${ ({ theme }) => theme.colors.secondary300 };
+        background-color: ${ ({ theme }) => theme.colors.secondary700 };
+        border-radius: ${ ({ theme }) => theme.borderRadius.lg };
+        box-shadow: ${ ({ theme }) => theme.shadows.sm };
         text-decoration: none;
         cursor: pointer;
 
         &:hover {
-            background: #e14b50;
+            background: ${ ({ theme }) => theme.colors.secondary600 };
         }
     }
 `

@@ -1,12 +1,18 @@
 import { css } from 'styled-components';
 
 export const transitionBase = css`
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
 `;
 
 export const flexCenter = css`
     display: flex;
     justify-content: center;
+    align-items: center;
+`;
+
+export const flexSpaceBetween = css`
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 `;
 

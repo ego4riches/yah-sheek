@@ -1,20 +1,12 @@
+import { fontFaces, transitionBase } from "@/shared";
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
-    @font-face {
-        font-family: 'SUIT-Regular';
-        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
-    }
-
-    @font-face {
-        font-family: 'Paperlogy-8ExtraBold';
-        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');
-    }
-
+    ${ fontFaces }
     *,
     *::before,
     *::after {
-        font-family: 'SUIT-Regular', 'Paperlogy-8ExtraBold', sans-serif;
+        ${ transitionBase };
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -25,6 +17,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
+        font-family: 'SUIT-Regular', sans-serif;
         font-size: 1.6rem;
         background-color: ${ ({ theme }) => theme.colors.white };
         color: ${ ({ theme }) => theme.colors.black };

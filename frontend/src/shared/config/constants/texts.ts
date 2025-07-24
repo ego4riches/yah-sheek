@@ -1,11 +1,20 @@
-export const APP_NAME = '앱 이름';
+export const APP_NAME = '야식';
 
 export const MENU = {
-    SAMPLE: '샘플',
+    KIA: '기아',
+    DOOSAN: '두산',
+    LOTTE: '롯데',
+    SAMSUNG: '삼성',
+    SSG: 'SSG',
+    NC: 'NC',
+    LG: 'LG',
+    KIWOOM: '키움',
+    KT: 'KT',
+    HANHWA: '한화',
 };
 
 export const AUTH = {
-    LOGIN: '로그인',
-    LOGOUT: '로그아웃',
-    JOIN: '회원가입',
+    LOGIN: 'LOGIN',
+    LOGOUT: 'LOGOUT',
+    JOIN: 'JOIN',
 };

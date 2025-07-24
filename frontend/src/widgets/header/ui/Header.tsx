@@ -1,6 +1,7 @@
 import {Link, useNavigate} from "react-router-dom";
-import {AuthBox, HeaderBox, LogoBox, MenuBox} from "@/widgets/header/config/styled.ts";
-import {APP_NAME, AUTH, MENU, ROUTES, useAuthStore} from "@/shared";
+import {AuthBox, BaseballIcon, HeaderBox} from "@/widgets/header/config/styled.ts";
+import {AUTH, Drawer, ROUTES, useAuthStore} from "@/shared";
+import BaseBall from '@/shared/config/assets/baseball.png'
 
 export const Header = () => {
     const {isLoggedIn, login, logout} = useAuthStore();
@@ -18,12 +19,10 @@ export const Header = () => {
 
     return (
             <HeaderBox>
-                <LogoBox>
-                    <Link to={ROUTES.HOME}>{APP_NAME}</Link>
-                </LogoBox>
-                <MenuBox>
-                    <Link to={ROUTES.SAMPLE_PAGE}>{MENU.SAMPLE}</Link>
-                </MenuBox>
+                <Drawer/>
+                <Link to={ROUTES.HOME}>
+                    <BaseballIcon src={BaseBall} alt="baseball"/>
+                </Link>
                 <AuthBox>
                     {
                         isLoggedIn

@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const FooterBox = styled.footer`
-    padding: 1rem;
+    padding: 1.4rem;
     text-align: center;
-    font-size: 0.875rem;
-    color: #888;
-    background-color: #f9f9f9;
+    font-size: 1.1rem;
     margin-top: auto;
+    color: ${ ({ theme }) => theme.colors.gray700 };
+    background-color: ${ ({ theme }) => theme.colors.gray100 };
 `

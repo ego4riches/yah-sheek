@@ -1,15 +1,23 @@
 export const TITLES = {
     GLOBAL: {
-        SITE_NAME: '앱 이름',
-        DEFAULT: '앱 이름 - 프로젝트 부제',
+        SITE_NAME: 'Yah-Sheek',
+        DEFAULT: 'Yah-Sheek - 야구도 식후경!',
     },
     PAGE: {
-        HOME: '홈 타이틀',
-        LOGIN: '로그인 타이틀',
-        JOIN: '회원가입 타이틀',
-        NOT_FOUND: '페이지를 찾을 수 없습니다',
+        HOME: '야식',
+        LOGIN: 'Login',
+        JOIN: 'Join',
     },
     MENU: {
-        SAMPLE: '샘플 타이틀',
+        KIA: '기아 타이거즈',
+        DOOSAN: '두산 베어스',
+        LOTTE: '롯데 자이언츠',
+        SAMSUNG: '삼성 라이온즈',
+        SSG: 'SSG 랜더스',
+        NC: 'NC 다이노스',
+        LG: 'LG 트윈스',
+        KIWOOM: '키움 히어로즈',
+        KT: 'KT 위즈',
+        HANHWA: '한화 이글스',
     },
 }
