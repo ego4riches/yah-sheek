@@ -1,8 +1,3 @@
-import {TITLES} from "@/shared";
+import {NotFound} from "@/shared";
 
-export const NotFoundPage = () => {
-
-    return (
-            <>{TITLES.PAGE.NOT_FOUND}</>
-    );
-};
+export const NotFoundPage = () => <NotFound/>
