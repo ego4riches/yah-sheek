@@ -1,4 +1,4 @@
-export type TAuthState = {
+export type AuthStateT = {
     isLoggedIn: boolean
     login: () => void
     logout: () => void
