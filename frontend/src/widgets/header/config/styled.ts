@@ -1,8 +1,9 @@
-import { flexSpaceBetween } from "@/shared";
+import { gridCenterX } from "@/shared";
+import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
 export const HeaderBox = styled.header`
-    ${ flexSpaceBetween };
+    ${ gridCenterX };
     width: 100%;
     height: 6rem;
     padding: 0 2rem;
@@ -11,11 +12,17 @@ export const HeaderBox = styled.header`
     box-shadow: ${ ({ theme }) => theme.shadows.sm };
 `
 
-export const BaseballIcon = styled.img`
-    height: 2.5rem;
+export const LogoBox = styled(Link)`
+    justify-self: center;
+
+    img {
+        height: 2.5rem;
+    }
 `;
 
 export const AuthBox = styled.div`
+    justify-self: end;
+
     button {
         padding: 0.9rem 1.5rem;
         font-size: 1.1rem;
