@@ -64,7 +64,7 @@ export const shadowAnima = keyframes`
 
 export const NotFoundBox = styled.div`
     height: 100dvh;
-    background-color: ${ ({ theme }) => theme.colors.primary500 };
+    background-color: ${ ({ theme }) => theme.colors.gray500 };
     font-family: ${ ({ theme }) => theme.fontFamilies.Paperlogy800 };
 `;
 
@@ -117,13 +117,14 @@ export const BatManBox = styled.div`
 `;
 
 export const Head = styled.div`
+    width: 6.5rem;
+    height: 14rem;
     position: absolute;
-    background-color: ${ ({ theme }) => theme.colors.primary400 };
-    border-radius: 50px;
-    height: 140px;
-    left: 60px;
-    top: 25px;
-    width: 65px;
+    top: 2.5rem;
+    left: 6rem;
+    z-index: 1;
+    background-color: ${ ({ theme }) => theme.colors.gray900 };
+    border-radius: 5rem;
     animation: ${ headAnima } 1.2s infinite cubic-bezier(0.55, 0.01, 0.16, 1.34);
 
     ${ BatManBox }:nth-child(1) & {
@@ -133,21 +134,21 @@ export const Head = styled.div`
     &:after, &:before {
         content: "";
         position: absolute;
-        background-color: #13242C;
-        border-radius: 10px;
-        height: 20px;
-        width: 7px;
+        background-color: ${ ({ theme }) => theme.colors.gray900 };
+        border-radius: 1rem;
+        height: 2rem;
+        width: 0.7rem;
     }
 
     &:after {
-        left: 35px;
-        top: -8px;
+        left: 3.5rem;
+        top: -0.8rem;
         transform: rotate(20deg);
     }
 
     &:before {
-        left: 30px;
-        top: -8px;
+        left: 3rem;
+        top: -0.8rem;
         transform: rotate(-20deg);
     }
 `;
@@ -156,11 +157,11 @@ export const Eye = styled.div`
     position: absolute;
     transform: translateX(-50%);
     background-color: #EAB08C;
-    border-radius: 50px;
-    height: 16px;
+    border-radius: 5rem;
+    height: 1.6rem;
     left: 45%;
-    top: 40px;
-    width: 48px;
+    top: 4rem;
+    width: 4.8rem;
 
     &:after, &:before {
         content: "";
@@ -179,11 +180,11 @@ export const Eye = styled.div`
     }
 
     &:after {
-        left: 5px;
+        left: 0.5rem;
     }
 
     &:before {
-        right: 9px;
+        right: 0.9rem;
     }
 `;
 
@@ -191,13 +192,13 @@ export const Nose = styled.div`
     position: absolute;
     transform: translate(-50%, -50%);
     background-color: #D9766C;
-    border-left: 8px solid rgba(19, 36, 44, 0.1);
-    border-radius: 10px;
+    border-left: 0.8rem solid rgba(19, 36, 44, 0.1);
+    border-radius: 1rem;
     box-sizing: border-box;
-    height: 35px;
+    height: 3.5rem;
     left: 45%;
-    top: 12px;
-    width: 15px;
+    top: 1.2rem;
+    width: 1.5rem;
 `;
 
 export const Shape = styled.div`
@@ -205,58 +206,58 @@ export const Shape = styled.div`
     position: absolute;
     transform: translateX(-50%);
     border-radius: 50%;
-    height: 140px;
+    height: 14rem;
     overflow: hidden;
-    top: 70px;
-    width: 140px;
+    top: 7rem;
+    width: 14rem;
 
     ${ BatManBox }:nth-child(1) & {
-        background-color: #D13433;
+        background-color: ${ ({ theme }) => theme.colors.secondary900 };
     }
 
     ${ BatManBox }:nth-child(2) & {
-        background-color: #932422;
+        background-color: ${ ({ theme }) => theme.colors.secondary900 };
     }
 `;
 
 export const Circle = styled.div`
     position: absolute;
     border-radius: 50%;
-    height: 60px;
-    width: 60px;
+    height: 6rem;
+    width: 6rem;
 
     &:after, &:before {
         content: "";
         position: absolute;
         border-radius: 50%;
-        height: 20px;
-        width: 20px;
+        height: 2rem;
+        width: 2rem;
     }
 
     &:after {
-        left: 50px;
-        top: 10px;
+        left: 5rem;
+        top: 1rem;
     }
 
     &:before {
-        left: 60px;
-        top: 45px;
+        left: 6rem;
+        top: 4.5rem;
     }
 
     &:nth-child(1) {
-        left: -12px;
-        top: 80px;
+        left: -1.2rem;
+        top: 8rem;
     }
 
     &:nth-child(2) {
-        right: 10px;
-        top: 0px;
+        right: 1rem;
+        top: 0;
         transform: rotate(90deg);
     }
 
     &:nth-child(2):after {
-        left: 65px;
-        top: 10px;
+        left: 6.5rem;
+        top: 1rem;
     }
 
     &:nth-child(2):before {
@@ -264,18 +265,18 @@ export const Circle = styled.div`
     }
 
     ${ BatManBox }:nth-child(1) & {
-        background-color: #932422;
+        background-color: ${ ({ theme }) => theme.colors.secondary800 };
 
         &:after, &:before {
-            background-color: #932422;
+            background-color: ${ ({ theme }) => theme.colors.secondary700 };
         }
     }
 
     ${ BatManBox }:nth-child(2) & {
-        background-color: #D13433;
+        background-color: ${ ({ theme }) => theme.colors.secondary700 };
 
         &:after, &:before {
-            background-color: #D13433;
+            background-color: ${ ({ theme }) => theme.colors.secondary800 };
         }
     }
 `;
@@ -283,14 +284,14 @@ export const Circle = styled.div`
 export const ArmRight = styled.div`
     position: absolute;
     background-color: #EAB08C;
-    border-left: 8px solid rgba(19, 36, 44, 0.1);
-    border-radius: 50px;
+    border-left: 0.8rem solid rgba(19, 36, 44, 0.1);
+    border-radius: 5rem;
     box-sizing: border-box;
-    height: 180px;
-    left: 135px;
-    top: 80px;
-    transform-origin: 30px 30px;
-    width: 60px;
+    height: 18rem;
+    left: 13.5rem;
+    top: 8rem;
+    transform-origin: 3rem 3rem;
+    width: 6rem;
     z-index: 1;
     animation: ${ armAnima } 1.2s infinite cubic-bezier(0.55, 0.01, 0.16, 1.34);
 
@@ -301,14 +302,14 @@ export const ArmRight = styled.div`
 
 export const Club = styled.div`
     position: absolute;
-    border-bottom: 110px solid #601513;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
+    border-bottom: 11rem solid #601513;
+    border-left: 1rem solid transparent;
+    border-right: 1rem solid transparent;
     height: 0;
-    left: -60px;
-    top: 120px;
+    left: -6rem;
+    top: 12rem;
     transform: rotate(70deg);
-    width: 20px;
+    width: 2rem;
 
     &:after, &:before {
         position: absolute;
@@ -319,39 +320,41 @@ export const Club = styled.div`
     }
 
     &:after {
-        height: 20px;
-        width: 20px;
-        top: -10px;
+        height: 2rem;
+        width: 2rem;
+        top: -1rem;
     }
 
     &:before {
-        height: 40px;
-        width: 40px;
-        left: -10px;
-        top: 90px;
+        height: 4rem;
+        width: 4rem;
+        left: -1rem;
+        top: 9rem;
     }
 `;
 
 export const Leg = styled.div`
     position: absolute;
-    border-radius: 10px;
-    height: 55px;
-    top: 200px;
-    width: 10px;
+    border-radius: 1rem;
+    width: 1rem;
+    height: 5.5rem;
+    top: 20rem;
+    left: 14rem;
+    background-color: ${ ({ theme }) => theme.colors.secondary900 };
 
     &:after {
         position: absolute;
         content: "";
         border-radius: 50%;
-        height: 10px;
-        left: -5px;
-        top: 15px;
-        width: 10px;
+        height: 1rem;
+        left: -0.5rem;
+        top: 1.5rem;
+        width: 1rem;
     }
 
     &:nth-child(1) {
         background-color: #B2524D;
-        left: 95px;
+        left: 9.5rem;
 
         &:after {
             background-color: #B2524D;
@@ -360,7 +363,7 @@ export const Leg = styled.div`
 
     &:nth-child(2) {
         background-color: #D9766C;
-        left: 115px;
+        left: 11.5rem;
 
         &:after {
             background-color: #D9766C;
@@ -370,40 +373,41 @@ export const Leg = styled.div`
 
 export const Foot = styled.div`
     position: absolute;
-    border-radius: 25px 25px 0 0;
-    height: 25px;
-    left: -38px;
-    top: 30px;
-    width: 50px;
+    border-radius: 2.5rem 2.5rem 0 0;
+    height: 2.5rem;
+    left: -4rem;
+    top: 3rem;
+    width: 5rem;
+    background-color: #d49d7b;
 
     &:after, &:before, .fingers, .fingers:after {
         position: absolute;
         background-color: #EAB08C;
         border-radius: 50%;
-        bottom: 0px;
-        height: 15px;
+        bottom: 0;
+        height: 1.5rem;
         transform-origin: bottom;
-        width: 15px;
+        width: 1.5rem;
     }
 
     &:after {
-        left: -6px;
+        left: -0.6rem;
         content: "";
     }
 
     &:before {
-        left: 8px;
+        left: 0.8rem;
         transform: scale(0.6);
         content: "";
     }
 
     .fingers {
-        left: 15px;
+        left: 1.5rem;
         transform: scale(0.6);
     }
 
     .fingers:after {
-        left: 11px;
+        left: 1.1rem;
         content: "";
     }
 

@@ -14,10 +14,14 @@ import {
     Shape
 } from "@/shared";
 
-export const NotFound = () => {
+export type NotFoundP = {
+    code: number;
+}
+
+export const NotFound = ({code}: NotFoundP) => {
     return (
             <NotFoundBox>
-                <ErrorCodeBox>404</ErrorCodeBox>
+                <ErrorCodeBox>{code}</ErrorCodeBox>
                 <BatMansBox>
                     <BatManBox>
                         <Head>
