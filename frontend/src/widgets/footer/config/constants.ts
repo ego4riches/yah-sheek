@@ -1,3 +1,3 @@
-import { TITLES } from "@/shared";
+import { APP_META } from "@/shared";
 
-export const COPYRIGHT = `© 2025 ${ TITLES.GLOBAL.SITE_NAME }. All rights reserved.`;
+export const COPYRIGHT = `© 2025 ${ APP_META.NAME_EN }. All rights reserved.`;

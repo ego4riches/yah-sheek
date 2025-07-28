@@ -20,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'SUIT-Regular', sans-serif;
         font-size: 1.6rem;
         background-color: ${ ({ theme }) => theme.colors.white };
-        color: ${ ({ theme }) => theme.colors.black };
+        color: ${ ({ theme }) => theme.colors.gray900 };
     }
 
     a {

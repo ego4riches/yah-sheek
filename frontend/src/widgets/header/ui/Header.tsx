@@ -1,5 +1,5 @@
-import {Link, useNavigate} from "react-router-dom";
-import {AuthBox, BaseballIcon, HeaderBox} from "@/widgets/header/config/styled.ts";
+import {useNavigate} from "react-router-dom";
+import {AuthBox, HeaderBox, LogoBox} from "@/widgets/header/config/styled.ts";
 import {AUTH, Drawer, ROUTES, useAuthStore} from "@/shared";
 import BaseBall from '@/shared/config/assets/baseball.png'
 
@@ -20,9 +20,9 @@ export const Header = () => {
     return (
             <HeaderBox>
                 <Drawer/>
-                <Link to={ROUTES.HOME}>
-                    <BaseballIcon src={BaseBall} alt="baseball"/>
-                </Link>
+                <LogoBox to={ROUTES.HOME}>
+                    <img src={BaseBall} alt="baseball"/>
+                </LogoBox>
                 <AuthBox>
                     {
                         isLoggedIn

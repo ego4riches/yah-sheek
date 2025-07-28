@@ -1,8 +1,9 @@
-import {TITLES} from "@/shared";
+import {TEAMS} from "@/shared";
+import {TeamsLayout} from "@/pages/teams/TeamsLayout.tsx";
 
 export const KiwoomPage = () => {
 
     return (
-            <>{TITLES.MENU.KIWOOM}</>
+            <TeamsLayout team={TEAMS.KIWOOM.KEY}/>
     );
 };

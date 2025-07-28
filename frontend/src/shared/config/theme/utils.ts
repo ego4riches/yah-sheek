@@ -10,18 +10,38 @@ export const flexCenter = css`
     align-items: center;
 `;
 
-export const flexSpaceBetween = css`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-`;
-
 export const flexColumnCenter = css`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 `;
+
+export const flexSpaceBetween = css`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
+
+export const gridCenterX = css`
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+`
+
+export const gridCenterY = css`
+    display: grid;
+    grid-template-rows: 1fr auto 1fr;
+    justify-items: center;
+`
+
+export const gridCenterXY = css`
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: 1fr auto 1fr;
+    justify-items: center;
+    align-items: center;
+`
 
 export const textEllipsis = css`
     overflow: hidden;

@@ -19,16 +19,6 @@ export const colors = {
     gray800: '#464646',
     gray900: '#2c2c2c',
 
-    primary100: '#f3f7ff',
-    primary200: '#dfe6ff',
-    primary300: '#a3c1ff',
-    primary400: '#739ae0',
-    primary500: '#487ad0',
-    primary600: '#144fb7',
-    primary700: '#003d9a',
-    primary800: '#00296b',
-    primary900: '#001a44',
-
     secondary300: '#e8fff4',
     secondary400: '#bde5d2',
     secondary500: '#8fceb3',
@@ -36,6 +26,17 @@ export const colors = {
     secondary700: '#1c7c54',
     secondary800: '#075737',
     secondary900: '#003b25',
+
+    kia: '#EA0029',
+    doosan: '#1A1748',
+    lotte: '#D00F31',
+    samsung: '#074CA1',
+    ssg: '#CE0E2D',
+    nc: '#315288',
+    lg: '#C30452',
+    kiwoom: '#570514',
+    kt: '#000000',
+    hanhwa: '#FC4E00',
 };
 
 export const fontSizes = {
@@ -68,6 +69,10 @@ export const borderRadius = {
     lg: '12px',
     xl: '20px',
     round: '50%',
+    topRoundedSm: '4px 4px 0 0',
+    topRoundedMd: '8px 8px 0 0',
+    topRoundedLg: '12px 12px 0 0',
+    topRoundedXl: '20px 20px 0 0',
 }
 
 export const shadows = {
