@@ -1,8 +1,6 @@
-import {TITLES} from "@/shared";
-
 export const LoginPage = () => {
 
     return (
-            <>{TITLES.PAGE.LOGIN}</>
+            <>로그인 페이지</>
     );
 };

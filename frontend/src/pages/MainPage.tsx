@@ -1,8 +1,5 @@
-import {TITLES} from "@/shared";
-
 export const MainPage = () => {
-
     return (
-            <>{TITLES.PAGE.HOME}</>
+            <>메인 페이지</>
     );
 };
