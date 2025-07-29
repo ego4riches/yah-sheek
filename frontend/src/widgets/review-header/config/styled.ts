@@ -15,7 +15,6 @@ export const ReviewHeaderTitle = styled.h1`
 
 export const ReviewHeaderControlBox = styled.div`
     ${ gridCenterX };
-    align-items: end;
     width: 100%;
     gap: 1rem;
     padding: 0 1rem;
