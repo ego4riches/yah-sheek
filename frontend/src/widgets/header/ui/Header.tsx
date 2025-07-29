@@ -1,7 +1,7 @@
 import {useNavigate} from "react-router-dom";
-import {AuthBox, HeaderBox, LogoBox} from "@/widgets/header/config/styled.ts";
 import {AUTH, Drawer, ROUTES, useAuthStore} from "@/shared";
 import BaseBall from '@/shared/config/assets/baseball.png'
+import {AuthBox, HeaderBox, LogoBox} from "@/widgets";
 
 export const Header = () => {
     const {isLoggedIn, login, logout} = useAuthStore();
