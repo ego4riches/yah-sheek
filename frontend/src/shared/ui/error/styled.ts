@@ -212,11 +212,11 @@ export const Shape = styled.div`
     width: 14rem;
 
     ${ BatManBox }:nth-child(1) & {
-        background-color: ${ ({ theme }) => theme.colors.secondary900 };
+        background-color: ${ ({ theme }) => theme.colors.primary900 };
     }
 
     ${ BatManBox }:nth-child(2) & {
-        background-color: ${ ({ theme }) => theme.colors.secondary900 };
+        background-color: ${ ({ theme }) => theme.colors.primary900 };
     }
 `;
 
@@ -265,18 +265,18 @@ export const Circle = styled.div`
     }
 
     ${ BatManBox }:nth-child(1) & {
-        background-color: ${ ({ theme }) => theme.colors.secondary800 };
+        background-color: ${ ({ theme }) => theme.colors.primary800 };
 
         &:after, &:before {
-            background-color: ${ ({ theme }) => theme.colors.secondary700 };
+            background-color: ${ ({ theme }) => theme.colors.primary700 };
         }
     }
 
     ${ BatManBox }:nth-child(2) & {
-        background-color: ${ ({ theme }) => theme.colors.secondary700 };
+        background-color: ${ ({ theme }) => theme.colors.primary700 };
 
         &:after, &:before {
-            background-color: ${ ({ theme }) => theme.colors.secondary800 };
+            background-color: ${ ({ theme }) => theme.colors.primary800 };
         }
     }
 `;
@@ -340,7 +340,7 @@ export const Leg = styled.div`
     height: 5.5rem;
     top: 20rem;
     left: 14rem;
-    background-color: ${ ({ theme }) => theme.colors.secondary900 };
+    background-color: ${ ({ theme }) => theme.colors.primary900 };
 
     &:after {
         position: absolute;

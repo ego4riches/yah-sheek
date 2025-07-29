@@ -27,15 +27,15 @@ export const AuthBox = styled.div`
         padding: 0.9rem 1.5rem;
         font-size: 1.1rem;
         font-family: ${ ({ theme }) => theme.fontFamilies.Paperlogy800 };
-        color: ${ ({ theme }) => theme.colors.secondary300 };
-        background-color: ${ ({ theme }) => theme.colors.secondary700 };
+        color: ${ ({ theme }) => theme.colors.primary100 };
+        background-color: ${ ({ theme }) => theme.colors.primary700 };
         border-radius: ${ ({ theme }) => theme.borderRadius.lg };
         box-shadow: ${ ({ theme }) => theme.shadows.sm };
         text-decoration: none;
         cursor: pointer;
 
         &:hover {
-            background: ${ ({ theme }) => theme.colors.secondary600 };
+            background: ${ ({ theme }) => theme.colors.primary500 };
         }
     }
 `
