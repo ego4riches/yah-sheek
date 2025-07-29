@@ -1,9 +1,9 @@
-import { flexColumnCenter, gridCenterX } from "@/shared";
+import { flexColumnCenter, flexSpaceBetween, gridCenterX, media } from "@/shared";
 import styled from "styled-components";
 
 export const ReviewHeaderWrapper = styled.div`
     ${ flexColumnCenter };
-`
+`;
 
 export const ReviewHeaderTitle = styled.h1`
     font-family: ${ ({ theme }) => theme.fontFamilies.Paperlogy600 };
@@ -11,7 +11,7 @@ export const ReviewHeaderTitle = styled.h1`
     color: ${ ({ theme }) => theme.colors.gray900 };
     margin: 1rem 0;
     text-align: center;
-`
+`;
 
 export const ReviewHeaderControlBox = styled.div`
     ${ gridCenterX };
@@ -31,4 +31,9 @@ export const ReviewHeaderControlBox = styled.div`
     > *:last-child {
         justify-self: end;
     }
-`
+
+    ${ media.mobile } {
+        ${ flexSpaceBetween };
+        position: relative;
+    }
+`;

@@ -1,4 +1,4 @@
-import { flexCenter } from "@/shared";
+import { flexCenter, media } from "@/shared";
 import styled from 'styled-components';
 
 export const CategoriesBox = styled.div`
@@ -10,6 +10,13 @@ export const CategoriesBox = styled.div`
     color: ${ ({ theme }) => theme.colors.white };
     background: ${ ({ theme }) => theme.colors.ssg };
     border-radius: ${ ({ theme }) => theme.borderRadius.topRoundedXl };
+
+    ${ media.mobile } {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 `
 
 export const CategoryBox = styled.div`
