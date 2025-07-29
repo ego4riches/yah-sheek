@@ -1,5 +1,5 @@
-import {FooterBox} from "@/widgets/footer/config/styled.ts";
-import {COPYRIGHT} from "@/widgets/footer/config/constants.ts";
+import {COPYRIGHT, FooterBox} from "@/widgets";
+
 
 export const Footer = () =>
         <FooterBox>

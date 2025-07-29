@@ -1,22 +1,28 @@
-import { getShouldForwardProps, hexToRgba, type SortOptionsDropdownBoxT, type SortOptionsItemBoxT } from "@/shared";
+import { getShouldForwardProps, hexToRgba, media, type SortOptionsDropdownBoxT, type SortOptionsItemBoxT, textEllipsis } from "@/shared";
 import styled from "styled-components";
 
 export const SortOptionsWrapper = styled.div`
     position: relative;
     width: 13rem;
-`
+
+    ${ media.mobile } {
+        width: fit-content;
+    }
+`;
 
 export const SortOptionsButtonBox = styled.button`
+    ${ textEllipsis };
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
-    padding: 0.75rem 1rem;
+    padding: 0.7rem 1rem;
     width: 100%;
     border: 1px solid ${ ({ theme }) => theme.colors.gray200 };
     border-radius: ${ ({ theme }) => theme.borderRadius.xl };
     cursor: pointer;
     color: ${ ({ theme }) => theme.colors.gray700 };
+    background: ${ ({ theme }) => theme.colors.white };
 
     &:hover {
         border-color: ${ ({ theme }) => hexToRgba(theme.colors.ssg, 0.5) };
@@ -26,7 +32,7 @@ export const SortOptionsButtonBox = styled.button`
         box-shadow: 0 0 0 0.4rem ${ ({ theme }) => hexToRgba(theme.colors.ssg, 0.3) };
         border-color: ${ ({ theme }) => hexToRgba(theme.colors.ssg, 0.5) };
     }
-`
+`;
 
 export const SortOptionsDropdownBox = styled.div.withConfig({
     shouldForwardProp: getShouldForwardProps(['isOpen']),
@@ -51,12 +57,12 @@ export const SortOptionsItemBox = styled.div.withConfig({
     padding: 0.75rem 1rem;
     cursor: pointer;
     color: ${ ({ theme, isSelected }) => isSelected ? theme.colors.ssg : theme.colors.gray700 };
-    background-color: ${ ({ theme, isSelected }) => isSelected ? theme.colors.light : 'transparent' };
+    background-color: ${ ({ theme, isSelected }) => isSelected ? theme.colors.gray100 : 'transparent' };
     font-family: ${ ({ theme }) => theme.fontFamilies.SUIT500 };
     font-size: ${ ({ theme }) => theme.fontSizes.md };
 
     &:hover {
-        background-color: ${ ({ theme }) => theme.colors.light };
+        background-color: ${ ({ theme }) => theme.colors.gray100 };
     }
 
     &:first-child {

@@ -1,5 +1,5 @@
 import {ReviewHeader} from "@/widgets/review-header/ui/ReviewHeader.tsx";
-import {getBallParkByTeamKey} from "@/shared";
+import {getBallParkByTeamKey, ReviewComposer} from "@/shared";
 import {TeamsLayoutWrapper} from "@/pages/teams/styled.ts";
 
 export type TeamsLayoutP = {
@@ -14,6 +14,7 @@ export const TeamsLayout = ({team}: TeamsLayoutP) => {
     return (
             <TeamsLayoutWrapper>
                 <ReviewHeader title={title}/>
+                <ReviewComposer/>
                 {/*{children}*/}
             </TeamsLayoutWrapper>
     );
