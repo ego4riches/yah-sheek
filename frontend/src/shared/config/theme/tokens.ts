@@ -40,14 +40,14 @@ export const colors = {
 };
 
 export const fontSizes = {
-    xs: '12px',
-    sm: '14px',
-    md: '16px',
-    lg: '18px',
-    xl: '20px',
-    h3: '22px',
-    h2: '24px',
-    h1: '28px',
+    xs: '1rem',
+    sm: '1.2rem',
+    md: '1.4rem',
+    lg: '1.6rem',
+    xl: '1.8rem',
+    h3: '2.3rem',
+    h2: '3rem',
+    h1: '4rem',
 };
 
 export const fontFamilies = {
@@ -64,19 +64,23 @@ export const fontFamilies = {
 }
 
 export const borderRadius = {
-    sm: '4px',
-    md: '8px',
-    lg: '12px',
-    xl: '20px',
+    sm: '0.25rem',
+    md: '0.5rem',
+    lg: '0.75rem',
+    xl: '1.25rem',
     round: '50%',
-    topRoundedSm: '4px 4px 0 0',
-    topRoundedMd: '8px 8px 0 0',
-    topRoundedLg: '12px 12px 0 0',
-    topRoundedXl: '20px 20px 0 0',
+    topRoundedSm: '0.25rem 0.25rem 0 0',
+    topRoundedMd: '0.5rem 0.5rem 0 0',
+    topRoundedLg: '0.75rem 0.75rem 0 0',
+    topRoundedXl: '1.25rem 1.25rem 0 0',
+    bottomRoundedSm: '0 0 0.25rem 0.25rem',
+    bottomRoundedMd: '0 0 0.5rem 0.5rem',
+    bottomRoundedLg: '0 0 0.75rem 0.75rem',
+    bottomRoundedXl: '0 0 1.25rem 1.25rem',
 }
 
 export const shadows = {
-    sm: '0px 2px 4px rgba(0, 0, 0, 0.06)',
-    md: '0px 4px 8px rgba(0, 0, 0, 0.07)',
-    lg: '0px 8px 16px rgba(0, 0, 0, 0.08)',
+    sm: '0 0.2rem 0.4rem rgba(0, 0, 0, 0.06)',
+    md: '0 0.4rem 0.8rem rgba(0, 0, 0, 0.07)',
+    lg: '0 0.8rem 1.6rem rgba(0, 0, 0, 0.08)',
 };
