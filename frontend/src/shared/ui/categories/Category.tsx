@@ -1,11 +1,6 @@
-import {CategoryBox} from "@/shared";
+import {CategoryBox, type CategoryT} from "@/shared";
 
-export type CategoryP = {
-    label: string;
-}
-
-export const Category = ({label}: CategoryP) => {
-
+export const Category = ({label}: CategoryT) => {
     return (
             <CategoryBox>
                 {label}

@@ -11,14 +11,11 @@ import {
     Leg,
     Nose,
     NotFoundBox,
+    type NotFoundT,
     Shape
 } from "@/shared";
 
-export type NotFoundP = {
-    code: number;
-}
-
-export const NotFound = ({code}: NotFoundP) => {
+export const NotFound = ({code}: NotFoundT) => {
     return (
             <NotFoundBox>
                 <ErrorCodeBox>{code}</ErrorCodeBox>
