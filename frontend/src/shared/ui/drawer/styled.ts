@@ -1,8 +1,10 @@
+import { type DrawerBoxT, type DrawerItemBoxT, getShouldForwardProps } from "@/shared";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
 export const DrawerWrapper = styled.div`
     width: fit-content;
+    z-index: 1;
 `
 
 export const DrawerToggle = styled.div`
@@ -11,8 +13,8 @@ export const DrawerToggle = styled.div`
 `;
 
 export const DrawerBox = styled.nav.withConfig({
-    shouldForwardProp: (prop) => !['open'].includes(prop),
-})<{ open: boolean }>`
+    shouldForwardProp: getShouldForwardProps(['open']),
+})<DrawerBoxT>`
     position: fixed;
     display: flex;
     flex-direction: column;
@@ -27,8 +29,8 @@ export const DrawerBox = styled.nav.withConfig({
 `
 
 export const DrawerItemBox = styled(Link).withConfig({
-    shouldForwardProp: (prop) => !['active'].includes(prop),
-})<{ active: boolean }>`
+    shouldForwardProp: getShouldForwardProps(['active']),
+})<DrawerItemBoxT>`
     text-align: center;
     padding: calc(100vh / 25) 0;
     color: ${ ({ theme, active }) => (active ? theme.colors.gray600 : theme.colors.gray700) };

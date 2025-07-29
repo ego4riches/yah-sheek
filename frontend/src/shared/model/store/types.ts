@@ -1,4 +1,4 @@
-export type AuthStateT = {
+export interface AuthStateI {
     isLoggedIn: boolean
     login: () => void
     logout: () => void

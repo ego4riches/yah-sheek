@@ -1,2 +1,2 @@
-export * from '@/widgets/header/config/styled.ts';
-export * from '@/widgets/header/ui/Header.tsx';
+export * from '@/widgets/header/config/styled';
+export * from '@/widgets/header/ui/Header';

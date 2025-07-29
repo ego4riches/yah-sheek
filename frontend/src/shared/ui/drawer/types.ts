@@ -1,13 +1,22 @@
 // Props
-export type DrawerItemP = {
+export type DrawerItemT = {
     path: string;
     label: string;
     active: boolean;
     onClick?: () => void;
 }
 
+// styled-components Props
+export type DrawerBoxT = {
+    open: boolean;
+}
+
+export type DrawerItemBoxT = {
+    active: boolean;
+}
+
 // Store
-export type DrawerStateT = {
+export interface DrawerStateI {
     isDrawerOpen: boolean;
     setDrawerOpen: (value: boolean) => void;
 }

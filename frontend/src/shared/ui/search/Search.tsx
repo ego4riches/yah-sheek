@@ -1,10 +1,13 @@
-import {SearchBox, SearchInputBox} from "@/shared";
+import {FindIcon, SearchIconBox, SearchInputBox, SearchWrapper} from "@/shared";
 
 export const Search = () => {
 
     return (
-            <SearchBox>
+            <SearchWrapper>
                 <SearchInputBox type="text" placeholder="Search..."/>
-            </SearchBox>
+                <SearchIconBox>
+                    <FindIcon/>
+                </SearchIconBox>
+            </SearchWrapper>
     );
 };
