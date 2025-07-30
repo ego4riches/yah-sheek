@@ -16,8 +16,6 @@ export default defineConfig(() => {
             watch: {
                 usePolling: true,
             },
-            // Vercel 배포 시 404 이슈 대응 -> index.html 리디렉션
-            historyApiFallback: true,
             // proxy: {
             //     [env.VITE_SAMPLE_API_PREFIX]: {
             //         target: `${ env.VITE_API_BASE_URL }/${ env.VITE_SAMPLE_API_PREFIX }`,
