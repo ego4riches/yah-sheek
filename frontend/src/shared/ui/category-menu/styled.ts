@@ -1,7 +1,7 @@
 import { flexCenter, media } from "@/shared";
 import styled from 'styled-components';
 
-export const CategoriesBox = styled.div`
+export const CategoryMenuBox = styled.div`
     ${ flexCenter };
     font-family: ${ ({ theme }) => theme.fontFamilies.SUIT500 };
     gap: 4rem;
@@ -19,7 +19,7 @@ export const CategoriesBox = styled.div`
     }
 `
 
-export const CategoryBox = styled.div`
+export const CategoryMenuItemBox = styled.div`
     white-space: nowrap;
     cursor: pointer;
 

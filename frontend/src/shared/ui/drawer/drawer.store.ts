@@ -1,7 +1,7 @@
-import type { DrawerStateI } from "@/shared";
+import type { IsOpenStoreI } from "@/shared";
 import { create } from "zustand";
 
-export const useDrawerStore = create<DrawerStateI>((set) => ({
-    isDrawerOpen: false,
-    setDrawerOpen: (value) => set({ isDrawerOpen: value }),
+export const useDrawerStore = create<IsOpenStoreI>((set) => ({
+    isOpen: false,
+    setIsOpen: (value) => set({ isOpen: value }),
 }));

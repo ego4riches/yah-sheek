@@ -1,0 +1,1 @@
+export const DEFAULT_CATEGORY = '카테고리';

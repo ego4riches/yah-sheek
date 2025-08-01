@@ -1,16 +1,21 @@
-import {ReviewComposerWrapper} from "@/shared/ui/review-composer/styled.ts";
-import {useReviewComposerStore} from "@/shared";
+import type {ContentInputT} from "@/shared";
+import {ReviewComposerWrapper, ReviewSubmitButtonBox, ReviewTextareaBox} from "@/shared";
 
-export const ReviewComposer = () => {
-    const {content, setContent} = useReviewComposerStore();
-
+export const ReviewComposer = ({content, isSubmitDisabled, onContentChange, onFocus, onSubmit}: ContentInputT) => {
     return (
             <ReviewComposerWrapper>
-                <textarea
+                <ReviewTextareaBox
                         value={content}
-                        onChange={(e) => setContent(e.target.value)}
-                        placeholder="리뷰를 입력해주세요"
+                        onChange={onContentChange}
+                        onFocus={onFocus}
+                        placeholder="오늘 내 야구 푸드는?"
                 />
+                <ReviewSubmitButtonBox
+                        onClick={onSubmit}
+                        disabled={isSubmitDisabled}
+                >
+                    리뷰 작성
+                </ReviewSubmitButtonBox>
             </ReviewComposerWrapper>
     );
-};
+}; 

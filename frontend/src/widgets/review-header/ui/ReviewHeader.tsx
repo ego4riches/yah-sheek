@@ -1,4 +1,4 @@
-import {Categories, Search, SortOptions} from "@/shared";
+import {CategoryMenu, Search, SortOptions} from "@/shared";
 import {ReviewHeaderControlBox, type ReviewHeaderT, ReviewHeaderTitle, ReviewHeaderWrapper} from "@/widgets";
 
 export const ReviewHeader = ({title}: ReviewHeaderT) => {
@@ -7,7 +7,7 @@ export const ReviewHeader = ({title}: ReviewHeaderT) => {
                 <ReviewHeaderTitle>{title}</ReviewHeaderTitle>
                 <ReviewHeaderControlBox>
                     <SortOptions/>
-                    <Categories/>
+                    <CategoryMenu/>
                     <Search/>
                 </ReviewHeaderControlBox>
             </ReviewHeaderWrapper>

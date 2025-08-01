@@ -7,7 +7,7 @@ export const SearchWrapper = styled.div`
 `;
 
 export const SearchInputBox = styled.input`
-    min-width: 30rem;
+    min-width: 20vw;
     padding: 1rem 3rem 1rem 1rem;
     border-radius: ${ ({ theme }) => theme.borderRadius.xl };
     border: 1px solid ${ ({ theme }) => theme.colors.gray200 };

@@ -1,4 +1,4 @@
-import { getShouldForwardProps, hexToRgba, media, type SortOptionsDropdownBoxT, type SortOptionsItemBoxT, textEllipsis } from "@/shared";
+import { getShouldForwardProps, hexToRgba, type IsOpenI, type IsSelectedI, media, textEllipsis } from "@/shared";
 import styled from "styled-components";
 
 export const SortOptionsWrapper = styled.div`
@@ -36,7 +36,7 @@ export const SortOptionsButtonBox = styled.button`
 
 export const SortOptionsDropdownBox = styled.div.withConfig({
     shouldForwardProp: getShouldForwardProps(['isOpen']),
-})<SortOptionsDropdownBoxT>`
+})<IsOpenI>`
     position: absolute;
     top: 100%;
     left: 0;
@@ -52,7 +52,7 @@ export const SortOptionsDropdownBox = styled.div.withConfig({
 
 export const SortOptionsItemBox = styled.div.withConfig({
     shouldForwardProp: getShouldForwardProps(['isSelected']),
-})<SortOptionsItemBoxT>`
+})<IsSelectedI>`
     width: 100%;
     padding: 0.75rem 1rem;
     cursor: pointer;
