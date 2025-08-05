@@ -7,12 +7,13 @@ export interface IsOpenStoreI {
     setIsOpen: (open: boolean) => void;
 }
 
-export interface ActiveI {
-    active: boolean;
-}
-
 export interface IsExpandedI {
     isExpanded: boolean;
+}
+
+export interface IsExpandedStoreI {
+    isExpanded: boolean;
+    setIsExpanded: (expanded: boolean) => void;
 }
 
 export interface IsSelectedI {

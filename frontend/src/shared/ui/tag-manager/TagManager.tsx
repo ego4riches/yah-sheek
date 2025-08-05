@@ -5,21 +5,25 @@ import {
     TagInputBox,
     TagManagerWrapper,
     TagSuggestions,
-    useTagManager,
+    useTagInput,
     useTagManagerStore,
+    useTagSuggest,
+    useTagVisibility,
 } from "@/shared";
 
 export const TagManager = () => {
-    const {tags, tag, isOpen, removeTag} = useTagManagerStore();
     const tagInputRef = useRef<HTMLInputElement>(null);
-    const {tagToggle, selectedSuggestion, tagInputChange, tagInputKeydown} = useTagManager(tagInputRef);
+    const {tags, tag, isExpanded, removeTag} = useTagManagerStore();
+    const {tagInputChange, tagInputKeydown} = useTagInput(tagInputRef);
+    const {selectedSuggestion} = useTagSuggest();
+    const {tagToggle} = useTagVisibility();
 
     return (
             <TagManagerWrapper>
                 {tags.map((tag, index) => (
                         <Tag key={index} tag={tag} onClick={() => removeTag(index)}/>
                 ))}
-                <TagExpandedBox onClick={tagToggle} isOpen={isOpen}>
+                <TagExpandedBox onClick={tagToggle} isExpanded={isExpanded}>
                     <span>#</span>
                     <TagInputBox
                             ref={tagInputRef}

@@ -7,11 +7,14 @@ export const useCategorySelectorStore = create<CategorySelectorStoreI>((set) => 
 
     isOpen: false,
     setIsOpen: (open) => set({ isOpen: open }),
-}))
+
+    reset: () => set({
+        category: '',
+        isOpen: false,
+    }),
+}));
 
 export const useDropdownStore = create<DropdownStoreI>((set) => ({
     style: null,
     setStyle: (style) => set({ style: style }),
-
-    reset: () => set({ style: null }),
 }));

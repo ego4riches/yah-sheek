@@ -1,31 +1,31 @@
-import { getShouldForwardProps, type IsExpandedI } from "@/shared";
+import { flexColumnCenter, flexStart, getShouldForwardProps, type IsExpandedI } from "@/shared";
 import styled from "styled-components";
 
 export const ReviewWriteWrapper = styled.div`
+    ${ flexColumnCenter };
+    width: 100%;
+    gap: 1.5rem;
     background: ${ ({ theme }) => theme.colors.white };
     border-radius: ${ ({ theme }) => theme.borderRadius.xl };
-    padding: 2rem;
-    box-shadow: ${ ({ theme }) => theme.shadows.md };
-    border: 2px solid ${ ({ theme }) => theme.colors.gray200 };
-    max-width: 600px;
-    margin: 0 auto;
-    transition: all 0.3s ease;
+    padding: 1.5rem;
+    box-shadow: ${ ({ theme }) => theme.shadows.sm };
+    border: 1px solid ${ ({ theme }) => theme.colors.gray200 };
 `;
 
 export const ExpandedWriteWrapper = styled.div.withConfig({
     shouldForwardProp: getShouldForwardProps(['isExpanded']),
 })<IsExpandedI>`
-    max-height: ${ ({ isExpanded }) => isExpanded ? '1000px' : '0' };
-    overflow: hidden;
+    width: 100%;
+    visibility: ${ ({ isExpanded }) => isExpanded ? 'visible' : 'hidden' };
+    max-height: ${ ({ isExpanded }) => isExpanded ? '100rem' : '0' };
     opacity: ${ ({ isExpanded }) => isExpanded ? '1' : '0' };
-    transform: translateY(${ ({ isExpanded }) => isExpanded ? '0' : '-10px' });
+    transform: translateY(${ ({ isExpanded }) => isExpanded ? '0' : '-1rem' });
 `;
 
 export const WriteHeaderBox = styled.div`
-    display: flex;
-    align-items: center;
+    ${ flexStart };
     gap: 1.5rem;
-    margin-bottom: 1.5rem;
     padding-bottom: 1rem;
+    margin-bottom: 1rem;
     border-bottom: 1px solid ${ ({ theme }) => theme.colors.gray200 };
 `;

@@ -5,14 +5,14 @@ import {
     DEFAULT_CATEGORY,
     useDropdownStore
 } from "@/shared";
-import {useClickOutside} from "@/shared/lib/hooks/useClickOutside.ts";
+import {useClickOutside} from "@/shared/lib/hooks/use-click-outside.ts";
 import {useCategorySelectorStore} from "@/shared/ui/category-selector/category-selector.store.ts";
 import {useRef} from "react";
 import {getDropdownStyle} from "@/shared/ui/category-selector/utils.ts";
 
 export const CategorySelector = () => {
     const {category, setCategory, isOpen, setIsOpen} = useCategorySelectorStore();
-    const {style, setStyle, reset} = useDropdownStore();
+    const {style, setStyle} = useDropdownStore();
     const buttonRef = useRef<HTMLButtonElement>(null);
 
     const handleCategoryToggle = () => {
@@ -27,7 +27,7 @@ export const CategorySelector = () => {
     const handleCategorySelect = (selectedCategory: string) => {
         setCategory(selectedCategory);
         setIsOpen(false);
-        reset();
+        setStyle(null);
     };
 
     const categoryRef = useClickOutside(() => {

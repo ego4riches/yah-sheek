@@ -1,20 +1,21 @@
 import {MediaPreviewBox, type MediaPreviewT, MediaRemoveButtonBox, PreviewImageBox, PreviewVideoBox} from "@/shared";
 
-export const MediaPreview = ({file, onClick}: MediaPreviewT) => {
+export const MediaPreview = ({file, text, onClick}: MediaPreviewT) => {
     return (
             <MediaPreviewBox>
-                {file.type.startsWith('image/') ? (
+                {file.type.startsWith('image/')
+                        ?
                         <PreviewImageBox
                                 src={URL.createObjectURL(file)}
-                                alt={`첨부파일 ${index + 1}`}
+                                alt={text}
                         />
-                ) : (
+                        :
                         <PreviewVideoBox>
                             🎥
                         </PreviewVideoBox>
-                )}
+                }
                 <MediaRemoveButtonBox onClick={onClick}>
-                    ×
+                    X
                 </MediaRemoveButtonBox>
             </MediaPreviewBox>
     );

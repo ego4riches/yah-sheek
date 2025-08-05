@@ -1,12 +1,12 @@
 import {TagSuggestionItemBox, TagSuggestionsBox, type TagSuggestionsT, useTagSuggestionsStore} from "@/shared";
 
 export const TagSuggestions = ({onClick}: TagSuggestionsT) => {
-    const {suggestions, selectedIndex, isOpen} = useTagSuggestionsStore();
+    const {suggestions, selectedIndex, isExpanded} = useTagSuggestionsStore();
 
-    if (isOpen && suggestions.length < 1) return null;
+    if (isExpanded && suggestions.length < 1) return null;
 
     return (
-            <TagSuggestionsBox data-tag-suggestion>
+            <TagSuggestionsBox isExpanded={isExpanded}>
                 {suggestions.map((suggestion, index) => (
                         <TagSuggestionItemBox
                                 key={suggestion.id}

@@ -1,23 +1,18 @@
-import { flexCenter } from "@/shared";
+import { flexCenter, flexStart } from "@/shared";
 import styled from "styled-components";
 
-export const MediaUploadWrapper = styled.div`
-    margin-bottom: 1.5rem;
-`;
-
-export const MediaUploadButtonBox = styled.label`
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
+export const MediaUploadInputBox = styled.label`
+    ${ flexCenter };
+    width: fit-content;
+    vertical-align: center;
     padding: 0.8rem 1.2rem;
     background: ${ ({ theme }) => theme.colors.gray100 };
-    border: 2px solid ${ ({ theme }) => theme.colors.gray300 };
+    border: 1px solid ${ ({ theme }) => theme.colors.gray300 };
     border-radius: ${ ({ theme }) => theme.borderRadius.lg };
     font-size: ${ ({ theme }) => theme.fontSizes.sm };
     font-family: ${ ({ theme }) => theme.fontFamilies.SUIT500 };
     color: ${ ({ theme }) => theme.colors.gray700 };
     cursor: pointer;
-    transition: all 0.2s ease;
 
     &:hover {
         background: ${ ({ theme }) => theme.colors.primary200 };
@@ -31,7 +26,7 @@ export const MediaUploadButtonBox = styled.label`
 `;
 
 export const MediaPreviewWrapper = styled.div`
-    display: flex;
+    ${ flexStart };
     flex-wrap: wrap;
     gap: 1rem;
     margin-top: 1rem;
@@ -39,11 +34,11 @@ export const MediaPreviewWrapper = styled.div`
 
 export const MediaPreviewBox = styled.div`
     position: relative;
-    width: 80px;
-    height: 80px;
-    border-radius: ${ ({ theme }) => theme.borderRadius.md };
+    width: 8rem;
+    height: 8rem;
+    border-radius: ${ ({ theme }) => theme.borderRadius.xl };
+    border: 1px solid ${ ({ theme }) => theme.colors.gray200 };
     overflow: hidden;
-    border: 2px solid ${ ({ theme }) => theme.colors.gray300 };
 `;
 
 export const PreviewImageBox = styled.img`
@@ -55,28 +50,23 @@ export const PreviewImageBox = styled.img`
 export const PreviewVideoBox = styled.div`
     ${ flexCenter };
     height: 100%;
-    background: #f0f0f0;
-    color: #666;
+    background: ${ ({ theme }) => theme.colors.gray100 };
+    color: ${ ({ theme }) => theme.colors.gray400 };
 `;
 
 export const MediaRemoveButtonBox = styled.button`
+    ${ flexCenter };
     position: absolute;
-    top: -0.5rem;
-    right: -0.5rem;
-    background: ${ ({ theme }) => theme.colors.danger };
-    color: ${ ({ theme }) => theme.colors.white };
-    border: none;
-    border-radius: 50%;
     width: 1.5rem;
     height: 1.5rem;
-    font-size: 0.8rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    top: 0.3rem;
+    right: 0.3rem;
+    color: ${ ({ theme }) => theme.colors.white };
+    background: ${ ({ theme }) => theme.colors.primary600 };
+    border-radius: 50%;
+    font-size: ${ ({ theme }) => theme.fontSizes.xs };
 
     &:hover {
-        background: ${ ({ theme }) => theme.colors.danger };
-        transform: scale(1.1);
+        background: ${ ({ theme }) => theme.colors.primary700 };
     }
 `;

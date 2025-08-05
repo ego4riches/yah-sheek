@@ -1,15 +1,8 @@
-import type { TagManagerStoreI, TagSuggestionStoreI } from "@/shared";
-import { SUGGESTED_TAGS } from "@/shared/ui/review-composer/review-composer.store.ts";
+import { SUGGESTED_TAGS, type TagManagerStoreI, type TagSuggestionStoreI } from "@/shared";
 import { create } from "zustand/index";
 
 export const useTagManagerStore = create<TagManagerStoreI>((set, get) => ({
     tags: [],
-
-    tag: '',
-    setTag: (value) => set({ tag: value }),
-
-    isOpen: false,
-    setIsOpen: (open) => set({ isOpen: open }),
 
     addTag: (tag) => {
         const { tags } = get();
@@ -24,12 +17,21 @@ export const useTagManagerStore = create<TagManagerStoreI>((set, get) => ({
         set({ tags: tags.filter((_, index) => index !== tagIndex) });
     },
 
-    clearTags: () => set({ tags: [] }),
+    tag: '',
+    setTag: (value) => set({ tag: value }),
+
+    isExpanded: false,
+    setIsExpanded: (state) => set({ isExpanded: state }),
+
+    resetTag: () => set({
+        tag: '',
+        isExpanded: false,
+    }),
 
     reset: () => set({
         tags: [],
         tag: '',
-        isOpen: false,
+        isExpanded: false,
     }),
 }))
 
@@ -40,12 +42,12 @@ export const useTagSuggestionsStore = create<TagSuggestionStoreI>((set) => ({
     selectedIndex: -1,
     setSelectedIndex: (index) => set({ selectedIndex: index }),
 
-    isOpen: false,
-    setIsOpen: (show) => set({ isOpen: show }),
+    isExpanded: false,
+    setIsExpanded: (state) => set({ isExpanded: state }),
 
     reset: () => set({
         suggestions: SUGGESTED_TAGS,
         selectedIndex: -1,
-        isOpen: false,
+        isExpanded: false,
     }),
 }))

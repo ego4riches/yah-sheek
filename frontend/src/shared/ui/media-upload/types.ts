@@ -1,17 +1,21 @@
-import type { ChangeEventT } from "@/shared";
+import type { InputChangeEventT } from "@/shared";
 
 // Props
-export type  AttachmentManagerT = {
-    attachments: File[];
-    onFileChange: (e: ChangeEventT) => void;
-    onAttachmentRemove: (index: number) => void;
-}
-
-export type MediaUploadButtonT = {
-    onChange: (e: ChangeEventT) => void;
+export type MediaUploadInputT = {
+    onChange: (e: InputChangeEventT) => void;
 }
 
 export type MediaPreviewT = {
     file: File;
-    onAttachmentRemove: () => void;
+    text: string;
+    onClick: () => void;
+}
+
+// Store
+export interface MediaUploadStoreI {
+    attachments: File[]
+    addAttachment: (file: File) => void
+    removeAttachment: (fileIndex: number) => void
+
+    reset: () => void
 }

@@ -12,10 +12,10 @@ export type CategorySelectorDropdownT = {
 export interface CategorySelectorStoreI extends IsOpenStoreI {
     category: string;
     setCategory: (category: string) => void;
+    reset: () => void;
 }
 
 export interface DropdownStoreI {
     style: CSSProperties | null;
-    setStyle: (style: CSSProperties) => void;
-    reset: () => void;
+    setStyle: (style: CSSProperties | null) => void;
 }

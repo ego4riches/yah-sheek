@@ -13,5 +13,4 @@ export type RatingStarButtonBoxT = {
 export interface RatingSelectorStoreI {
     rating: number
     setRating: (rating: number) => void
-    reset: () => void
 }
