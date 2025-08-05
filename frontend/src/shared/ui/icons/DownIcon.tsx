@@ -1,6 +1,6 @@
-import {DownIconBox, type DownIconT} from "@/shared";
+import {DownIconBox, type IsOpenI} from "@/shared";
 
-export const DownIcon = ({isOpen}: DownIconT) => (
+export const DownIcon = ({isOpen}: IsOpenI) => (
         <DownIconBox
                 width="16"
                 height="16"

@@ -1,13 +1,6 @@
-// styled-components Props
-export type SortOptionsDropdownBoxT = {
-    isOpen: boolean;
-}
-
-export type SortOptionsItemBoxT = {
-    isSelected: boolean;
-}
-
 // Config
+import type { IsOpenStoreI } from "@/shared";
+
 export interface SortOptionI {
     id: string;
     label: string;
@@ -15,10 +8,8 @@ export interface SortOptionI {
 }
 
 // Store
-export interface SortOptionsStateI {
-    isOpen: boolean;
+export interface SortOptionsStateI extends IsOpenStoreI {
     selectedOption: SortOptionI;
-    setIsOpen: (isOpen: boolean) => void;
     setSelectedOption: (option: SortOptionI) => void;
     toggleDropdown: () => void;
 }

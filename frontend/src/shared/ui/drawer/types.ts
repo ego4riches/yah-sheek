@@ -14,9 +14,3 @@ export type DrawerBoxT = {
 export type DrawerItemBoxT = {
     active: boolean;
 }
-
-// Store
-export interface DrawerStateI {
-    isDrawerOpen: boolean;
-    setDrawerOpen: (value: boolean) => void;
-}

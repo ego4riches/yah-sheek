@@ -1,4 +1,4 @@
-import { flexCenter, hexToRgba, media } from "@/shared";
+import { flexCenter, media } from "@/shared";
 import styled from "styled-components";
 
 export const SearchWrapper = styled.div`
@@ -7,7 +7,7 @@ export const SearchWrapper = styled.div`
 `;
 
 export const SearchInputBox = styled.input`
-    min-width: 30rem;
+    min-width: 20vw;
     padding: 1rem 3rem 1rem 1rem;
     border-radius: ${ ({ theme }) => theme.borderRadius.xl };
     border: 1px solid ${ ({ theme }) => theme.colors.gray200 };
@@ -15,8 +15,8 @@ export const SearchInputBox = styled.input`
     color: ${ ({ theme }) => theme.colors.gray800 };
 
     &:focus {
-        box-shadow: 0 0 0 0.4rem ${ ({ theme }) => hexToRgba(theme.colors.ssg, 0.3) };
-        border-color: ${ ({ theme }) => hexToRgba(theme.colors.ssg, 0.5) };
+        box-shadow: 0 0 0 0.4rem ${ ({ theme }) => theme.colors.primary300 };
+        border-color: ${ ({ theme }) => theme.colors.primary400 };
     }
 
     ${ media.mobile } {

@@ -1,0 +1,1 @@
+export * from '@/shared/ui/portal/Portal';

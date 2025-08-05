@@ -1,10 +1,10 @@
 import {ReviewHeader} from "@/widgets/review-header/ui/ReviewHeader.tsx";
-import {getBallParkByTeamKey, ReviewComposer} from "@/shared";
+import {getBallParkByTeamKey} from "@/shared";
 import {TeamsLayoutWrapper} from "@/pages/teams/styled.ts";
+import {ReviewWrite} from "@/widgets/review-write";
 
-export type TeamsLayoutP = {
+type TeamsLayoutP = {
     team: string;
-    // children: PropsWithChildren;
 }
 
 export const TeamsLayout = ({team}: TeamsLayoutP) => {
@@ -14,8 +14,7 @@ export const TeamsLayout = ({team}: TeamsLayoutP) => {
     return (
             <TeamsLayoutWrapper>
                 <ReviewHeader title={title}/>
-                <ReviewComposer/>
-                {/*{children}*/}
+                <ReviewWrite/>
             </TeamsLayoutWrapper>
     );
 };

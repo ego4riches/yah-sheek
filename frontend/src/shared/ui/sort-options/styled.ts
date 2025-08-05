@@ -1,4 +1,4 @@
-import { getShouldForwardProps, hexToRgba, media, type SortOptionsDropdownBoxT, type SortOptionsItemBoxT, textEllipsis } from "@/shared";
+import { getShouldForwardProps, type IsOpenI, type IsSelectedI, media, textEllipsis } from "@/shared";
 import styled from "styled-components";
 
 export const SortOptionsWrapper = styled.div`
@@ -25,18 +25,18 @@ export const SortOptionsButtonBox = styled.button`
     background: ${ ({ theme }) => theme.colors.white };
 
     &:hover {
-        border-color: ${ ({ theme }) => hexToRgba(theme.colors.ssg, 0.5) };
+        border-color: ${ ({ theme }) => theme.colors.primary400 };
     }
 
     &:focus {
-        box-shadow: 0 0 0 0.4rem ${ ({ theme }) => hexToRgba(theme.colors.ssg, 0.3) };
-        border-color: ${ ({ theme }) => hexToRgba(theme.colors.ssg, 0.5) };
+        box-shadow: 0 0 0 0.4rem ${ ({ theme }) => theme.colors.primary300 };
+        border-color: ${ ({ theme }) => theme.colors.primary400 };
     }
 `;
 
 export const SortOptionsDropdownBox = styled.div.withConfig({
     shouldForwardProp: getShouldForwardProps(['isOpen']),
-})<SortOptionsDropdownBoxT>`
+})<IsOpenI>`
     position: absolute;
     top: 100%;
     left: 0;
@@ -52,11 +52,11 @@ export const SortOptionsDropdownBox = styled.div.withConfig({
 
 export const SortOptionsItemBox = styled.div.withConfig({
     shouldForwardProp: getShouldForwardProps(['isSelected']),
-})<SortOptionsItemBoxT>`
+})<IsSelectedI>`
     width: 100%;
     padding: 0.75rem 1rem;
     cursor: pointer;
-    color: ${ ({ theme, isSelected }) => isSelected ? theme.colors.ssg : theme.colors.gray700 };
+    color: ${ ({ theme, isSelected }) => isSelected ? theme.colors.primary700 : theme.colors.gray700 };
     background-color: ${ ({ theme, isSelected }) => isSelected ? theme.colors.gray100 : 'transparent' };
     font-family: ${ ({ theme }) => theme.fontFamilies.SUIT500 };
     font-size: ${ ({ theme }) => theme.fontSizes.md };

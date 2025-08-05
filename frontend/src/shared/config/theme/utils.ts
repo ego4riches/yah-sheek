@@ -10,6 +10,12 @@ export const flexCenter = css`
     align-items: center;
 `;
 
+export const flexStart = css`
+    display: flex;
+    justify-content: start;
+    align-items: center;
+`;
+
 export const flexColumnCenter = css`
     display: flex;
     flex-direction: column;
