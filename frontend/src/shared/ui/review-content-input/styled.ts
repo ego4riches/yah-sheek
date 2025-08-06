@@ -1,7 +1,7 @@
 import { flexCenter } from "@/shared";
 import styled from "styled-components";
 
-export const ReviewComposerWrapper = styled.div`
+export const ReviewContentInputWrapper = styled.div`
     ${ flexCenter };
     width: 100%;
     height: 100%;

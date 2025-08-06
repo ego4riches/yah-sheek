@@ -1,69 +1,212 @@
-# React + TypeScript + Vite
+# ⚾ 야구장 먹거리 리뷰 앱 (Yah-Sheek)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+KBO 리그 10개 구단의 야구장 먹거리에 대한 리뷰를 공유할 수 있는 웹 애플리케이션입니다.
 
-Currently, two official plugins are available:
+## 📋 프로젝트 개요
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 주요 기능
 
-## Expanding the ESLint configuration
+- **구단별 게시판**: KBO 10개 구단의 야구장별 리뷰 게시판
+- **리뷰 작성**: 카테고리, 평점, 태그, 이미지 업로드 기능
+- **회원 시스템**: SNS 로그인 기반 회원 관리
+- **권한 관리**: 읽기는 누구나, 작성/좋아요는 회원만 가능
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 지원 구단
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- 기아 타이거즈 (광주 챔피언스 필드)
+- 두산 베어스 (서울 잠실 야구장)
+- 롯데 자이언츠 (부산 사직 야구장)
+- 삼성 라이온즈 (대구 라이온즈 파크)
+- SSG 랜더스 (인천 랜더스 필드)
+- NC 다이노스 (창원 NC 파크)
+- LG 트윈스 (서울 잠실 야구장)
+- 키움 히어로즈 (고척 스카이돔)
+- KT 위즈 (수원 KT 위즈 파크)
+- 한화 이글스 (대전 한화생명 볼 파크)
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 🛠️ 기술 스택
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Frontend
+
+- **React 19** - 최신 React 버전으로 개발
+- **TypeScript** - 타입 안정성 보장
+- **Vite** - 빠른 개발 환경 및 빌드 도구
+- **React Router DOM 7** - 클라이언트 사이드 라우팅
+- **Styled Components** - CSS-in-JS 스타일링
+- **Zustand** - 상태 관리
+- **React Query (TanStack Query)** - 서버 상태 관리
+- **Axios** - HTTP 클라이언트
+- **Zod** - 스키마 검증
+
+### 개발 도구
+
+- **ESLint** - 코드 품질 관리
+- **TypeScript ESLint** - TypeScript 린팅
+
+## 🏗️ 프로젝트 구조
+
+```
+src/
+├── app/                    # 앱 설정 및 레이아웃
+│   ├── App.tsx            # 메인 앱 컴포넌트
+│   ├── global-style.styled.ts
+│   ├── layout/            # 레이아웃 컴포넌트
+│   └── router/            # 라우팅 설정
+├── pages/                 # 페이지 컴포넌트
+│   ├── teams/             # 구단별 페이지
+│   ├── LoginPage.tsx
+│   ├── JoinPage.tsx
+│   └── MainPage.tsx
+├── shared/                # 공통 모듈
+│   ├── api/               # API 관련
+│   ├── config/            # 설정 파일
+│   ├── lib/               # 유틸리티
+│   ├── model/             # 상태 관리
+│   └── ui/                # UI 컴포넌트
+└── widgets/               # 위젯 컴포넌트
+    ├── header/
+    ├── footer/
+    ├── review-header/
+    └── review-write/
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 주요 기능
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 1. 리뷰 작성 시스템
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **카테고리 선택**: 음식 종류별 분류
+- **평점 시스템**: 5점 만점 별점 평가
+- **태그 관리**: 음식 특징 태그 추가
+- **이미지 업로드**: 음식 사진 첨부
+- **텍스트 리뷰**: 상세한 리뷰 내용 작성
+
+### 2. 구단별 게시판
+
+- 각 구단의 야구장별 독립적인 게시판
+- 구단별 맞춤 디자인 및 정보 제공
+- 야구장 정보 표시
+
+### 3. 사용자 인증
+
+- SNS 로그인 연동 (구현 예정)
+- 로그인 상태 관리
+- 권한별 기능 제한
+
+### 4. 반응형 디자인
+
+- 모바일/데스크톱 최적화
+- 사용자 친화적 UI/UX
+
+## 📦 설치 및 실행
+
+### 필수 요구사항
+
+- Node.js 18+
+- Yarn 또는 npm
+
+### 설치
+
+```bash
+# 의존성 설치
+yarn install
 ```
+
+### 개발 서버 실행
+
+```bash
+# 개발 모드 실행
+yarn dev
+```
+
+### 빌드
+
+```bash
+# 프로덕션 빌드
+yarn build
+```
+
+### 린팅
+
+```bash
+# 코드 품질 검사
+yarn lint
+```
+
+## 🔧 개발 환경 설정
+
+### 코드 컨벤션
+
+- **EditorConfig**: `.editorconfig` 파일을 통한 일관된 코드 스타일 관리
+
+### 환경 변수
+
+```env
+# .env 파일 생성 필요
+VITE_API_BASE_URL=your_api_url
+```
+
+### TypeScript 설정
+
+- `tsconfig.json` - TypeScript 컴파일러 설정
+- `tsconfig.app.json` - 앱별 TypeScript 설정
+
+## 🎯 개발 철학
+
+### 1. 모듈화된 아키텍처
+
+- Feature-Sliced Design (FSD) 패턴 적용
+- 재사용 가능한 컴포넌트 설계
+- 명확한 관심사 분리
+
+### 2. 타입 안정성
+
+- TypeScript를 활용한 강타입 시스템
+- Zod를 통한 런타임 검증
+- 인터페이스 우선 설계
+
+### 3. 상태 관리
+
+- Zustand를 활용한 간단하고 효율적인 상태 관리
+- React Query로 서버 상태 관리
+- 지속성 있는 상태 저장
+
+### 4. 사용자 경험
+
+- 직관적인 UI/UX 설계
+- 반응형 웹 디자인
+- 접근성 고려
+
+## 📈 향후 계획
+
+### 단기 목표
+
+- [ ] SNS 로그인 구현 (Google, Kakao, Naver)
+- [ ] 리뷰 목록 및 상세 페이지 구현
+- [ ] 좋아요 기능 구현
+- [ ] 댓글 시스템 추가
+
+### 중기 목표
+
+- [ ] 검색 및 필터링 기능
+- [ ] 사용자 프로필 페이지
+- [ ] 리뷰 통계 및 분석
+- [ ] 모바일 앱 개발
+
+### 장기 목표
+
+- [ ] AI 기반 음식 추천 시스템
+- [ ] 실시간 알림 기능
+- [ ] 소셜 기능 강화
+- [ ] 야구장 정보 API 연동
+
+## 📄 라이선스
+
+이 프로젝트는 MIT 라이선스 하에 배포됩니다.
+
+## 📞 연락처
+
+프로젝트에 대한 문의사항이 있으시면 언제든 연락주세요.
+
+---
+
+**더 맛있는 야구장 직관 만들어 가요!**

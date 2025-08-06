@@ -7,6 +7,8 @@ export const SortOptionsWrapper = styled.div`
 
     ${ media.mobile } {
         width: fit-content;
+        grid-row: 2;
+        top: 13rem;
     }
 `;
 
@@ -42,6 +44,8 @@ export const SortOptionsDropdownBox = styled.div.withConfig({
     left: 0;
     width: 13rem;
     margin-top: 1rem;
+    z-index: 1;
+    background: ${ ({ theme }) => theme.colors.white };
     border: 1px solid ${ ({ theme }) => theme.colors.gray200 };
     border-radius: ${ ({ theme }) => theme.borderRadius.xl };
     opacity: ${ ({ isOpen }) => isOpen ? 1 : 0 };

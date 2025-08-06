@@ -1,21 +1,15 @@
-import { useCategorySelectorStore, useMediaUploadStore, useRatingSelectorStore, useTagManagerStore, useTagSuggestionsStore } from "@/shared";
-import { useClickOutside } from "@/shared/lib/hooks/use-click-outside.ts";
-import { useReviewComposerStore } from "@/shared/ui/review-composer/review-composer.store.ts";
-import { useReviewWriteStore } from "@/widgets/review-write";
+import { useCategorySelectorStore, useClickOutside, useMediaUploadStore, useRatingSelectorStore, useReviewContentInputStore, useTagManagerStore, useTagSuggestionsStore } from "@/shared";
+import { useReviewComposerStore } from "@/widgets/review-composer";
 import { useEffect } from "react";
 
-export const useReviewWrite = () => {
-    const {
-        category, isOpen: isCategoryOpen, setIsOpen: setIsCategoryOpen, reset: resetCategory,
-    } = useCategorySelectorStore();
-    const { rating, setRating } = useRatingSelectorStore();
+export const useReviewComposerVisibility = () => {
+    const { isOpen: isCategoryOpen, setIsOpen: setIsCategoryOpen, reset: resetCategory } = useCategorySelectorStore();
+    const { setRating } = useRatingSelectorStore();
     const { isExpanded: isTagsExpanded, setIsExpanded: setIsTagsExpanded, reset: resetTags } = useTagManagerStore();
     const { reset: resetTagSuggestions } = useTagSuggestionsStore();
-    const { content, setContent } = useReviewComposerStore();
+    const { setContent } = useReviewContentInputStore();
     const { reset: resetMedia } = useMediaUploadStore();
-    const { isExpanded, setIsExpanded } = useReviewWriteStore();
-
-    const isSubmitDisabled = !content.trim() || !category || rating === 0;
+    const { isExpanded, setIsExpanded } = useReviewComposerStore();
 
     // 컴포저 접기
     const collapse = () => {
@@ -59,7 +53,6 @@ export const useReviewWrite = () => {
     }, []);
 
     return {
-        isSubmitDisabled,
         composerRef,
         reset,
     }

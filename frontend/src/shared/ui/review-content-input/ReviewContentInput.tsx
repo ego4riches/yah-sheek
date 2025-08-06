@@ -2,21 +2,21 @@ import {
     Button,
     BUTTON_VARIANTS,
     type ContentInputT,
-    ReviewComposerWrapper,
+    ReviewContentInputWrapper,
     ReviewTextareaBox,
-    type TextAreaChangeEventT
+    type TextAreaChangeEventT,
+    useReviewContentInputStore
 } from "@/shared";
-import {useReviewComposerStore} from "@/shared/ui/review-composer/review-composer.store.ts";
 
-export const ReviewComposer = ({isSubmitDisabled, onFocus, onSubmit}: ContentInputT) => {
-    const {content, setContent} = useReviewComposerStore();
+export const ReviewContentInput = ({isSubmitDisabled, onFocus, onSubmit}: ContentInputT) => {
+    const {content, setContent} = useReviewContentInputStore();
 
     const handleChange = (e: TextAreaChangeEventT) => {
         setContent(e.target.value)
     }
 
     return (
-            <ReviewComposerWrapper>
+            <ReviewContentInputWrapper>
                 <ReviewTextareaBox
                         value={content}
                         onChange={handleChange}
@@ -29,6 +29,6 @@ export const ReviewComposer = ({isSubmitDisabled, onFocus, onSubmit}: ContentInp
                         variant={BUTTON_VARIANTS.PRIMARY}
                         children='등록'
                 />
-            </ReviewComposerWrapper>
+            </ReviewContentInputWrapper>
     );
 }; 

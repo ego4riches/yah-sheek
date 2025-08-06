@@ -31,6 +31,7 @@ export const TagManager = () => {
                             onChange={tagInputChange}
                             onKeyDown={tagInputKeydown}
                             onClick={(e) => e.stopPropagation()}
+                            disabled={!isExpanded}
                             placeholder="TAG"
                     />
                     <TagSuggestions onClick={selectedSuggestion}/>

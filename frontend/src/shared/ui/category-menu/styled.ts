@@ -8,14 +8,11 @@ export const CategoryMenuBox = styled.div`
     margin-top: 2rem;
     padding: 2rem 4rem;
     color: ${ ({ theme }) => theme.colors.white };
-    background: ${ ({ theme }) => theme.colors.ssg };
+    background: ${ ({ theme }) => theme.colors.primary600 };
     border-radius: ${ ({ theme }) => theme.borderRadius.topRoundedXl };
 
     ${ media.mobile } {
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        transform: translateX(-50%);
+        grid-column: 1 / 3;
     }
 `
 

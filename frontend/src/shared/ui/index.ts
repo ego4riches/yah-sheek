@@ -7,7 +7,7 @@ export * from '@/shared/ui/icons';
 export * from '@/shared/ui/media-upload';
 export * from '@/shared/ui/portal';
 export * from '@/shared/ui/rating-selector';
-export * from '@/shared/ui/review-composer';
+export * from '@/shared/ui/review-content-input';
 export * from '@/shared/ui/search';
 export * from '@/shared/ui/sort-options';
 export * from '@/shared/ui/tag-manager';
