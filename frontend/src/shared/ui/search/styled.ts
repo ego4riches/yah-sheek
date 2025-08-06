@@ -4,6 +4,10 @@ import styled from "styled-components";
 export const SearchWrapper = styled.div`
     width: fit-content;
     position: relative;
+
+    ${ media.mobile } {
+        top: 13rem;
+    }
 `;
 
 export const SearchInputBox = styled.input`

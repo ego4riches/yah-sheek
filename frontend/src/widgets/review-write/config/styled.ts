@@ -1,4 +1,4 @@
-import { flexColumnCenter, flexStart, getShouldForwardProps, type IsExpandedI } from "@/shared";
+import { flexColumnCenter, flexStart, getShouldForwardProps, type IsExpandedI, media } from "@/shared";
 import styled from "styled-components";
 
 export const ReviewWriteWrapper = styled.div`
@@ -10,6 +10,11 @@ export const ReviewWriteWrapper = styled.div`
     padding: 1.5rem;
     box-shadow: ${ ({ theme }) => theme.shadows.sm };
     border: 1px solid ${ ({ theme }) => theme.colors.gray200 };
+
+    ${ media.mobile } {
+        position: relative;
+        top: -5rem;
+    }
 `;
 
 export const ExpandedWriteWrapper = styled.div.withConfig({

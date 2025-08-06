@@ -1,4 +1,4 @@
-import { flexColumnCenter, flexSpaceBetween, gridCenterX, media } from "@/shared";
+import { flexColumnCenter, gridCenterX, media } from "@/shared";
 import styled from "styled-components";
 
 export const ReviewHeaderWrapper = styled.div`
@@ -32,7 +32,8 @@ export const ReviewHeaderControlBox = styled.div`
     }
 
     ${ media.mobile } {
-        ${ flexSpaceBetween };
-        position: relative;
+        //position: absolute;
+        grid-template-rows: auto auto;
+        grid-template-columns: 1fr 1fr;
     }
 `;
