@@ -1,4 +1,4 @@
-export interface ReviewComposerStoreI {
+export interface ReviewContentInputStoreI {
     content: string
     setContent: (value: string) => void
 }

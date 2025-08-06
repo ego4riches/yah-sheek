@@ -1,7 +1,7 @@
 import { flexColumnCenter, flexStart, getShouldForwardProps, type IsExpandedI, media } from "@/shared";
 import styled from "styled-components";
 
-export const ReviewWriteWrapper = styled.div`
+export const ReviewComposerWrapper = styled.div`
     ${ flexColumnCenter };
     width: 100%;
     gap: 1.5rem;
@@ -17,7 +17,7 @@ export const ReviewWriteWrapper = styled.div`
     }
 `;
 
-export const ExpandedWriteWrapper = styled.div.withConfig({
+export const ComposerExpandedWrapper = styled.div.withConfig({
     shouldForwardProp: getShouldForwardProps(['isExpanded']),
 })<IsExpandedI>`
     width: 100%;
@@ -27,7 +27,7 @@ export const ExpandedWriteWrapper = styled.div.withConfig({
     transform: translateY(${ ({ isExpanded }) => isExpanded ? '0' : '-1rem' });
 `;
 
-export const WriteHeaderBox = styled.div`
+export const ComposerHeaderBox = styled.div`
     ${ flexStart };
     gap: 1.5rem;
     padding-bottom: 1rem;
