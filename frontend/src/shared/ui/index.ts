@@ -3,6 +3,7 @@ export * from '@/shared/ui/category-menu';
 export * from '@/shared/ui/category-selector';
 export * from '@/shared/ui/drawer';
 export * from '@/shared/ui/error';
+export * from '@/shared/ui/feed';
 export * from '@/shared/ui/icons';
 export * from '@/shared/ui/media-upload';
 export * from '@/shared/ui/portal';

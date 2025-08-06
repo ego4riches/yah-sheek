@@ -9,15 +9,14 @@ export const ReviewHeaderTitle = styled.h1`
     font-family: ${ ({ theme }) => theme.fontFamilies.Paperlogy600 };
     font-size: ${ ({ theme }) => theme.fontSizes.h1 };
     color: ${ ({ theme }) => theme.colors.gray900 };
-    margin: 1rem 0;
     text-align: center;
+    margin-bottom: 1rem;
 `;
 
 export const ReviewHeaderControlBox = styled.div`
     ${ gridCenterX };
     width: 100%;
     gap: 1rem;
-    padding: 0 1rem;
 
     > *:first-child {
         justify-self: start;

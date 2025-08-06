@@ -1,0 +1,5 @@
+export * from '@/shared/ui/feed/Feed';
+export * from '@/shared/ui/feed/FeedLikeCounter';
+export * from '@/shared/ui/feed/FeedPreview';
+export * from '@/shared/ui/feed/FeedThumbnail';
+export * from '@/shared/ui/feed/styled';
