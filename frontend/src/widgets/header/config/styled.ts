@@ -22,20 +22,4 @@ export const LogoBox = styled(Link)`
 
 export const AuthBox = styled.div`
     justify-self: end;
-
-    button {
-        padding: 0.9rem 1.5rem;
-        font-size: 1.1rem;
-        font-family: ${ ({ theme }) => theme.fontFamilies.Paperlogy800 };
-        color: ${ ({ theme }) => theme.colors.primary100 };
-        background-color: ${ ({ theme }) => theme.colors.primary700 };
-        border-radius: ${ ({ theme }) => theme.borderRadius.lg };
-        box-shadow: ${ ({ theme }) => theme.shadows.sm };
-        text-decoration: none;
-        cursor: pointer;
-
-        &:hover {
-            background: ${ ({ theme }) => theme.colors.primary500 };
-        }
-    }
 `
