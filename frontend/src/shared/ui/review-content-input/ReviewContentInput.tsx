@@ -3,6 +3,7 @@ import {
     BUTTON_VARIANTS,
     type ContentInputT,
     ReviewContentInputWrapper,
+    reviewInputPlaceholder,
     ReviewTextareaBox,
     type TextAreaChangeEventT,
     useReviewContentInputStore
@@ -21,7 +22,7 @@ export const ReviewContentInput = ({isSubmitDisabled, onFocus, onSubmit}: Conten
                         value={content}
                         onChange={handleChange}
                         onFocus={onFocus}
-                        placeholder="오늘 내 야구 푸드는?"
+                        placeholder={reviewInputPlaceholder}
                 />
                 <Button
                         onClick={onSubmit}

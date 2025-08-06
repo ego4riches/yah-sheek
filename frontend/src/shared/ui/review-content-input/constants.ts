@@ -1,0 +1,1 @@
+export const reviewInputPlaceholder = "오늘 내 야구 푸드는?";
