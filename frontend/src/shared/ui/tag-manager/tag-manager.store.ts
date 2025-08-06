@@ -1,4 +1,4 @@
-import { SUGGESTED_TAGS, type TagManagerStoreI, type TagSuggestionStoreI } from "@/shared";
+import { suggestedTags, type TagManagerStoreI, type TagSuggestionStoreI } from "@/shared";
 import { create } from "zustand/index";
 
 export const useTagManagerStore = create<TagManagerStoreI>((set, get) => ({
@@ -36,7 +36,7 @@ export const useTagManagerStore = create<TagManagerStoreI>((set, get) => ({
 }))
 
 export const useTagSuggestionsStore = create<TagSuggestionStoreI>((set) => ({
-    suggestions: SUGGESTED_TAGS,
+    suggestions: suggestedTags,
     setSuggestions: (suggestions) => set({ suggestions: suggestions }),
 
     selectedIndex: -1,
@@ -46,7 +46,7 @@ export const useTagSuggestionsStore = create<TagSuggestionStoreI>((set) => ({
     setIsExpanded: (state) => set({ isExpanded: state }),
 
     reset: () => set({
-        suggestions: SUGGESTED_TAGS,
+        suggestions: suggestedTags,
         selectedIndex: -1,
         isExpanded: false,
     }),

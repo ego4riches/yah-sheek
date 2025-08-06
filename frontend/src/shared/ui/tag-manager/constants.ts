@@ -1,6 +1,6 @@
 import type { TagSuggestionI } from "@/shared";
 
-export const SUGGESTED_TAGS: TagSuggestionI[] = [
+export const suggestedTags: TagSuggestionI[] = [
     { id: '1', name: '맛있어요', count: 150 },
     { id: '2', name: '깔끔해요', count: 89 },
     { id: '3', name: '친절해요', count: 67 },

@@ -1,4 +1,4 @@
-export * from '@/shared/ui/tag-manager/config';
+export * from '@/shared/ui/tag-manager/constants';
 export * from '@/shared/ui/tag-manager/styled';
 export * from '@/shared/ui/tag-manager/Tag';
 export * from '@/shared/ui/tag-manager/tag-manager.store';

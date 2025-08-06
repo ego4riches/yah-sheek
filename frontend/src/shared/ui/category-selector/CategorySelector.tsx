@@ -3,12 +3,12 @@ import {
     CategorySelectorButtonBox,
     CategorySelectorWrapper,
     DEFAULT_CATEGORY,
+    getDropdownStyle,
     useDropdownStore
 } from "@/shared";
 import {useClickOutside} from "@/shared/lib/hooks/use-click-outside.ts";
 import {useCategorySelectorStore} from "@/shared/ui/category-selector/category-selector.store.ts";
 import {useRef} from "react";
-import {getDropdownStyle} from "@/shared/ui/category-selector/utils.ts";
 
 export const CategorySelector = () => {
     const {category, setCategory, isOpen, setIsOpen} = useCategorySelectorStore();

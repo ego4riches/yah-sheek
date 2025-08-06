@@ -5,10 +5,11 @@ export const ButtonBox = styled.button.withConfig({
     shouldForwardProp: getShouldForwardProps(['size', 'weight', 'variant']),
 })<ButtonT>`
     padding: ${ ({ size }) =>
-        size === BUTTON_SIZES.SMALL ? '1rem 2rem'
-            : size === BUTTON_SIZES.LARGE ? '2rem 4rem'
-                : size === BUTTON_SIZES.XLARGE ? '2.5rem 5rem'
-                    : '1.5rem 3rem' };
+        size === BUTTON_SIZES.SMALL ? '0.7rem 1.4rem'
+            : size === BUTTON_SIZES.MEDIUM ? '1rem 2rem'
+                : size === BUTTON_SIZES.LARGE ? '2rem 4rem'
+                    : size === BUTTON_SIZES.XLARGE ? '2.5rem 5rem'
+                        : '1.5rem 3rem' };
     background: ${ ({ theme, variant }) =>
         variant === BUTTON_VARIANTS.LIGHT_GRAY ? theme.colors.gray100
             : variant === BUTTON_VARIANTS.GRAY ? theme.colors.gray200

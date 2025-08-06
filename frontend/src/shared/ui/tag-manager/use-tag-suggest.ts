@@ -1,4 +1,4 @@
-import { SUGGESTED_TAGS, useTagManagerStore, useTagSuggestionsStore } from "@/shared";
+import { suggestedTags, useTagManagerStore, useTagSuggestionsStore } from "@/shared";
 import { useEffect } from "react";
 
 export const useTagSuggest = () => {
@@ -15,7 +15,7 @@ export const useTagSuggest = () => {
     useEffect(() => {
         // 입력된 태그에게 제안할 태그 있을 경우
         if (tag.trim()) {
-            const filtered = SUGGESTED_TAGS.filter(item =>
+            const filtered = suggestedTags.filter(item =>
                 item.name.toLowerCase().includes(tag.toLowerCase()),
             );
             setSuggestions(filtered);
