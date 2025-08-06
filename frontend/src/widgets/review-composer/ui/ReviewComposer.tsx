@@ -4,13 +4,15 @@ import {
     ComposerExpandedWrapper,
     ComposerHeaderBox,
     ReviewComposerWrapper,
-    useReviewComposer,
-    useReviewComposerStore
+    useReviewComposerStore,
+    useReviewComposerSubmit,
+    useReviewComposerVisibility
 } from "@/widgets/review-composer";
 
 export const ReviewComposer = () => {
     const {isExpanded, setIsExpanded} = useReviewComposerStore();
-    const {isSubmitDisabled, composerRef, reset} = useReviewComposer();
+    const {composerRef, reset} = useReviewComposerVisibility();
+    const {isSubmitDisabled, submitReview} = useReviewComposerSubmit();
 
     const handleFocus = () => {
         setIsExpanded(true);
@@ -19,6 +21,7 @@ export const ReviewComposer = () => {
     const handleSubmit = () => {
         // 구현 예정
         reset();
+        submitReview();
     };
 
     return (
