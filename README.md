@@ -9,8 +9,8 @@
 
 | 영역         | 기술                                                   |
 |------------|------------------------------------------------------|
-| Backend    | Java 21, Spring Boot 3.5.4, JPA, QueryDSL |
-| Frontend   | React, TypeScript, Vite, Axios             |
+| Backend    | Java 21, Spring Boot 3.5.4, JPA, QueryDSL            |
+| Frontend   | React, TypeScript, Vite, Axios                       |
 | DB         | supabase - PostgreSQL (개발용)                          |
 | API 문서     | SpringDoc OpenAPI (Swagger UI)                       |
 | Build Tool | Backend: Gradle<br/>Frontend: yarn                   |
@@ -45,11 +45,41 @@ yah-sheek/
 
 ---
 
+## 🔍 주요 기능
+
+### 1. 리뷰 작성 시스템
+
+- **카테고리 선택**: 음식 종류별 분류
+- **평점 시스템**: 5점 만점 별점 평가
+- **태그 관리**: 음식 특징 태그 추가
+- **이미지 업로드**: 음식 사진 첨부
+- **텍스트 리뷰**: 상세한 리뷰 내용 작성
+
+### 2. 구단별 게시판
+
+- 각 구단의 야구장별 독립적인 게시판
+- 구단별 맞춤 디자인 및 정보 제공
+- 야구장 정보 표시
+
+### 3. 사용자 인증
+
+- SNS 로그인 연동 (구현 예정)
+- 로그인 상태 관리
+- 권한별 기능 제한
+
+### 4. 반응형 디자인
+
+- 모바일/데스크톱 최적화
+- 사용자 친화적 UI/UX
+
+---
+
 ## 🚀 로컬 실행 방법
 
 ### 1. 의존성 설치
 
 #### 1-1. 프론트엔드
+
 ```bash
 cd frontend
 yarn install                        # 의존성 최초 설치 (처음 한 번만)
@@ -57,6 +87,7 @@ cd ..
 ```
 
 #### 1-2. 백엔드
+
 > 백엔드 의존성은 Gradle이 자동 관리합니다.
 
 ---
@@ -64,6 +95,7 @@ cd ..
 ### 2. 로컬 서버 실행 방법
 
 #### 2-1. 프론트엔드
+
 ```bash
 yarn start:frontend
 ```
@@ -79,10 +111,37 @@ yarn start:backend
 ```
 
 #### 2-3. 프론트엔드와 백엔드 동시에 실행
+
 ```bash
 yarn start:all
 ```
+
 > .env 파일 생성 후 정상 실행 가능합니다.
+
+---
+
+## 📈 향후 계획
+
+### 단기 목표
+
+- [ ] SNS 로그인 구현 (Google, Kakao, Naver)
+- [ ] 리뷰 목록 및 상세 페이지 구현
+- [ ] 좋아요 기능 구현
+- [ ] 댓글 시스템 추가
+
+### 중기 목표
+
+- [ ] 검색 및 필터링 기능
+- [ ] 사용자 프로필 페이지
+- [ ] 리뷰 통계 및 분석
+- [ ] 모바일 앱 개발
+
+### 장기 목표
+
+- [ ] AI 기반 음식 추천 시스템
+- [ ] 실시간 알림 기능
+- [ ] 소셜 기능 강화
+- [ ] 야구장 정보 API 연동
 
 ---
 
@@ -98,7 +157,7 @@ yarn start:all
 
 * 팀명: `ego4riches (ego for riches)`
 * 프로젝트명: `yah-sheek`
-* 백엔드 개발자: `nature` 
+* 백엔드 개발자: `nature`
 * 프론트엔드 개발자: `thecheeziest`
 
 ---
