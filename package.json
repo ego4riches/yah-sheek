@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "start:frontend": "yarn --cwd frontend dev",
+    "start:backend": "dotenv -e .env -- ./gradlew :backend:bootRun",
+    "start:all": "concurrently \"yarn start:frontend\" \"yarn start:backend\""
+  },
+  "devDependencies": {
+    "dotenv-cli": "^7.0.0",
+    "concurrently": "^9.2.0"
+  }
+}
