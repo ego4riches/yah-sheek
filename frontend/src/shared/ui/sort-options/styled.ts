@@ -8,7 +8,6 @@ export const SortOptionsWrapper = styled.div`
     ${ media.mobile } {
         width: fit-content;
         grid-row: 2;
-        grid-column: 2;
         top: 13rem;
     }
 `;

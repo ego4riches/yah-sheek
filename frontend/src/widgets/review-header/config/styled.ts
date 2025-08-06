@@ -32,7 +32,6 @@ export const ReviewHeaderControlBox = styled.div`
     }
 
     ${ media.mobile } {
-        //position: absolute;
         grid-template-rows: auto auto;
         grid-template-columns: 1fr 1fr;
     }
