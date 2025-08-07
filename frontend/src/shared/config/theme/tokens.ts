@@ -46,7 +46,7 @@ export const fontSizes = {
     md: '1.4rem',
     lg: '1.6rem',
     xl: '1.8rem',
-    h3: '2.3rem',
+    h3: '2rem',
     h2: '3rem',
     h1: '4rem',
 };
