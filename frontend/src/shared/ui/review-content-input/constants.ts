@@ -1,1 +1,1 @@
-export const reviewInputPlaceholder = "오늘 내 야구 푸드는?";
+export const REVIEW_INPUT_PLACEHOLDER = "오늘 내 야구 푸드는?";

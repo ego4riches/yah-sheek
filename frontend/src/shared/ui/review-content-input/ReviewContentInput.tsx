@@ -2,8 +2,8 @@ import {
     Button,
     BUTTON_VARIANTS,
     type ContentInputT,
+    REVIEW_INPUT_PLACEHOLDER,
     ReviewContentInputWrapper,
-    reviewInputPlaceholder,
     ReviewTextareaBox,
     type TextAreaChangeEventT,
     useReviewContentInputStore
@@ -22,7 +22,7 @@ export const ReviewContentInput = ({isSubmitDisabled, onFocus, onSubmit}: Conten
                         value={content}
                         onChange={handleChange}
                         onFocus={onFocus}
-                        placeholder={reviewInputPlaceholder}
+                        placeholder={REVIEW_INPUT_PLACEHOLDER}
                 />
                 <Button
                         onClick={onSubmit}
