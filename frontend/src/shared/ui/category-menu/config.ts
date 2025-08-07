@@ -1,6 +1,6 @@
 export const REVIEW_CATEGORIES = [
-    { key: 'meal', label: '식사' },
-    { key: 'snack', label: '간식' },
-    { key: 'drink', label: '음료' },
-    { key: 'alcohol', label: '주류' },
+    { key: 'food', label: '푸드' },
+    { key: 'snack', label: '스낵' },
+    { key: 'drink', label: '드링크' },
+    { key: 'alcohol', label: '알콜' },
 ] as const;

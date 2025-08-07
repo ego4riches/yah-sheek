@@ -1,11 +1,4 @@
 export const colors = {
-    white: '#ffffff',
-    black: '#000000',
-
-    success: '#3ab458',
-    danger: '#ff2600',
-    warning: '#ffc107',
-    info: '#17a2b8',
     light: '#fcfcfc',
     dark: '#232323',
 
@@ -28,6 +21,12 @@ export const colors = {
     primary700: '#1c7c54',
     primary800: '#075737',
     primary900: '#003b25',
+
+    success: '#3ab458',
+    danger: '#ff2600',
+    warning: '#ffc107',
+    info: '#17a2b8',
+    secondary: '#6b2dd2',
 
     kia: '#EA0029',
     doosan: '#1A1748',

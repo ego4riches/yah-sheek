@@ -79,7 +79,7 @@ export const TagSuggestionsBox = styled.div.withConfig({
     top: 100%;
     left: 0;
     right: 0;
-    background: ${ ({ theme }) => theme.colors.white };
+    background: white;
     border: 2px solid ${ ({ theme }) => theme.colors.primary400 };
     border-radius: ${ ({ theme }) => theme.borderRadius.lg };
     box-shadow: ${ ({ theme }) => theme.shadows.lg };

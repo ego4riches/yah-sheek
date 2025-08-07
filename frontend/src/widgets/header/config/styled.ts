@@ -7,7 +7,7 @@ export const HeaderBox = styled.header`
     width: 100%;
     height: 6rem;
     padding: 0 2rem;
-    background-color: ${ ({ theme }) => theme.colors.white };
+    background-color: white;
     border-bottom: ${ ({ theme }) => `0.1rem solid ${ theme.colors.gray200 }` };
     box-shadow: ${ ({ theme }) => theme.shadows.sm };
 `

@@ -8,7 +8,7 @@ export const CategorySelectorButtonBox = styled.button.withConfig({
     shouldForwardProp: getShouldForwardProps(['isOpen']),
 })<IsOpenI>`
     ${ flexCenter };
-    background: ${ ({ theme, isOpen }) => isOpen ? theme.colors.gray100 : theme.colors.white };
+    background: ${ ({ theme, isOpen }) => isOpen ? theme.colors.gray100 : 'white' };
     border: 1px solid ${ ({ theme }) => theme.colors.gray200 };
     border-radius: ${ ({ theme }) => theme.borderRadius.xl };
     padding: 0.8rem 1.2rem;
@@ -32,7 +32,7 @@ export const CategorySelectorButtonBox = styled.button.withConfig({
 export const CategoryDropdownBox = styled.div.withConfig({
     shouldForwardProp: getShouldForwardProps(['isOpen']),
 })<IsOpenI>`
-    background: ${ ({ theme }) => theme.colors.white };
+    background: white;
     border: 1px solid ${ ({ theme }) => theme.colors.gray200 };
     border-radius: ${ ({ theme }) => theme.borderRadius.xl };
     box-shadow: ${ ({ theme }) => theme.shadows.lg };

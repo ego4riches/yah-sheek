@@ -24,7 +24,7 @@ export const SortOptionsButtonBox = styled.button`
     border-radius: ${ ({ theme }) => theme.borderRadius.xl };
     cursor: pointer;
     color: ${ ({ theme }) => theme.colors.gray700 };
-    background: ${ ({ theme }) => theme.colors.white };
+    background: white;
 
     &:hover {
         border-color: ${ ({ theme }) => theme.colors.primary400 };
@@ -45,7 +45,7 @@ export const SortOptionsDropdownBox = styled.div.withConfig({
     width: 13rem;
     margin-top: 1rem;
     z-index: 1;
-    background: ${ ({ theme }) => theme.colors.white };
+    background: white;
     border: 1px solid ${ ({ theme }) => theme.colors.gray200 };
     border-radius: ${ ({ theme }) => theme.borderRadius.xl };
     opacity: ${ ({ isOpen }) => isOpen ? 1 : 0 };

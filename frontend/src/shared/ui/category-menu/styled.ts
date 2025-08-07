@@ -6,7 +6,7 @@ export const CategoryMenuBox = styled.div`
     font-family: ${ ({ theme }) => theme.fontFamilies.SUIT500 };
     gap: 4rem;
     padding: 2rem 4rem;
-    color: ${ ({ theme }) => theme.colors.white };
+    color: white;
     background: ${ ({ theme }) => theme.colors.primary600 };
     border-radius: ${ ({ theme }) => theme.borderRadius.topRoundedXl };
 

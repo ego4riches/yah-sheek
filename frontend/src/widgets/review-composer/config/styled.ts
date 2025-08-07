@@ -5,7 +5,7 @@ export const ReviewComposerWrapper = styled.div`
     ${ flexColumnCenter };
     width: 100%;
     gap: 1.5rem;
-    background: ${ ({ theme }) => theme.colors.white };
+    background: white;
     border-radius: ${ ({ theme }) => theme.borderRadius.xl };
     padding: 1.5rem;
     box-shadow: ${ ({ theme }) => theme.shadows.sm };

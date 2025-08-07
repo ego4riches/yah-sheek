@@ -61,7 +61,7 @@ export const MediaRemoveButtonBox = styled.button`
     height: 1.5rem;
     top: 0.3rem;
     right: 0.3rem;
-    color: ${ ({ theme }) => theme.colors.white };
+    color: white;
     background: ${ ({ theme }) => theme.colors.primary600 };
     border-radius: 50%;
     font-size: ${ ({ theme }) => theme.fontSizes.xs };
