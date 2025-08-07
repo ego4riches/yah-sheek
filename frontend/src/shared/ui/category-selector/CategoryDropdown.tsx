@@ -3,7 +3,7 @@ import {
     CategoryOptionBox,
     type CategorySelectorDropdownT,
     Portal,
-    REVIEW_CATEGORIES
+    reviewCategories
 } from "@/shared";
 
 export const CategoryDropdown = ({isOpen, onCategorySelect, style}: CategorySelectorDropdownT) => {
@@ -12,7 +12,7 @@ export const CategoryDropdown = ({isOpen, onCategorySelect, style}: CategorySele
     return (
             <Portal>
                 <CategoryDropdownBox style={style} isOpen={isOpen}>
-                    {REVIEW_CATEGORIES.map((item) => (
+                    {reviewCategories.map((item) => (
                             <CategoryOptionBox
                                     key={item.key}
                                     onClick={() => onCategorySelect(item.label)}
