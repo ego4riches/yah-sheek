@@ -19,3 +19,7 @@ export interface IsExpandedStoreI {
 export interface IsSelectedI {
     isSelected: boolean;
 }
+
+export interface IsValueI {
+    isValue: string;
+}
