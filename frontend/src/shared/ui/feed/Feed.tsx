@@ -1,12 +1,13 @@
-import {FeedLikeCounter, FeedPreview, FeedThumbnail, FeedWrapper} from "@/shared";
+import {FeedLikeCounter, FeedPreview, type FeedT, FeedThumbnail, FeedWrapper} from "@/shared";
 
-export const Feed = () => {
+export const Feed = ({feed}: FeedT) => {
+    const {thumbnailUrl, hasVideo, likes} = feed;
 
     return (
             <FeedWrapper>
-                <FeedThumbnail/>
-                <FeedPreview/>
-                <FeedLikeCounter/>
+                <FeedThumbnail image={thumbnailUrl} video={hasVideo}/>
+                <FeedPreview feed={feed}/>
+                <FeedLikeCounter likes={likes}/>
             </FeedWrapper>
     );
 };

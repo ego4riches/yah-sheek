@@ -1,16 +1,25 @@
-import {FeedPreviewWrapper, PreviewCategoryBox, PreviewContentBox, PreviewMetaBox} from "@/shared";
+import {
+    type FeedPreviewT,
+    FeedPreviewWrapper,
+    formatDate,
+    getStarRating,
+    PreviewCategoryBox,
+    PreviewContentBox,
+    PreviewMetaBox
+} from "@/shared";
 
-export const FeedPreview = () => {
+export const FeedPreview = ({feed}: FeedPreviewT) => {
+    const {category, content, author, createdAt, views, likes} = feed;
 
     return (
             <FeedPreviewWrapper>
-                <PreviewCategoryBox>음식</PreviewCategoryBox>
-                <PreviewContentBox>내용</PreviewContentBox>
+                <PreviewCategoryBox isValue={category}>{category}</PreviewCategoryBox>
+                <PreviewContentBox>{content}</PreviewContentBox>
                 <PreviewMetaBox>
-                    <span>마무리일짱조뱅</span>
-                    <span>17:22</span>
-                    <span>★★★★★</span>
-                    <span>152</span>
+                    <span>{author}</span>
+                    <span>{formatDate(createdAt)}</span>
+                    <span>{views}</span>
+                    <span>{getStarRating(likes)}</span>
                 </PreviewMetaBox>
             </FeedPreviewWrapper>
     );

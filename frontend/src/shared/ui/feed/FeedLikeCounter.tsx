@@ -1,10 +1,10 @@
-import {FeedLikeCounterBox} from "@/shared";
+import {FeedLikeCounterBox, type FeedLikeCounterT, LikeCountBox, LikeIconBox} from "@/shared";
 
-export const FeedLikeCounter = () => {
-
+export const FeedLikeCounter = ({likes}: FeedLikeCounterT) => {
     return (
             <FeedLikeCounterBox>
-                10
+                <LikeIconBox/>
+                <LikeCountBox>{likes}</LikeCountBox>
             </FeedLikeCounterBox>
     );
 };

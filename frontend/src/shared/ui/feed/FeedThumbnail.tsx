@@ -1,14 +1,16 @@
-import {FeedThumbnailBox} from "@/shared";
+import {FeedThumbnailBox, type FeedThumbnailT} from "@/shared";
+import DefaultPhoto from '@/shared/config/assets/default-photo.png'
+import DefaultVideo from '@/shared/config/assets/default-video.png'
 
-export const FeedThumbnail = () => {
-
+export const FeedThumbnail = ({image, video}: FeedThumbnailT) => {
     return (
-            <FeedThumbnailBox>
-                <img
-                        src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60"
-                        alt="Feed Thumbnail"
-                        style={{width: '100%', height: '100%', objectFit: 'cover'}}
-                />
+            <FeedThumbnailBox hasSrc={!!image}>
+                {image
+                        ? <img src={image} alt="Feed Thumbnail"/>
+                        : video
+                                ? <img src={DefaultVideo} alt="Default Feed Thumbnail"/>
+                                : <img src={DefaultPhoto} alt="Default Feed Thumbnail"/>
+                }
             </FeedThumbnailBox>
     );
 };
