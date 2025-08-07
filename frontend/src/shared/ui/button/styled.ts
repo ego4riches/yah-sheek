@@ -14,7 +14,7 @@ export const ButtonBox = styled.button.withConfig({
         variant === BUTTON_VARIANTS.LIGHT_GRAY ? theme.colors.gray100
             : variant === BUTTON_VARIANTS.GRAY ? theme.colors.gray200
                 : variant === BUTTON_VARIANTS.PRIMARY ? theme.colors.primary700
-                    : theme.colors.white };
+                    : 'white' };
     color: ${ ({ theme, variant }) =>
         variant === BUTTON_VARIANTS.LIGHT_GRAY ? theme.colors.gray500
             : variant === BUTTON_VARIANTS.GRAY ? theme.colors.gray700
