@@ -97,7 +97,7 @@ cd ..
 #### 2-1. 프론트엔드
 
 ```bash
-yarn start:frontend
+yarn fe
 ```
 
 #### 2-2. 백엔드
@@ -107,13 +107,13 @@ yarn start:frontend
 > 개발자의 경우 공유받은 .env 파일을 루트 경로에 복사한 뒤 실행해 주세요.
 
 ```bash
-yarn start:backend
+yarn be
 ```
 
 #### 2-3. 프론트엔드와 백엔드 동시에 실행
 
 ```bash
-yarn start:all
+yarn all
 ```
 
 > .env 파일 생성 후 정상 실행 가능합니다.
