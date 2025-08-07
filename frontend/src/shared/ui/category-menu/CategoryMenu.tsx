@@ -1,9 +1,9 @@
-import {CategoryMenuBox, CategoryMenuItem, REVIEW_CATEGORIES} from "@/shared";
+import {CategoryMenuBox, CategoryMenuItem, reviewCategories} from "@/shared";
 
 export const CategoryMenu = () => {
     return (
             <CategoryMenuBox>
-                {REVIEW_CATEGORIES.map(({key, label}) =>
+                {reviewCategories.map(({key, label}) =>
                         <CategoryMenuItem key={key} label={label}/>
                 )}
             </CategoryMenuBox>
