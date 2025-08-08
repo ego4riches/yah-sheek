@@ -2,6 +2,7 @@ export * from '@/shared/ui/button';
 export * from '@/shared/ui/category-menu';
 export * from '@/shared/ui/category-selector';
 export * from '@/shared/ui/drawer';
+export * from '@/shared/ui/empty-state';
 export * from '@/shared/ui/error';
 export * from '@/shared/ui/feed';
 export * from '@/shared/ui/icons';

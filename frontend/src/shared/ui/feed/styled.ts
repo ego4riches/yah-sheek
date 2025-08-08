@@ -49,10 +49,10 @@ export const PreviewCategoryBox = styled.span.withConfig({
     color: white;
     border-radius: ${ ({ theme }) => theme.borderRadius.xl };
     background: ${ ({ theme, isValue }) =>
-        isValue === REVIEW_CATEGORIES.FOOD ? theme.colors.danger
-            : isValue === REVIEW_CATEGORIES.SNACK ? theme.colors.warning
-                : isValue === REVIEW_CATEGORIES.DRINK ? theme.colors.info
-                    : isValue === REVIEW_CATEGORIES.ALCOHOL ? theme.colors.secondary
+        isValue === REVIEW_CATEGORIES.FOOD.LABEL ? theme.colors.danger
+            : isValue === REVIEW_CATEGORIES.SNACK.LABEL ? theme.colors.warning
+                : isValue === REVIEW_CATEGORIES.DRINK.LABEL ? theme.colors.info
+                    : isValue === REVIEW_CATEGORIES.ALCOHOL.LABEL ? theme.colors.secondary
                         : theme.colors.gray200 };
     font-size: ${ ({ theme }) => theme.fontSizes.sm };
     font-family: ${ ({ theme }) => theme.fontFamilies.Paperlogy400 };
