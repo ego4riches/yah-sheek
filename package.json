@@ -1,7 +1,7 @@
 {
   "scripts": {
     "fe": "yarn --cwd frontend dev",
-    "be": "dotenv -e .env -- ./gradlew :backend:bootRun",
+    "be": "dotenv -e .env -- ./gradlew :backend:bootRun --console=plain",
     "all": "concurrently \"yarn fe\" \"yarn be\""
   },
   "devDependencies": {

@@ -6,16 +6,23 @@ spring:
     url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
     username: ${DB_USER}
     password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 5
+      data-source-properties:
+        prepareThreshold: 0   # 드라이버에 직접 전달(중복 설정해도 무방)
 
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false
     open-in-view: false
     properties:
       hibernate:
         format_sql: true
-        use_sql_comments: true
+        highlight_sql: true       # ANSI 컬러(터미널에서만 효과)
+        use_sql_comments: false   # /* <criteria> */ 같은 주석 비활성화(원하면 true)
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
   jackson:
     serialization:
@@ -27,12 +34,15 @@ server:
 logging:
   level:
     org.hibernate.SQL: debug
-    org.hibernate.type.descriptor.sql.BasicBinder: trace
+    org.hibernate.orm.jdbc.bind: trace   # 바인딩 값
 
 springdoc:
   packages-to-scan: com.ego.yahsheek
+  override-with-generic-response: false
   api-docs:
     path: /v3/api-docs
   swagger-ui:
-    disable-swagger-default-url: true
-    path: /swagger
+    disable-swagger-default-url: false   # 기본 문서(/v3/api-docs) 자동 로드
+    display-request-duration: true
+    tags-sorter: alpha
+    path: /swagger-ui
