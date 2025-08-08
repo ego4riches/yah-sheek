@@ -2,6 +2,7 @@ package com.ego.yahsheek.review.dto;
 
 import com.ego.yahsheek.review.entity.Review;
 import com.ego.yahsheek.review.entity.ReviewMedia;
+import com.ego.yahsheek.review.entity.ReviewTag;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -50,7 +51,7 @@ public class ReviewResponse {
                 review.getViewsCount(),
                 review.getLikesCount(),
                 review.getCreatedAt(),
-                review.getReviewTags().stream().map(t -> t.getTagName()).collect(Collectors.toList()),
+                review.getReviewTags().stream().map(ReviewTag::getTagName).collect(Collectors.toList()),
                 review.getReviewMedia().stream().map(m -> new MediaItem(m.getMediaType(), m.getMediaUrl(), m.getThumbnailUrl(), m.getOrderIndex())).collect(Collectors.toList())
         );
     }
