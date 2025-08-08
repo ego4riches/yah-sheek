@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class LoggingAspect {
 
     // 서비스 계층의 모든 public 메서드 로깅
-    @Pointcut("execution(public * com.ego.yahsheek.domain..*Service.*(..))")
+    @Pointcut("execution(public * com.ego.yahsheek..*Service.*(..))")
     public void servicePublicMethods() {}
 
     @Before("servicePublicMethods()")
