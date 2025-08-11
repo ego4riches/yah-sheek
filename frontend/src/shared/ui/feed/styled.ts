@@ -35,9 +35,6 @@ export const FeedThumbnailBox = styled.div.withConfig({
 `
 
 export const FeedPreviewWrapper = styled.div`
-    ${ flexColumnCenter };
-    align-items: start;
-    flex: 1;
     min-width: 0;
     gap: 0.5rem;
 `

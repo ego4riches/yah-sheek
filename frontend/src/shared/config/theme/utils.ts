@@ -23,6 +23,12 @@ export const flexColumnCenter = css`
     align-items: center;
 `;
 
+export const flexColumnFill = css`
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+`
+
 export const flexSpaceBetween = css`
     display: flex;
     justify-content: space-between;
