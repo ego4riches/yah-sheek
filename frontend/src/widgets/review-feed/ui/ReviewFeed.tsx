@@ -21,7 +21,7 @@ export const ReviewFeed = () => {
     return (
             <ReviewFeedWrapper>
                 {
-                    filteredData.length !== 0
+                    filteredData.length === 0
                             ? <EmptyState
                                     message="아직 등록된 리뷰가 없어요!"
                                     subMessage="첫 번째 리뷰를 작성해 보세요"
