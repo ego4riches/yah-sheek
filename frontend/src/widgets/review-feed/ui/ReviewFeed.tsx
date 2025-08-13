@@ -1,6 +1,6 @@
 import {useReviewsQuery} from "@/entities";
 import {EmptyState, Feed, LoadingSpinner, NotFound, REVIEW_CATEGORIES, reviewCategories, type TeamT, toKeyValueMap, useCategoryMenuStore,} from '@/shared';
-import {ReviewFeedWrapper} from '@/widgets/review-feed';
+import {EMPTY_REVIEWS, ReviewFeedWrapper} from '@/widgets/review-feed';
 import type {AxiosError} from "axios";
 
 export const ReviewFeed = ({team}: TeamT) => {
@@ -21,11 +21,7 @@ export const ReviewFeed = ({team}: TeamT) => {
 
     return (
             <ReviewFeedWrapper>
-                {showEmpty &&
-                        <EmptyState
-                                message="아직 등록된 리뷰가 없어요!"
-                                subMessage="첫 번째 리뷰를 작성해 보세요"
-                        />}
+                {showEmpty && <EmptyState message={EMPTY_REVIEWS.MESSAGE} subMessage={EMPTY_REVIEWS.SUB_MESSAGE}/>}
                 {!isLoading && !error &&
                         filteredData.map((feed) =>
                                 <Feed key={feed.id} feed={feed}/>)}
