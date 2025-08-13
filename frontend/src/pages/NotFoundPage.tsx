@@ -1,3 +1,3 @@
 import {NotFound} from "@/shared";
 
-export const NotFoundPage = () => <NotFound code={404} />
+export const NotFoundPage = () => <NotFound code={404}/>

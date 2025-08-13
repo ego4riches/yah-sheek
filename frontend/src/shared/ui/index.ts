@@ -13,3 +13,4 @@ export * from '@/shared/ui/review-content-input';
 export * from '@/shared/ui/search';
 export * from '@/shared/ui/sort-options';
 export * from '@/shared/ui/tag-manager';
+export * from '@/shared/ui/loading-spinner';

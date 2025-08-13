@@ -1,24 +1,12 @@
-import {
-    ArmRight,
-    BatManBox,
-    BatMansBox,
-    Circle,
-    Club,
-    ErrorCodeBox,
-    Eye,
-    Foot,
-    Head,
-    Leg,
-    Nose,
-    NotFoundBox,
-    type NotFoundT,
-    Shape
-} from "@/shared";
+import {ArmRight, BatManBox, BatMansBox, Button, BUTTON_SIZES, BUTTON_VARIANTS, BUTTON_WEIGHTS, Circle, Club, ErrorCodeBox, Eye, Foot, GO_TO_HOME, GoToHomeBox, Head, Leg, Nose, NotFoundBox, type NotFoundT, ROUTES, Shape} from "@/shared";
+import {useNavigate} from "react-router-dom";
 
 export const NotFound = ({code}: NotFoundT) => {
+    const navigate = useNavigate();
+
     return (
             <NotFoundBox>
-                <ErrorCodeBox>{code}</ErrorCodeBox>
+                <ErrorCodeBox>{code ?? 500}</ErrorCodeBox>
                 <BatMansBox>
                     <BatManBox>
                         <Head>
@@ -69,6 +57,15 @@ export const NotFound = ({code}: NotFoundT) => {
                         </Leg>
                     </BatManBox>
                 </BatMansBox>
+                <GoToHomeBox>
+                    <Button
+                            children={GO_TO_HOME}
+                            onClick={() => navigate(ROUTES.HOME)}
+                            size={BUTTON_SIZES.MEDIUM}
+                            variant={BUTTON_VARIANTS.PRIMARY}
+                            weight={BUTTON_WEIGHTS.SEMIBOLD}
+                    />
+                </GoToHomeBox>
             </NotFoundBox>
     );
 };

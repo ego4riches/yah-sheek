@@ -1,13 +1,14 @@
 import {useReviewsQuery} from "@/entities";
-import {EmptyState, Feed, REVIEW_CATEGORIES, reviewCategories, type TeamT, toKeyValueMap, useCategoryMenuStore,} from '@/shared';
+import {EmptyState, Feed, LoadingSpinner, NotFound, REVIEW_CATEGORIES, reviewCategories, type TeamT, toKeyValueMap, useCategoryMenuStore,} from '@/shared';
 import {ReviewFeedWrapper} from '@/widgets/review-feed';
+import type {AxiosError} from "axios";
 
 export const ReviewFeed = ({team}: TeamT) => {
     const {data, isLoading, error} = useReviewsQuery(team);
     const {selectedCategory} = useCategoryMenuStore();
 
-    if (isLoading) return <EmptyState message="불러오는 중..." subMessage="잠시만 기다려 주세요"/>;
-    if (!data || error) return <EmptyState message="문제가 발생했어요" subMessage={(error as Error).message}/>;
+    if (isLoading) return <LoadingSpinner/>;
+    if (!data || error) return <NotFound code={(error as AxiosError).response?.status}/>;
 
     const categoryMap = toKeyValueMap(reviewCategories);
 

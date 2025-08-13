@@ -1,4 +1,4 @@
 // Props
 export type NotFoundT = {
-    code: number;
+    code: number | undefined;
 }

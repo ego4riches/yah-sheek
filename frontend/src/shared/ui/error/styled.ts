@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, {keyframes} from "styled-components";
 
 export const armAnima = keyframes`
     0% {
@@ -64,8 +64,9 @@ export const shadowAnima = keyframes`
 
 export const NotFoundBox = styled.div`
     height: 100dvh;
-    background-color: ${ ({ theme }) => theme.colors.gray500 };
-    font-family: ${ ({ theme }) => theme.fontFamilies.Paperlogy800 };
+    position: relative;
+    background-color: ${({theme}) => theme.colors.gray500};
+    font-family: ${({theme}) => theme.fontFamilies.Paperlogy800};
 `;
 
 export const ErrorCodeBox = styled.div`
@@ -75,6 +76,13 @@ export const ErrorCodeBox = styled.div`
     color: rgba(19, 36, 44, 0.1);
     font-size: 30em;
     text-align: center;
+    transform: translate(-50%, -50%);
+`;
+
+export const GoToHomeBox = styled.div`
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
     transform: translate(-50%, -50%);
 `;
 
@@ -96,7 +104,7 @@ export const BatMansBox = styled.div`
         left: 8rem;
         width: 35rem;
         z-index: -1;
-        animation: ${ shadowAnima } 1.2s infinite cubic-bezier(0.55, 0.01, 0.16, 1.34);
+        animation: ${shadowAnima} 1.2s infinite cubic-bezier(0.55, 0.01, 0.16, 1.34);
         animation-delay: 0.1s;
     }
 `;
@@ -123,18 +131,18 @@ export const Head = styled.div`
     top: 2.5rem;
     left: 6rem;
     z-index: 1;
-    background-color: ${ ({ theme }) => theme.colors.gray900 };
+    background-color: ${({theme}) => theme.colors.gray900};
     border-radius: 5rem;
-    animation: ${ headAnima } 1.2s infinite cubic-bezier(0.55, 0.01, 0.16, 1.34);
+    animation: ${headAnima} 1.2s infinite cubic-bezier(0.55, 0.01, 0.16, 1.34);
 
-    ${ BatManBox }:nth-child(1) & {
+    ${BatManBox}:nth-child(1) & {
         animation-delay: 0.6s;
     }
 
     &:after, &:before {
         content: "";
         position: absolute;
-        background-color: ${ ({ theme }) => theme.colors.gray900 };
+        background-color: ${({theme}) => theme.colors.gray900};
         border-radius: 1rem;
         height: 2rem;
         width: 0.7rem;
@@ -172,9 +180,9 @@ export const Eye = styled.div`
         border-radius: 50%;
         height: 0.5rem;
         width: 0.5rem;
-        animation: ${ eyeAnima } 1.2s infinite cubic-bezier(0.55, 0.01, 0.16, 1.34);
+        animation: ${eyeAnima} 1.2s infinite cubic-bezier(0.55, 0.01, 0.16, 1.34);
 
-        ${ BatManBox }:nth-child(1) & {
+        ${BatManBox}:nth-child(1) & {
             animation-delay: 0.6s;
         }
     }
@@ -211,12 +219,12 @@ export const Shape = styled.div`
     top: 7rem;
     width: 14rem;
 
-    ${ BatManBox }:nth-child(1) & {
-        background-color: ${ ({ theme }) => theme.colors.primary900 };
+    ${BatManBox}:nth-child(1) & {
+        background-color: ${({theme}) => theme.colors.primary900};
     }
 
-    ${ BatManBox }:nth-child(2) & {
-        background-color: ${ ({ theme }) => theme.colors.primary900 };
+    ${BatManBox}:nth-child(2) & {
+        background-color: ${({theme}) => theme.colors.primary900};
     }
 `;
 
@@ -264,19 +272,19 @@ export const Circle = styled.div`
         display: none;
     }
 
-    ${ BatManBox }:nth-child(1) & {
-        background-color: ${ ({ theme }) => theme.colors.primary800 };
+    ${BatManBox}:nth-child(1) & {
+        background-color: ${({theme}) => theme.colors.primary800};
 
         &:after, &:before {
-            background-color: ${ ({ theme }) => theme.colors.primary700 };
+            background-color: ${({theme}) => theme.colors.primary700};
         }
     }
 
-    ${ BatManBox }:nth-child(2) & {
-        background-color: ${ ({ theme }) => theme.colors.primary700 };
+    ${BatManBox}:nth-child(2) & {
+        background-color: ${({theme}) => theme.colors.primary700};
 
         &:after, &:before {
-            background-color: ${ ({ theme }) => theme.colors.primary800 };
+            background-color: ${({theme}) => theme.colors.primary800};
         }
     }
 `;
@@ -293,9 +301,9 @@ export const ArmRight = styled.div`
     transform-origin: 3rem 3rem;
     width: 6rem;
     z-index: 1;
-    animation: ${ armAnima } 1.2s infinite cubic-bezier(0.55, 0.01, 0.16, 1.34);
+    animation: ${armAnima} 1.2s infinite cubic-bezier(0.55, 0.01, 0.16, 1.34);
 
-    ${ BatManBox }:nth-child(2) & {
+    ${BatManBox}:nth-child(2) & {
         animation-delay: 0.6s;
     }
 `;
@@ -340,7 +348,7 @@ export const Leg = styled.div`
     height: 5.5rem;
     top: 20rem;
     left: 14rem;
-    background-color: ${ ({ theme }) => theme.colors.primary900 };
+    background-color: ${({theme}) => theme.colors.primary900};
 
     &:after {
         position: absolute;
@@ -411,7 +419,7 @@ export const Foot = styled.div`
         content: "";
     }
 
-    ${ Leg }:nth-child(1) & {
+    ${Leg}:nth-child(1) & {
         background-color: #B2524D;
 
         &:after {
@@ -423,7 +431,7 @@ export const Foot = styled.div`
         }
     }
 
-    ${ Leg }:nth-child(2) & {
+    ${Leg}:nth-child(2) & {
         background-color: #D9766C;
     }
 `;
