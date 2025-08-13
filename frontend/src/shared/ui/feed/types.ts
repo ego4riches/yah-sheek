@@ -1,10 +1,12 @@
+import type { ReviewMockDataI } from "@/entities";
+
 // Props
 export type FeedT = {
-    feed: FeedMockDataI
+    feed: ReviewMockDataI
 }
 
 export type FeedPreviewT = {
-    feed: FeedMockDataI
+    feed: ReviewMockDataI
 }
 
 export type FeedThumbnailT = {
@@ -19,17 +21,4 @@ export type FeedLikeCounterT = {
 // styled-components Props
 export type hasSrcT = {
     hasSrc: boolean;
-}
-
-// Mock data
-export interface FeedMockDataI {
-    id: string;
-    content: string;
-    category: string;
-    author: string;
-    thumbnailUrl: string | null;
-    hasVideo: boolean;
-    views: number;
-    likes: number;
-    createdAt: string;
 }
