@@ -1,4 +1,4 @@
-export const feedMockData = [
+export const ReviewMockData = [
     {
         id: '12345678',
         content: '잠실 야구장 직관! 🏟️ 잠실 명물은 역시 닭강정이죠. 바삭하고 달콤한 양념이 경기를 더 즐겁게 만들어줍니다. 다음엔 다른 메뉴도 도전해봐야겠어요.',
