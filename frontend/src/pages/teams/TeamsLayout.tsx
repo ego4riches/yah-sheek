@@ -1,13 +1,9 @@
-import {getBallParkByTeamKey} from "@/shared";
+import {getBallParkByTeamKey, type TeamT} from "@/shared";
 import {ReviewComposer} from "@/widgets/review-composer";
 import {ReviewFeed} from "@/widgets/review-feed";
 import {ReviewHeader} from "@/widgets/review-header/ui/ReviewHeader.tsx";
 
-type TeamsLayoutP = {
-    team: string;
-}
-
-export const TeamsLayout = ({team}: TeamsLayoutP) => {
+export const TeamsLayout = ({team}: TeamT) => {
     const title = getBallParkByTeamKey(team);
     if (!title) return;
 
@@ -15,7 +11,7 @@ export const TeamsLayout = ({team}: TeamsLayoutP) => {
             <>
                 <ReviewHeader title={title}/>
                 <ReviewComposer/>
-                <ReviewFeed/>
+                <ReviewFeed team={team}/>
             </>
     );
 };
