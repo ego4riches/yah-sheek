@@ -1,4 +1,28 @@
-import { css } from 'styled-components';
+import {css} from 'styled-components';
+
+export const fontSizes = {
+    xs: '1rem',
+    sm: '1.2rem',
+    md: '1.4rem',
+    lg: '1.6rem',
+    xl: '1.8rem',
+    h3: '2rem',
+    h2: '3rem',
+    h1: '4rem',
+};
+
+export const fontFamilies = {
+    SUIT400: 'SUIT-Regular',
+    SUIT500: 'SUIT-Medium',
+    SUIT600: 'SUIT-SemiBold',
+    SUIT700: 'SUIT-Bold',
+    SUIT800: 'SUIT-ExtraBold',
+    SUIT900: 'SUIT-Heavy',
+    Paperlogy400: 'Paperlogy-4Regular',
+    Paperlogy600: 'Paperlogy-6SemiBold',
+    Paperlogy800: 'Paperlogy-8ExtraBold',
+    Paperlogy900: 'Paperlogy-9Black',
+}
 
 export const fontFaces = css`
     @font-face {
