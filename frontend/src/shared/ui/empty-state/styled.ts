@@ -18,11 +18,11 @@ export const EmptyStateIcon = styled.div`
 export const EmptyStateText = styled.h3`
     color: ${({theme}) => theme.colors.gray700};
     font-size: ${({theme}) => theme.fontSizes.h3};
-    font-family: ${({theme}) => theme.fontFamilies.SUIT600};
+    font-weight: 700;
 `;
 
 export const EmptyStateSubText = styled.p`
     color: ${({theme}) => theme.colors.gray500};
     font-size: ${({theme}) => theme.fontSizes.lg};
-    font-family: ${({theme}) => theme.fontFamilies.SUIT500};
+    font-weight: 500;
 `;

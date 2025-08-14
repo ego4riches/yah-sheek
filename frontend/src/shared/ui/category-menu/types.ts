@@ -1,5 +1,3 @@
-import { reviewCategories } from "@/shared";
-
 // Props
 export interface CategoryMenuItemT {
     label: string;
@@ -7,11 +5,8 @@ export interface CategoryMenuItemT {
     onClick: () => void;
 }
 
-// Constants
-export type CategoryKeyT = typeof reviewCategories[number]['key'];
-
 // Store
 export interface CategoryMenuStoreI {
-    selectedCategory: CategoryKeyT;
-    setSelectedCategory: (category: CategoryKeyT) => void;
+    selectedCategory: string;
+    setSelectedCategory: (category: string) => void;
 }

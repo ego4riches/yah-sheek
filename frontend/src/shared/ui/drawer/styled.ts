@@ -1,5 +1,5 @@
-import { type DrawerBoxT, type DrawerItemBoxT, getShouldForwardProps } from "@/shared";
-import { Link } from "react-router-dom";
+import {type DrawerBoxT, type DrawerItemBoxT, getShouldForwardProps} from "@/shared";
+import {Link} from "react-router-dom";
 import styled from 'styled-components';
 
 export const DrawerWrapper = styled.div`
@@ -22,10 +22,10 @@ export const DrawerBox = styled.nav.withConfig({
     left: 0;
     width: 22rem;
     height: 100dvh;
-    background-color: ${ ({ theme }) => theme.colors.gray100 };
-    border-right: ${ ({ theme }) => `0.1rem solid ${ theme.colors.gray200 }` };
-    box-shadow: ${ ({ theme }) => theme.shadows.md };
-    transform: ${ ({ open }) => (open ? "translateX(0)" : "translateX(-100%)") };
+    background-color: ${({theme}) => theme.colors.gray100};
+    border-right: ${({theme}) => `0.1rem solid ${theme.colors.gray200}`};
+    box-shadow: ${({theme}) => theme.shadows.md};
+    transform: ${({open}) => (open ? "translateX(0)" : "translateX(-100%)")};
 `
 
 export const DrawerItemBox = styled(Link).withConfig({
@@ -33,13 +33,13 @@ export const DrawerItemBox = styled(Link).withConfig({
 })<DrawerItemBoxT>`
     text-align: center;
     padding: calc(100vh / 25) 0;
-    color: ${ ({ theme, active }) => (active ? theme.colors.gray600 : theme.colors.gray700) };
-    font-family: ${ ({ theme, active }) =>
-        (active ? theme.fontFamilies.Paperlogy600 : theme.fontFamilies.Paperlogy400) };
-    background-color: ${ ({ theme, active }) => (active ? theme.colors.gray300 : "transparent") };
+    color: ${({theme, active}) => (active ? theme.colors.gray600 : theme.colors.gray700)};
+    font-family: ${({theme, active}) =>
+        (active ? theme.fontFamilies.Accent600 : theme.fontFamilies.Accent400)};
+    background-color: ${({theme, active}) => (active ? theme.colors.gray300 : "transparent")};
     text-decoration: none;
 
     &:hover {
-        background-color: ${ ({ theme, active }) => (active ? theme.colors.gray300 : theme.colors.gray200) };
+        background-color: ${({theme, active}) => (active ? theme.colors.gray300 : theme.colors.gray200)};
     }
 `;

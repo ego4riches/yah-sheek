@@ -49,6 +49,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     input, textarea {
+        font-family: 'Noto Sans', sans-serif;
         outline: none;
     }
 

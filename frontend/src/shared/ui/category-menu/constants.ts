@@ -1,11 +1,3 @@
-export const reviewCategories = [
-    { key: 'all', label: '전체' },
-    { key: 'food', label: '푸드' },
-    { key: 'snack', label: '스낵' },
-    { key: 'drink', label: '드링크' },
-    { key: 'alcohol', label: '알콜' },
-];
-
 export const REVIEW_CATEGORIES = {
     ALL: {
         KEY: 'all',
@@ -27,4 +19,11 @@ export const REVIEW_CATEGORIES = {
         KEY: 'alcohol',
         LABEL: '알콜',
     },
+}
+
+export const defaultCategory = {
+    id: 0,
+    categoryKey: 'all',
+    categoryName: '전체',
+    displayOrder: 0,
 }
