@@ -1,12 +1,12 @@
-import {fetchReviews, type GetReviewsResponse, REVIEWS_QUERY_KEYS} from "@/entities";
-import {useZustandQuery} from "@/shared";
+import {fetchReviews, type ReviewI, REVIEWS_QUERY_KEYS} from "@/entities";
+import {type PageT, useZustandQuery} from "@/shared";
 
-export const useReviewsQuery = (team: string) => {
-    return useZustandQuery<GetReviewsResponse>(
-        [REVIEWS_QUERY_KEYS.BASE, team],
-        () => fetchReviews<GetReviewsResponse>(team),
+export const useReviewsQuery = (teamId: number) => {
+    return useZustandQuery<PageT<ReviewI>>(
+        [REVIEWS_QUERY_KEYS.BASE, teamId],
+        () => fetchReviews(teamId),
         {
-            enabled: !!team,
+            enabled: !!teamId,
             staleTime: 1000 * 60, // 1분 캐시
         }
     );
