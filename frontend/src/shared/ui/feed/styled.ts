@@ -1,36 +1,36 @@
-import { flexCenter, flexColumnCenter, flexSpaceBetween, flexStart, getShouldForwardProps, type hasSrcT, type IsValueI, REVIEW_CATEGORIES, textEllipsis } from "@/shared";
+import {flexCenter, flexColumnCenter, flexSpaceBetween, flexStart, getShouldForwardProps, type hasSrcT, type IsValueI, REVIEW_CATEGORIES, textEllipsis} from "@/shared";
 import LikeHoverIcon from "@/shared/config/assets/like-hover.png"
 import LikeIcon from "@/shared/config/assets/like.png"
 import styled from "styled-components";
 
 export const FeedWrapper = styled.div`
-    ${ flexSpaceBetween };
+    ${flexSpaceBetween};
     width: 100%;
-    border-top: 1px solid ${ ({ theme }) => theme.colors.gray200 };
+    border-top: 1px solid ${({theme}) => theme.colors.gray200};
     gap: 2.5rem;
     padding: 2.5rem 2rem;
     cursor: pointer;
 
     &:hover {
-        background: ${ ({ theme }) => theme.colors.light };
+        background: ${({theme}) => theme.colors.light};
     }
 `
 
 export const FeedThumbnailBox = styled.div.withConfig({
     shouldForwardProp: getShouldForwardProps(['hasSrc']),
 })<hasSrcT>`
-    ${ flexCenter };
+    ${flexCenter};
     width: 8rem;
     height: 8rem;
-    background: ${ ({ theme }) => theme.colors.gray100 };
-    border-radius: ${ ({ theme }) => theme.borderRadius.xl };
-    border: 1px solid ${ ({ theme }) => theme.colors.gray200 };
+    background: ${({theme}) => theme.colors.gray100};
+    border-radius: ${({theme}) => theme.borderRadius.xl};
+    border: 1px solid ${({theme}) => theme.colors.gray200};
     overflow: hidden;
 
     img {
-        width: ${ ({ hasSrc }) => hasSrc ? '100%' : '2.6rem' };
+        width: ${({hasSrc}) => hasSrc ? '100%' : '2.6rem'};
         height: 100%;
-        object-fit: ${ ({ hasSrc }) => hasSrc ? 'cover' : 'contain' };
+        object-fit: ${({hasSrc}) => hasSrc ? 'cover' : 'contain'};
     }
 `
 
@@ -44,33 +44,33 @@ export const PreviewCategoryBox = styled.span.withConfig({
 })<IsValueI>`
     padding: 0.3rem 0.6rem;
     color: white;
-    border-radius: ${ ({ theme }) => theme.borderRadius.xl };
-    background: ${ ({ theme, isValue }) =>
+    border-radius: ${({theme}) => theme.borderRadius.xl};
+    background: ${({theme, isValue}) =>
         isValue === REVIEW_CATEGORIES.FOOD.LABEL ? theme.colors.danger
             : isValue === REVIEW_CATEGORIES.SNACK.LABEL ? theme.colors.warning
                 : isValue === REVIEW_CATEGORIES.DRINK.LABEL ? theme.colors.info
                     : isValue === REVIEW_CATEGORIES.ALCOHOL.LABEL ? theme.colors.secondary
-                        : theme.colors.gray200 };
-    font-size: ${ ({ theme }) => theme.fontSizes.sm };
-    font-family: ${ ({ theme }) => theme.fontFamilies.Paperlogy400 };
+                        : theme.colors.gray200};
+    font-size: ${({theme}) => theme.fontSizes.sm};
+    font-family: ${({theme}) => theme.fontFamilies.Accent400};
 `
 
 export const PreviewContentBox = styled.p`
-    ${ textEllipsis };
+    ${textEllipsis};
     width: 100%;
-    color: ${ ({ theme }) => theme.colors.gray700 };
-    font-size: ${ ({ theme }) => theme.fontSizes.h3 };
-    font-family: ${ ({ theme }) => theme.fontFamilies.SUIT500 };
+    color: ${({theme}) => theme.colors.gray700};
+    font-size: ${({theme}) => theme.fontSizes.h3};
+    font-weight: 700;
 `
 
 export const PreviewMetaBox = styled.div`
-    ${ flexStart };
-    ${ textEllipsis };
+    ${flexStart};
+    ${textEllipsis};
     width: 100%;
     gap: 1.5rem;
-    color: ${ ({ theme }) => theme.colors.gray600 };
-    font-size: ${ ({ theme }) => theme.fontSizes.sm };
-    font-family: ${ ({ theme }) => theme.fontFamilies.SUIT500 };
+    color: ${({theme}) => theme.colors.gray600};
+    font-size: ${({theme}) => theme.fontSizes.sm};
+    font-weight: 500;
 
     & > span {
         position: relative;
@@ -83,12 +83,12 @@ export const PreviewMetaBox = styled.div`
             transform: translateY(-50%);
             width: 0.1rem;
             height: 1.3rem;
-            background-color: ${ ({ theme }) => theme.colors.gray300 };
+            background-color: ${({theme}) => theme.colors.gray300};
         }
     }
 
     & > span:last-of-type {
-        color: ${ ({ theme }) => theme.colors.warning };
+        color: ${({theme}) => theme.colors.warning};
 
         &::after {
             content: none;
@@ -97,22 +97,22 @@ export const PreviewMetaBox = styled.div`
 `
 
 export const FeedLikeCounterBox = styled.div`
-    ${ flexColumnCenter };
+    ${flexColumnCenter};
     gap: 0.5rem;
     padding: 1rem;
-    color: ${ ({ theme }) => theme.colors.gray500 };
-    border-radius: ${ ({ theme }) => theme.borderRadius.xl };
-    border: 1px solid ${ ({ theme }) => theme.colors.gray200 };
+    color: ${({theme}) => theme.colors.gray500};
+    border-radius: ${({theme}) => theme.borderRadius.xl};
+    border: 1px solid ${({theme}) => theme.colors.gray200};
     background: white;
     cursor: pointer;
 
     &:hover {
-        color: ${ ({ theme }) => theme.colors.primary600 };
-        border-color: ${ ({ theme }) => theme.colors.primary400 };
-        background: ${ ({ theme }) => theme.colors.primary100 };
+        color: ${({theme}) => theme.colors.primary600};
+        border-color: ${({theme}) => theme.colors.primary400};
+        background: ${({theme}) => theme.colors.primary100};
 
         & > div {
-            background-image: url(${ LikeHoverIcon });
+            background-image: url(${LikeHoverIcon});
         }
     }
 
@@ -124,13 +124,13 @@ export const FeedLikeCounterBox = styled.div`
 export const LikeIconBox = styled.div`
     width: 2.2rem;
     height: 2.2rem;
-    background-image: url(${ LikeIcon });
+    background-image: url(${LikeIcon});
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 `
 
 export const LikeCountBox = styled.span`
-    font-size: ${ ({ theme }) => theme.fontSizes.xs };
-    font-family: ${ ({ theme }) => theme.fontFamilies.Paperlogy600 };
+    font-size: ${({theme}) => theme.fontSizes.xs};
+    font-family: ${({theme}) => theme.fontFamilies.Accent600};
 `

@@ -1,3 +1,4 @@
+export * from '@/shared/ui/feed/constants';
 export * from '@/shared/ui/feed/Feed';
 export * from '@/shared/ui/feed/FeedLikeCounter';
 export * from '@/shared/ui/feed/FeedPreview';

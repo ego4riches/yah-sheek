@@ -1,12 +1,13 @@
-import type { ReviewMockDataI } from "@/entities";
+import type {ReviewI} from "@/entities";
+import type {REVIEW_MEDIA_TYPE} from "@/shared";
 
 // Props
 export type FeedT = {
-    feed: ReviewMockDataI
+    review: ReviewI;
 }
 
 export type FeedPreviewT = {
-    feed: ReviewMockDataI
+    feed: ReviewI
 }
 
 export type FeedThumbnailT = {
@@ -22,3 +23,7 @@ export type FeedLikeCounterT = {
 export type hasSrcT = {
     hasSrc: boolean;
 }
+
+
+// Item
+export type ReviewMediaTypeT = keyof typeof REVIEW_MEDIA_TYPE;
