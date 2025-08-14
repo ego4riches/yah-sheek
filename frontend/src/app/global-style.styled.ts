@@ -1,12 +1,12 @@
-import { fontFaces, transitionBase } from "@/shared";
-import { createGlobalStyle } from "styled-components";
+import {fontFaces, transitionBase} from "@/shared";
+import {createGlobalStyle} from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
-    ${ fontFaces }
+    ${fontFaces}
     *,
     *::before,
     *::after {
-        ${ transitionBase };
+        ${transitionBase};
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -17,10 +17,10 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        font-family: 'SUIT-Regular', sans-serif;
+        font-family: 'Noto Sans', sans-serif;
         font-size: 1.6rem;
         background-color: white;
-        color: ${ ({ theme }) => theme.colors.gray900 };
+        color: ${({theme}) => theme.colors.gray900};
     }
 
     a {
