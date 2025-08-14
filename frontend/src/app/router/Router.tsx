@@ -1,12 +1,10 @@
-import {createBrowserRouter} from "react-router-dom";
-import {PublicOnly} from "@/app/router/RouteGuard.tsx";
-import {LoginPage} from "@/pages/LoginPage.tsx";
-import {JoinPage} from "@/pages/JoinPage.tsx";
-import {NotFoundPage} from "@/pages/NotFoundPage.tsx";
 import {Layout} from "@/app/layout/Layout.tsx";
+import {PublicOnly} from "@/app/router/RouteGuard.tsx";
+import {ErrorPage} from "@/pages/ErrorPage.tsx";
+import {JoinPage} from "@/pages/JoinPage.tsx";
+import {LoginPage} from "@/pages/LoginPage.tsx";
 import {MainPage} from "@/pages/MainPage.tsx";
 import {DoosanPage} from "@/pages/teams/DoosanPage.tsx";
-import {ROUTES} from "@/shared";
 import {HanhwaPage} from "@/pages/teams/HanhwaPage.tsx";
 import {KiaPage} from "@/pages/teams/KiaPage.tsx";
 import {KiwoomPage} from "@/pages/teams/KiwoomPage.tsx";
@@ -16,12 +14,14 @@ import {LottePage} from "@/pages/teams/LottePage.tsx";
 import {NCPage} from "@/pages/teams/NCPage.tsx";
 import {SamsungPage} from "@/pages/teams/SamsungPage.tsx";
 import {SSGPage} from "@/pages/teams/SSGPage.tsx";
+import {ROUTES} from "@/shared";
+import {createBrowserRouter} from "react-router-dom";
 
 export const Router = createBrowserRouter([
     {
         path: ROUTES.HOME,
         element: <Layout/>,
-        errorElement: <NotFoundPage/>,
+        errorElement: <ErrorPage/>,
         children: [
             {
                 index: true,
@@ -86,6 +86,6 @@ export const Router = createBrowserRouter([
     },
     {
         path: ROUTES.NOT_FOUND,
-        element: <NotFoundPage/>,
+        element: <ErrorPage/>,
     },
 ]);
