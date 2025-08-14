@@ -1,9 +1,20 @@
-import {TEAMS} from "@/shared";
+import {useTeamsQuery} from "@/entities";
 import {TeamsLayout} from "@/pages/teams/TeamsLayout.tsx";
+import {AsyncBoundary, getTeam, TEAMS} from "@/shared";
+import type {AxiosError} from "axios";
 
 export const SamsungPage = () => {
+    const {data, status, error} = useTeamsQuery();
 
     return (
-            <TeamsLayout team={TEAMS.SAMSUNG.KEY}/>
+            <AsyncBoundary
+                    data={data}
+                    status={status}
+                    errorCode={(error as AxiosError)?.response?.status}
+            >
+                {(team) =>
+                        <TeamsLayout team={getTeam(team, TEAMS.SAMSUNG.KEY) ?? null}/>
+                }
+            </AsyncBoundary>
     );
 };

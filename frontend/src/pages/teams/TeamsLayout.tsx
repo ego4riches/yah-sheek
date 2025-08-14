@@ -1,17 +1,24 @@
-import {getBallParkByTeamKey, type TeamT} from "@/shared";
+import type {TeamI} from "@/entities";
+import {TEAMS_MESSAGES} from "@/shared";
 import {ReviewComposer} from "@/widgets/review-composer";
 import {ReviewFeed} from "@/widgets/review-feed";
 import {ReviewHeader} from "@/widgets/review-header/ui/ReviewHeader.tsx";
 
-export const TeamsLayout = ({team}: TeamT) => {
-    const title = getBallParkByTeamKey(team);
-    if (!title) return;
+type TeamsLayoutT = {
+    team: TeamI | null;
+}
+
+export const TeamsLayout = ({team}: TeamsLayoutT) => {
+    if (!team) {
+        console.warn(TEAMS_MESSAGES.TEAM_NOT_FOUND);
+        return null;
+    }
 
     return (
             <>
-                <ReviewHeader title={title}/>
+                <ReviewHeader title={team.ballPark}/>
                 <ReviewComposer/>
-                <ReviewFeed team={team}/>
+                <ReviewFeed teamId={team.id}/>
             </>
     );
 };
