@@ -1,20 +1,28 @@
-import type { CategorySelectorStoreI, DropdownStoreI } from "@/shared";
-import { create } from "zustand";
+import type {CategorySelectorStoreI, DropdownStoreI} from "@/shared";
+import {create} from "zustand";
 
 export const useCategorySelectorStore = create<CategorySelectorStoreI>((set) => ({
-    category: '',
-    setCategory: (category) => set({ category }),
+    category: {
+        id: 0,
+        categoryKey: '',
+        categoryName: ''
+    },
+    setCategory: (id, categoryKey, categoryName) => set({category: {id, categoryKey, categoryName}}),
 
     isOpen: false,
-    setIsOpen: (open) => set({ isOpen: open }),
+    setIsOpen: (open) => set({isOpen: open}),
 
     reset: () => set({
-        category: '',
+        category: {
+            id: 0,
+            categoryKey: '',
+            categoryName: ''
+        },
         isOpen: false,
     }),
 }));
 
 export const useDropdownStore = create<DropdownStoreI>((set) => ({
     style: null,
-    setStyle: (style) => set({ style: style }),
+    setStyle: (style) => set({style: style}),
 }));
