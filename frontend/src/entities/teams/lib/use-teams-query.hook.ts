@@ -1,12 +1,12 @@
-import {fetchTeams, type TeamI, TEAMS_QUERY_KEYS} from "@/entities";
+import {fetchTeams, type GetTeamsResponseT, TEAMS_QUERY_KEYS} from "@/entities";
 import {useZustandQuery} from "@/shared";
 
 export const useTeamsQuery = () => {
-    return useZustandQuery<TeamI[]>(
+    return useZustandQuery<GetTeamsResponseT>(
         [TEAMS_QUERY_KEYS.BASE],
         () => fetchTeams(),
         {
-            staleTime: 1000 * 60, // 1분 캐시
+            staleTime: 1000 * 60 * 60 * 24
         }
     );
 };

@@ -2,7 +2,7 @@ import type {ReviewForm, ReviewI, ReviewLikeParamsI, ReviewParamsI} from "@/enti
 import type {BaseResponseT, PageT} from "@/shared";
 
 // Reviews
-export type GetReviewsResponseT = BaseResponseT<PageT<ReviewI>>;
+export type GetReviewsResponseT = PageT<ReviewI>;
 export type GetReviewByIdResponseT = BaseResponseT<ReviewI>;
 export type GetReviewsRequestT = ReviewParamsI;
 

@@ -1,13 +1,21 @@
-import {fetchReviews, type ReviewI, REVIEWS_QUERY_KEYS} from "@/entities";
-import {type PageT, useZustandQuery} from "@/shared";
+import {fetchReviews, type GetReviewsRequestT, type GetReviewsResponseT, REVIEWS_QUERY_KEYS} from "@/entities";
+import {mergeIfPresent, useCategoryMenuStore, useZustandQuery} from "@/shared";
 
-export const useReviewsQuery = (teamId: number) => {
-    return useZustandQuery<PageT<ReviewI>>(
-        [REVIEWS_QUERY_KEYS.BASE, teamId],
-        () => fetchReviews(teamId),
+export const useReviewsQuery = (params: GetReviewsRequestT) => {
+    const selectedCategory = useCategoryMenuStore((s) => s.selectedCategory);
+    // const selectedSortOptions = useSortOptionsStore((s) => s.selectedSortOption);
+
+    const mergedParams = mergeIfPresent(params, {
+        category: selectedCategory,
+        // sort: selectedSortOptions.id
+    });
+
+    return useZustandQuery<GetReviewsResponseT>(
+        [REVIEWS_QUERY_KEYS.BASE, mergedParams],
+        () => fetchReviews(mergedParams),
         {
-            enabled: !!teamId,
-            staleTime: 1000 * 60, // 1분 캐시
+            enabled: !!params.teamId,
+            staleTime: 1000 * 60,
         }
     );
 };

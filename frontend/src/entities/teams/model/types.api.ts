@@ -1,5 +1,4 @@
 import type {TeamI} from "@/entities";
-import type {BaseResponseT} from "@/shared";
 
-export type GetTeamsResponseT = BaseResponseT<TeamI[]>;
-export type GetTeamByKeyResponseT = BaseResponseT<TeamI>;
+export type GetTeamsResponseT = TeamI[];
+export type GetTeamByKeyResponseT = TeamI;
