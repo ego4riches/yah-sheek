@@ -1,35 +1,31 @@
-import type { SortOptionI } from "@/shared";
+import type {SortOptionI} from "@/shared";
 
 export const defaultSortOption = {
-    id: 'latest',
+    id: 'recent',
     label: '최신순',
-    value: 'latest',
+    value: 'recent',
 };
 
 export const sortOptions: SortOptionI[] = [
+    defaultSortOption,
     {
-        id: 'latest',
-        label: '최신순',
-        value: 'latest',
-    },
-    {
-        id: 'popular',
+        id: 'likes',
         label: '인기순',
-        value: 'popular',
+        value: 'likes',
     },
-    {
-        id: 'rating',
-        label: '별점순',
-        value: 'rating',
-    },
-    {
-        id: 'withPhotos',
-        label: '포토 리뷰만',
-        value: 'withPhotos',
-    },
-    {
-        id: 'myReviews',
-        label: '내가 쓴 리뷰만',
-        value: 'myReviews',
-    },
+    // {
+    //     id: 'rating',
+    //     label: '별점순',
+    //     value: 'rating',
+    // },
+    // {
+    //     id: 'withPhotos',
+    //     label: '포토 리뷰만',
+    //     value: 'withPhotos',
+    // },
+    // {
+    //     id: 'myReviews',
+    //     label: '내가 쓴 리뷰만',
+    //     value: 'myReviews',
+    // },
 ];

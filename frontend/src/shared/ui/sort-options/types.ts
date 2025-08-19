@@ -1,5 +1,5 @@
 // Config
-import type { IsOpenStoreI } from "@/shared";
+import type {IsOpenStoreI} from "@/shared";
 
 export interface SortOptionI {
     id: string;
@@ -9,7 +9,7 @@ export interface SortOptionI {
 
 // Store
 export interface SortOptionsStateI extends IsOpenStoreI {
-    selectedOption: SortOptionI;
-    setSelectedOption: (option: SortOptionI) => void;
+    selectedSortOption: SortOptionI;
+    setSelectedSortOption: (option: SortOptionI) => void;
     toggleDropdown: () => void;
 }
