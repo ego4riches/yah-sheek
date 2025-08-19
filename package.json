@@ -5,7 +5,11 @@
     "all": "concurrently \"yarn fe\" \"yarn be\""
   },
   "devDependencies": {
-    "dotenv-cli": "^7.0.0",
-    "concurrently": "^9.2.0"
+    "concurrently": "^9.2.0",
+    "dotenv-cli": "^7.0.0"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   }
 }
