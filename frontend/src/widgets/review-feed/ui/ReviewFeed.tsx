@@ -5,7 +5,7 @@ import {Feeds} from "@/widgets/review-feed/ui/Feeds";
 import type {AxiosError} from "axios";
 
 export const ReviewFeed = ({teamId}: ReviewFeedT) => {
-    const {data, status, error} = useReviewsQuery(teamId);
+    const {data, status, error} = useReviewsQuery({teamId});
 
     return (
             <ReviewFeedWrapper>
