@@ -1,13 +1,6 @@
-import {MediaUpload} from "@/shared/ui/media-upload/MediaUpload.tsx";
 import {CategorySelector, RatingSelector, ReviewContentInput, TagManager} from "@/shared";
-import {
-    ComposerExpandedWrapper,
-    ComposerHeaderBox,
-    ReviewComposerWrapper,
-    useReviewComposerStore,
-    useReviewComposerSubmit,
-    useReviewComposerVisibility
-} from "@/widgets/review-composer";
+import {MediaUpload} from "@/shared/ui/media-upload/MediaUpload.tsx";
+import {ComposerExpandedWrapper, ComposerHeaderBox, ReviewComposerWrapper, useReviewComposerStore, useReviewComposerSubmit, useReviewComposerVisibility} from "@/widgets/review-composer";
 
 export const ReviewComposer = () => {
     const {isExpanded, setIsExpanded} = useReviewComposerStore();
@@ -19,9 +12,8 @@ export const ReviewComposer = () => {
     }
 
     const handleSubmit = () => {
-        // 구현 예정
-        reset();
         submitReview();
+        reset();
     };
 
     return (
