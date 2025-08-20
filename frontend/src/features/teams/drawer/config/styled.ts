@@ -1,13 +1,14 @@
-import {type DrawerBoxT, type DrawerItemBoxT, getShouldForwardProps} from "@/shared";
+import type {DrawerBoxT, DrawerItemBoxT} from "@/features";
+import {getShouldForwardProps} from "@/shared";
 import {Link} from "react-router-dom";
 import styled from 'styled-components';
 
-export const DrawerWrapper = styled.div`
+export const TeamsDrawerWrapper = styled.div`
     width: fit-content;
     z-index: 1;
 `
 
-export const DrawerToggle = styled.div`
+export const DrawerToggleBox = styled.div`
     font-size: 2rem;
     cursor: pointer;
 `;
@@ -33,13 +34,18 @@ export const DrawerItemBox = styled(Link).withConfig({
 })<DrawerItemBoxT>`
     text-align: center;
     padding: calc(100vh / 25) 0;
-    color: ${({theme, active}) => (active ? theme.colors.gray600 : theme.colors.gray700)};
+    color: ${({theme, active}) =>
+        (active ? theme.colors.gray600 : theme.colors.gray400)};
+    background: ${({theme, active}) =>
+        (active ? theme.colors.gray200 : "transparent")};
     font-family: ${({theme, active}) =>
-        (active ? theme.fontFamilies.Accent600 : theme.fontFamilies.Accent400)};
-    background-color: ${({theme, active}) => (active ? theme.colors.gray300 : "transparent")};
+        (active ? theme.fontFamilies.Accent800 : theme.fontFamilies.Accent600)};
     text-decoration: none;
 
     &:hover {
-        background-color: ${({theme, active}) => (active ? theme.colors.gray300 : theme.colors.gray200)};
+        color: ${({theme, active}) =>
+            (active ? theme.colors.gray800 : theme.colors.gray600)};
+        background: ${({theme, active}) =>
+            (active ? theme.colors.gray300 : theme.colors.gray200)};
     }
 `;
