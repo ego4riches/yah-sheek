@@ -1,5 +1,3 @@
-import type {CategoryT} from "@/entities";
-import type {IsOpenStoreI} from "@/shared";
 import type {CSSProperties} from "react";
 
 // Props
@@ -10,12 +8,6 @@ export type CategorySelectorDropdownT = {
 }
 
 // Store
-export interface CategorySelectorStoreI extends IsOpenStoreI {
-    category: Omit<CategoryT, 'displayOrder'>
-    setCategory: (id: number, key: string, name: string) => void;
-    reset: () => void;
-}
-
 export interface DropdownStoreI {
     style: CSSProperties | null;
     setStyle: (style: CSSProperties | null) => void;
