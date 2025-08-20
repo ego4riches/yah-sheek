@@ -5,31 +5,31 @@ export const SearchWrapper = styled.div`
     width: fit-content;
     position: relative;
 
-    ${ media.mobile } {
-        top: 13rem;
+    ${media.mobile} {
+        top: 13.5rem;
     }
 `;
 
 export const SearchInputBox = styled.input`
     min-width: 20vw;
     padding: 1rem 3rem 1rem 1rem;
-    border-radius: ${ ({ theme }) => theme.borderRadius.xl };
-    border: 1px solid ${ ({ theme }) => theme.colors.gray200 };
+    border-radius: ${({ theme }) => theme.borderRadius.xl};
+    border: 1px solid ${({ theme }) => theme.colors.gray200};
     outline: none;
-    color: ${ ({ theme }) => theme.colors.gray800 };
+    color: ${({ theme }) => theme.colors.gray800};
 
     &:focus {
-        box-shadow: 0 0 0 0.4rem ${ ({ theme }) => theme.colors.primary300 };
-        border-color: ${ ({ theme }) => theme.colors.primary400 };
+        box-shadow: 0 0 0 0.4rem ${({ theme }) => theme.colors.primary300};
+        border-color: ${({ theme }) => theme.colors.primary400};
     }
 
-    ${ media.mobile } {
+    ${media.mobile} {
         min-width: auto;
     }
 `;
 
 export const SearchIconBox = styled.div`
-    ${ flexCenter };
+    ${flexCenter};
     position: absolute;
     right: 1rem;
     top: 50%;
