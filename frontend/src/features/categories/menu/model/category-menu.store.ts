@@ -1,4 +1,4 @@
-import type { CategoryMenuStoreI } from "@/shared";
+import type { CategoryMenuStoreI } from "@/features";
 import { create } from 'zustand';
 
 export const useCategoryMenuStore = create<CategoryMenuStoreI>((set) => ({

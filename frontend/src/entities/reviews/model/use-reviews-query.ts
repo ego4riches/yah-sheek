@@ -1,5 +1,6 @@
-import {fetchReviews, type GetReviewsRequestT, type GetReviewsResponseT, REVIEWS_QUERY_KEYS} from "@/entities";
-import {mergeIfPresent, useCategoryMenuStore, useZustandQuery} from "@/shared";
+import { fetchReviews, type GetReviewsRequestT, type GetReviewsResponseT, REVIEWS_QUERY_KEYS } from "@/entities";
+import { useCategoryMenuStore } from "@/features";
+import { mergeIfPresent, useZustandQuery } from "@/shared";
 
 export const useReviewsQuery = (params: GetReviewsRequestT) => {
     const selectedCategory = useCategoryMenuStore((s) => s.selectedCategory);
