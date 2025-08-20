@@ -1,10 +1,10 @@
 export * from '@/shared/ui/button';
-export * from '@/shared/ui/category-menu';
 export * from '@/shared/ui/category-dropdown';
 export * from '@/shared/ui/empty-state';
 export * from '@/shared/ui/error';
 export * from '@/shared/ui/feed';
 export * from '@/shared/ui/icons';
+export * from '@/shared/ui/loading-spinner';
 export * from '@/shared/ui/media-upload';
 export * from '@/shared/ui/portal';
 export * from '@/shared/ui/rating-selector';
@@ -12,4 +12,3 @@ export * from '@/shared/ui/review-content-input';
 export * from '@/shared/ui/search';
 export * from '@/shared/ui/sort-options';
 export * from '@/shared/ui/tag-manager';
-export * from '@/shared/ui/loading-spinner';

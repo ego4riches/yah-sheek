@@ -1,25 +1,17 @@
-import {
-    type FeedPreviewT,
-    FeedPreviewWrapper,
-    formatDate,
-    getStarRating,
-    PreviewCategoryBox,
-    PreviewContentBox,
-    PreviewMetaBox
-} from "@/shared";
+import { type FeedPreviewT, FeedPreviewWrapper, formatDate, getStarRating, PreviewCategoryBox, PreviewContentBox, PreviewMetaBox } from "@/shared";
 
-export const FeedPreview = ({feed}: FeedPreviewT) => {
-    const {category, content, author, createdAt, views, likes} = feed;
+export const FeedPreview = ({ feed }: FeedPreviewT) => {
+    const { nickname, categoryName, content, createdAt, rating, viewsCount } = feed;
 
     return (
             <FeedPreviewWrapper>
-                <PreviewCategoryBox isValue={category}>{category}</PreviewCategoryBox>
+                <PreviewCategoryBox isValue={categoryName}>{categoryName}</PreviewCategoryBox>
                 <PreviewContentBox>{content}</PreviewContentBox>
                 <PreviewMetaBox>
-                    <span>{author}</span>
+                    <span>{nickname}</span>
                     <span>{formatDate(createdAt)}</span>
-                    <span>{views}</span>
-                    <span>{getStarRating(likes)}</span>
+                    <span>{viewsCount}</span>
+                    <span>{getStarRating(rating)}</span>
                 </PreviewMetaBox>
             </FeedPreviewWrapper>
     );
