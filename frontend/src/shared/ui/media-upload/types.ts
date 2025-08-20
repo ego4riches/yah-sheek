@@ -1,4 +1,4 @@
-import type { InputChangeEventT } from "@/shared";
+import type {InputChangeEventT} from "@/shared";
 
 // Props
 export type MediaUploadInputT = {

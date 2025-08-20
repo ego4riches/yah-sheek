@@ -1,3 +1,4 @@
+export * from '@/shared/ui/media-upload/formatter';
 export * from '@/shared/ui/media-upload/media-upload.store';
 export * from '@/shared/ui/media-upload/MediaPreview';
 export * from '@/shared/ui/media-upload/MediaUpload';
