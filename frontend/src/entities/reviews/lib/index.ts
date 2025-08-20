@@ -1,1 +1,0 @@
-export * from '@/entities/reviews/lib/use-reviews-query.hook';
