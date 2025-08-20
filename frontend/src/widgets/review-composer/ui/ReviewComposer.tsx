@@ -1,20 +1,14 @@
-import {CategorySelector, RatingSelector, ReviewContentInput, TagManager} from "@/shared";
-import {MediaUpload} from "@/shared/ui/media-upload/MediaUpload.tsx";
-import {ComposerExpandedWrapper, ComposerHeaderBox, ReviewComposerWrapper, useReviewComposerStore, useReviewComposerSubmit, useReviewComposerVisibility} from "@/widgets/review-composer";
+import { CategorySelector, useAddReviewForm } from '@/features';
+import { RatingSelector, ReviewContentInput, TagManager } from '@/shared';
+import { MediaUpload } from '@/shared/ui/media-upload/MediaUpload.tsx';
+import { ComposerExpandedWrapper, ComposerHeaderBox, ReviewComposerWrapper, useReviewComposerStore, useReviewComposerVisibility, } from '@/widgets/review-composer';
 
 export const ReviewComposer = () => {
-    const {isExpanded, setIsExpanded} = useReviewComposerStore();
-    const {composerRef, reset} = useReviewComposerVisibility();
-    const {isSubmitDisabled, submitReview} = useReviewComposerSubmit();
+    const { isExpanded, setIsExpanded } = useReviewComposerStore();
+    const { isSubmitDisabled, submitReview } = useAddReviewForm();
+    const { composerRef } = useReviewComposerVisibility();
 
-    const handleFocus = () => {
-        setIsExpanded(true);
-    }
-
-    const handleSubmit = () => {
-        submitReview();
-        reset();
-    };
+    const handleFocus = () => setIsExpanded(true);
 
     return (
             <ReviewComposerWrapper ref={composerRef}>
@@ -29,12 +23,11 @@ export const ReviewComposer = () => {
                 <ReviewContentInput
                         isSubmitDisabled={isSubmitDisabled}
                         onFocus={handleFocus}
-                        onSubmit={handleSubmit}
+                        onSubmit={submitReview}
                 />
 
                 <ComposerExpandedWrapper isExpanded={isExpanded}>
                     <MediaUpload/>
                 </ComposerExpandedWrapper>
-            </ReviewComposerWrapper>
-    );
+            </ReviewComposerWrapper>);
 };
