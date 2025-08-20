@@ -1,20 +1,14 @@
-import {useTeamsQuery} from "@/entities";
-import {TeamsLayout} from "@/pages/teams/TeamsLayout.tsx";
-import {AsyncBoundary, getTeam, TEAMS} from "@/shared";
-import type {AxiosError} from "axios";
+import {TEAMS_KEY} from "@/features";
+import {TeamsLayout} from "@/features/teams/layout/ui/TeamsLayout.tsx";
+import {ReviewComposer, ReviewFeed, ReviewHeader} from "@/widgets";
 
-export const KTPage = () => {
-    const {data, status, error} = useTeamsQuery();
-
-    return (
-            <AsyncBoundary
-                    data={data}
-                    status={status}
-                    errorCode={(error as AxiosError)?.response?.status}
-            >
-                {(team) =>
-                        <TeamsLayout team={getTeam(team, TEAMS.KT.KEY) ?? null}/>
-                }
-            </AsyncBoundary>
-    );
-};
+export const KTPage = () =>
+        <TeamsLayout teamKey={TEAMS_KEY.KT}>
+            {(team) => (
+                    <>
+                        <ReviewHeader title={team.ballPark}/>
+                        <ReviewComposer/>
+                        <ReviewFeed teamId={team.id}/>
+                    </>
+            )}
+        </TeamsLayout>

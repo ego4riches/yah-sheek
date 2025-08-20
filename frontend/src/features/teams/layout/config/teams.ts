@@ -1,0 +1,12 @@
+export const TEAMS_KEY = {
+    KIA: 'kia-tigers',
+    DOOSAN: 'doosan-bears',
+    LOTTE: 'lotte-giants',
+    SAMSUNG: 'samsung-lions',
+    SSG: 'ssg-landers',
+    NC: 'nc-dinos',
+    LG: 'lg-twins',
+    KIWOOM: 'kiwoom-heroes',
+    KT: 'kt-wiz',
+    HANHWA: 'hanhwa-eagles',
+};

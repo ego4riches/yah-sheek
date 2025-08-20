@@ -1,20 +1,14 @@
-import {useTeamsQuery} from "@/entities";
-import {TeamsLayout} from "@/pages/teams/TeamsLayout.tsx";
-import {AsyncBoundary, getTeam, TEAMS} from "@/shared";
-import type {AxiosError} from "axios";
+import {TEAMS_KEY} from "@/features";
+import {TeamsLayout} from "@/features/teams/layout/ui/TeamsLayout.tsx";
+import {ReviewComposer, ReviewFeed, ReviewHeader} from "@/widgets";
 
-export const HanhwaPage = () => {
-    const {data, status, error} = useTeamsQuery();
-
-    return (
-            <AsyncBoundary
-                    data={data}
-                    status={status}
-                    errorCode={(error as AxiosError)?.response?.status}
-            >
-                {(team) =>
-                        <TeamsLayout team={getTeam(team, TEAMS.HANHWA.KEY) ?? null}/>
-                }
-            </AsyncBoundary>
-    );
-};
+export const HanhwaPage = () =>
+        <TeamsLayout teamKey={TEAMS_KEY.HANHWA}>
+            {(team) => (
+                    <>
+                        <ReviewHeader title={team.ballPark}/>
+                        <ReviewComposer/>
+                        <ReviewFeed teamId={team.id}/>
+                    </>
+            )}
+        </TeamsLayout>

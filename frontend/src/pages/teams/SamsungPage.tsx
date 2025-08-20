@@ -1,20 +1,13 @@
-import {useTeamsQuery} from "@/entities";
-import {TeamsLayout} from "@/pages/teams/TeamsLayout.tsx";
-import {AsyncBoundary, getTeam, TEAMS} from "@/shared";
-import type {AxiosError} from "axios";
+import {TEAMS_KEY, TeamsLayout} from "@/features";
+import {ReviewComposer, ReviewFeed, ReviewHeader} from "@/widgets";
 
-export const SamsungPage = () => {
-    const {data, status, error} = useTeamsQuery();
-
-    return (
-            <AsyncBoundary
-                    data={data}
-                    status={status}
-                    errorCode={(error as AxiosError)?.response?.status}
-            >
-                {(team) =>
-                        <TeamsLayout team={getTeam(team, TEAMS.SAMSUNG.KEY) ?? null}/>
-                }
-            </AsyncBoundary>
-    );
-};
+export const SamsungPage = () =>
+        <TeamsLayout teamKey={TEAMS_KEY.SAMSUNG}>
+            {(team) => (
+                    <>
+                        <ReviewHeader title={team.ballPark}/>
+                        <ReviewComposer/>
+                        <ReviewFeed teamId={team.id}/>
+                    </>
+            )}
+        </TeamsLayout>
