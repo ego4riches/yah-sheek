@@ -13,7 +13,7 @@ export const useZustandQuery = <TData, TError = unknown>(
         queryKey: key,
         queryFn,
         ...options,
-        select: (res) => res.data
+        select: (res) => res.data,
     });
 
     useQueryEffects(query, {
