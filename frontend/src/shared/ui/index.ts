@@ -1,5 +1,4 @@
 export * from '@/shared/ui/button';
-export * from '@/shared/ui/category-dropdown';
 export * from '@/shared/ui/empty-state';
 export * from '@/shared/ui/error';
 export * from '@/shared/ui/feed';

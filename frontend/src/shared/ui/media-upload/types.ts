@@ -1,4 +1,4 @@
-import type {InputChangeEventT} from "@/shared";
+import type { InputChangeEventT } from "@/shared";
 
 // Props
 export type MediaUploadInputT = {
@@ -16,6 +16,5 @@ export interface MediaUploadStoreI {
     attachments: File[]
     addAttachment: (file: File) => void
     removeAttachment: (fileIndex: number) => void
-
     reset: () => void
 }

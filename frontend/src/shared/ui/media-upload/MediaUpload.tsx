@@ -1,13 +1,7 @@
-import {
-    type InputChangeEventT,
-    MediaPreview,
-    MediaPreviewWrapper,
-    MediaUploadInput,
-    useMediaUploadStore
-} from "@/shared";
+import { type InputChangeEventT, MediaPreview, MediaPreviewWrapper, MediaUploadInput, useMediaUploadStore } from "@/shared";
 
 export const MediaUpload = () => {
-    const {attachments, addAttachment, removeAttachment} = useMediaUploadStore();
+    const { attachments, addAttachment, removeAttachment } = useMediaUploadStore();
 
     const handleFileChange = (e: InputChangeEventT) => {
         const files = e.target.files;
@@ -24,7 +18,6 @@ export const MediaUpload = () => {
     return (
             <>
                 <MediaUploadInput onChange={handleFileChange}/>
-
                 {attachments.length > 0
                         &&
                         <MediaPreviewWrapper>
