@@ -1,6 +1,6 @@
-import {TEAMS_KEY} from "@/features";
-import {TeamsLayout} from "@/features/teams/layout/ui/TeamsLayout.tsx";
-import {ReviewComposer, ReviewFeed, ReviewHeader} from "@/widgets";
+import { ReviewFeeds } from "@/entities";
+import { TEAMS_KEY, TeamsLayout } from "@/features";
+import { ReviewComposer, ReviewHeader } from "@/widgets";
 
 export const KTPage = () =>
         <TeamsLayout teamKey={TEAMS_KEY.KT}>
@@ -8,7 +8,7 @@ export const KTPage = () =>
                     <>
                         <ReviewHeader title={team.ballPark}/>
                         <ReviewComposer/>
-                        <ReviewFeed teamId={team.id}/>
+                        <ReviewFeeds teamId={team.id}/>
                     </>
             )}
         </TeamsLayout>

@@ -1,6 +1,6 @@
-import {TEAMS_KEY} from "@/features";
-import {TeamsLayout} from "@/features/teams/layout/ui/TeamsLayout.tsx";
-import {ReviewComposer, ReviewFeed, ReviewHeader} from "@/widgets";
+import { ReviewFeeds } from "@/entities";
+import { TEAMS_KEY, TeamsLayout } from "@/features";
+import { ReviewComposer, ReviewHeader } from "@/widgets";
 
 export const NCPage = () =>
         <TeamsLayout teamKey={TEAMS_KEY.NC}>
@@ -8,7 +8,7 @@ export const NCPage = () =>
                     <>
                         <ReviewHeader title={team.ballPark}/>
                         <ReviewComposer/>
-                        <ReviewFeed teamId={team.id}/>
+                        <ReviewFeeds teamId={team.id}/>
                     </>
             )}
         </TeamsLayout>
