@@ -1,5 +1,5 @@
-import {CategorySelectorButtonBox, DEFAULT_CATEGORY, useCategorySelectorStore} from "@/features";
-import {CategoryDropdown, getDropdownStyle, useCategoryDropdownStore, useClickOutside} from "@/shared";
+import { CategoryDropdown, CategorySelectorButtonBox, DEFAULT_CATEGORY, getDropdownStyle, useCategoryDropdownStore, useCategorySelectorStore } from "@/features";
+import { useClickOutside} from "@/shared";
 import {useRef} from "react";
 
 export const CategorySelector = () => {

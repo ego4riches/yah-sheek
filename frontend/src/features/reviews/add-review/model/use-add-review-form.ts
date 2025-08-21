@@ -1,6 +1,6 @@
-import {useAddReviewMutation, useCategorySelectorStore} from "@/features";
-import {mediaUploadFormatter, useMediaUploadStore, useRatingSelectorStore, useReviewContentInputStore, useTagManagerStore} from "@/shared";
-import {useReviewComposerVisibility} from "@/widgets/review-composer";
+import { useAddReviewMutation, useCategorySelectorStore } from "@/features";
+import { mediaUploadFormatter, useMediaUploadStore, useRatingSelectorStore, useReviewContentInputStore, useTagManagerStore } from "@/shared";
+import { useReviewComposerVisibility } from "@/widgets/review-composer";
 
 export const useAddReviewForm = () => {
     const category = useCategorySelectorStore((s) => s.category);
@@ -9,8 +9,8 @@ export const useAddReviewForm = () => {
     const content = useReviewContentInputStore((s) => s.content);
     const attachments = useMediaUploadStore((s) => s.attachments);
 
-    const {reset} = useReviewComposerVisibility();
-    const {mutate} = useAddReviewMutation();
+    const { reset } = useReviewComposerVisibility();
+    const { mutate } = useAddReviewMutation();
 
     const isSubmitDisabled = !content.trim() || !category.categoryKey || rating === 0;
 
