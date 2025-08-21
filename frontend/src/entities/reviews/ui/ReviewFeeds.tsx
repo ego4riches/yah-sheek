@@ -1,11 +1,9 @@
-import {useReviewsQuery} from "@/entities";
-import {AsyncBoundary,} from '@/shared';
-import {type ReviewFeedT, ReviewFeedWrapper} from '@/widgets/review-feed';
-import {Feeds} from "@/widgets/review-feed/ui/Feeds";
-import type {AxiosError} from "axios";
+import { Feeds, type ReviewFeedT, ReviewFeedWrapper, useReviewsQuery } from "@/entities";
+import { AsyncBoundary, } from '@/shared';
+import type { AxiosError } from "axios";
 
-export const ReviewFeed = ({teamId}: ReviewFeedT) => {
-    const {data, status, error} = useReviewsQuery({teamId});
+export const ReviewFeeds = ({ teamId }: ReviewFeedT) => {
+    const { data, status, error } = useReviewsQuery({ teamId });
 
     return (
             <ReviewFeedWrapper>

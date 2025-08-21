@@ -1,7 +1,7 @@
-import {EmptyState, Feed} from "@/shared";
-import {EMPTY_REVIEWS, type FeedsT} from "@/widgets/review-feed";
+import { EMPTY_REVIEWS, type FeedsT } from "@/entities";
+import { EmptyState, Feed } from "@/shared";
 
-export const Feeds = ({reviews}: FeedsT) =>
+export const Feeds = ({ reviews }: FeedsT) =>
         reviews.content.length > 0
 
                 ? reviews.content.map((review) =>
