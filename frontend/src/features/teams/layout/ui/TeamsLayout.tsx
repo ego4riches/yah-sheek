@@ -1,10 +1,9 @@
-import {useTeamsQuery} from "@/entities";
-import {getTeam, TeamItem, type TeamsLayoutT} from "@/features";
-import {AsyncBoundary} from "@/shared";
-import type {AxiosError} from "axios";
+import { TeamItem, type TeamsLayoutT, useTeamByKeyQuery } from "@/features";
+import { AsyncBoundary } from "@/shared";
+import type { AxiosError } from "axios";
 
-export const TeamsLayout = ({teamKey, children}: TeamsLayoutT) => {
-    const {data, status, error} = useTeamsQuery();
+export const TeamsLayout = ({ teamKey, children }: TeamsLayoutT) => {
+    const { data, status, error } = useTeamByKeyQuery(teamKey);
 
     return (
             <AsyncBoundary
@@ -13,7 +12,7 @@ export const TeamsLayout = ({teamKey, children}: TeamsLayoutT) => {
                     errorCode={(error as AxiosError)?.response?.status}
             >
                 {(team) =>
-                        <TeamItem team={getTeam(team, teamKey) ?? null}>
+                        <TeamItem team={team}>
                             {children}
                         </TeamItem>}
             </AsyncBoundary>

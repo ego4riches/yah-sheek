@@ -1,5 +1,5 @@
-import {fetchTeams, type GetTeamsResponseT, TEAMS_QUERY_KEYS} from "@/entities";
-import {useZustandQuery} from "@/shared";
+import { fetchTeams, type GetTeamsResponseT, TEAMS_QUERY_KEYS } from "@/entities";
+import { useZustandQuery } from "@/shared";
 
 export const useTeamsQuery = () => {
     return useZustandQuery<GetTeamsResponseT>(
