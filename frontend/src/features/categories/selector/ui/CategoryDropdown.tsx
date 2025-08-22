@@ -18,6 +18,7 @@ export const CategoryDropdown = ({ onCategorySelect, isOpen, style }: CategorySe
                         {(categories) =>
                                 categories.map(({ id, categoryKey, categoryName }) =>
                                         <CategoryDropdownItem
+                                                key={id}
                                                 id={id}
                                                 name={categoryName}
                                                 onClick={() => onCategorySelect(id, categoryKey, categoryName)}
