@@ -8,13 +8,16 @@ spring:
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
     hikari:
-      maximum-pool-size: 5
+      maximum-pool-size: 2   # → 각자 2개만 유지
+      minimum-idle: 1
+      idle-timeout: 10000
+      max-lifetime: 300000
       data-source-properties:
         prepareThreshold: 0   # 드라이버에 직접 전달(중복 설정해도 무방)
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: false
     open-in-view: false
     properties:
