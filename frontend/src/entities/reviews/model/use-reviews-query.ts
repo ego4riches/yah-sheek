@@ -1,14 +1,14 @@
 import { fetchReviews, type GetReviewsRequestT, type GetReviewsResponseT, REVIEWS_QUERY_KEYS } from "@/entities";
 import { useCategoryMenuStore } from "@/features";
-import { mergeIfPresent, useZustandQuery } from "@/shared";
+import { mergeIfPresent, useSortOptionsStore, useZustandQuery } from "@/shared";
 
 export const useReviewsQuery = (params: GetReviewsRequestT) => {
-    const selectedCategory = useCategoryMenuStore((s) => s.selectedCategory);
-    // const selectedSortOptions = useSortOptionsStore((s) => s.selectedSortOption);
+    const category = useCategoryMenuStore((s) => s.selectedCategory);
+    const sort = useSortOptionsStore((s) => s.selectedSortOption.id);
 
     const mergedParams = mergeIfPresent(params, {
-        category: selectedCategory,
-        // sort: selectedSortOptions.id
+        category,
+        sort,
     });
 
     return useZustandQuery<GetReviewsResponseT>(

@@ -1,5 +1,6 @@
-import type {ReviewMediaTypeT} from "@/shared";
+import type { ReviewMediaTypeT } from "@/shared";
 
+// Item
 export interface ReviewI {
     id: number;
     userId: number;
@@ -17,18 +18,6 @@ export interface ReviewI {
     media: ReviewMediaItemI;
 }
 
-export interface ReviewParamsI {
-    teamId: number;
-    categoryId?: number;
-    sort?: 'recent' | string;
-    page?: number;
-    size?: number;
-}
-
-export interface ReviewLikeParamsI {
-    userId: number
-}
-
 export interface ReviewMediaItemI {
     mediaType: ReviewMediaTypeT;
     mediaUrl: string;
@@ -41,6 +30,20 @@ export interface ReviewMediaListI extends ReviewMediaItemI {
     mimeType?: string | null;
 }
 
+// Params
+export interface ReviewParamsI {
+    teamId: number;
+    categoryId?: number;
+    sort?: 'recent' | string;
+    page?: number;
+    size?: number;
+}
+
+export interface ReviewLikeParamsI {
+    userId: number
+}
+
+// Body
 export interface ReviewForm {
     userId: number;
     teamId: number;
