@@ -9,6 +9,7 @@ export type DrawerItemT = {
 // styled-components Props
 export type DrawerBoxT = {
     open: boolean;
+    status: string;
 }
 
 export type DrawerItemBoxT = {

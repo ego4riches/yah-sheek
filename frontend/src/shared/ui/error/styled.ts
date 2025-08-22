@@ -1,4 +1,4 @@
-import styled, {keyframes} from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const armAnima = keyframes`
     0% {
@@ -63,10 +63,11 @@ export const shadowAnima = keyframes`
 `;
 
 export const NotFoundBox = styled.div`
+    width: 100dvw;
     height: 100dvh;
     position: relative;
-    background-color: ${({theme}) => theme.colors.gray500};
-    font-family: ${({theme}) => theme.fontFamilies.Accent800};
+    background-color: ${({ theme }) => theme.colors.gray500};
+    font-family: ${({ theme }) => theme.fontFamilies.Accent800};
 `;
 
 export const ErrorCodeBox = styled.div`
@@ -131,7 +132,7 @@ export const Head = styled.div`
     top: 2.5rem;
     left: 6rem;
     z-index: 1;
-    background-color: ${({theme}) => theme.colors.gray900};
+    background-color: ${({ theme }) => theme.colors.gray900};
     border-radius: 5rem;
     animation: ${headAnima} 1.2s infinite cubic-bezier(0.55, 0.01, 0.16, 1.34);
 
@@ -142,7 +143,7 @@ export const Head = styled.div`
     &:after, &:before {
         content: "";
         position: absolute;
-        background-color: ${({theme}) => theme.colors.gray900};
+        background-color: ${({ theme }) => theme.colors.gray900};
         border-radius: 1rem;
         height: 2rem;
         width: 0.7rem;
@@ -220,11 +221,11 @@ export const Shape = styled.div`
     width: 14rem;
 
     ${BatManBox}:nth-child(1) & {
-        background-color: ${({theme}) => theme.colors.primary900};
+        background-color: ${({ theme }) => theme.colors.primary900};
     }
 
     ${BatManBox}:nth-child(2) & {
-        background-color: ${({theme}) => theme.colors.primary900};
+        background-color: ${({ theme }) => theme.colors.primary900};
     }
 `;
 
@@ -273,18 +274,18 @@ export const Circle = styled.div`
     }
 
     ${BatManBox}:nth-child(1) & {
-        background-color: ${({theme}) => theme.colors.primary800};
+        background-color: ${({ theme }) => theme.colors.primary800};
 
         &:after, &:before {
-            background-color: ${({theme}) => theme.colors.primary700};
+            background-color: ${({ theme }) => theme.colors.primary700};
         }
     }
 
     ${BatManBox}:nth-child(2) & {
-        background-color: ${({theme}) => theme.colors.primary700};
+        background-color: ${({ theme }) => theme.colors.primary700};
 
         &:after, &:before {
-            background-color: ${({theme}) => theme.colors.primary800};
+            background-color: ${({ theme }) => theme.colors.primary800};
         }
     }
 `;
@@ -348,7 +349,7 @@ export const Leg = styled.div`
     height: 5.5rem;
     top: 20rem;
     left: 14rem;
-    background-color: ${({theme}) => theme.colors.primary900};
+    background-color: ${({ theme }) => theme.colors.primary900};
 
     &:after {
         position: absolute;
