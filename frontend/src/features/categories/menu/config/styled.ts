@@ -1,4 +1,4 @@
-import {flexCenter, getShouldForwardProps, type IsSelectedI, media} from "@/shared";
+import { flexCenter, getShouldForwardProps, type IsSelectedI, media } from "@/shared";
 import styled from 'styled-components';
 
 export const CategoryMenuBox = styled.div`
@@ -6,8 +6,8 @@ export const CategoryMenuBox = styled.div`
     gap: 4rem;
     padding: 2rem 4rem;
     color: white;
-    background: ${({theme}) => theme.colors.primary600};
-    border-radius: ${({theme}) => theme.borderRadius.topRoundedXl};
+    background: ${({ theme }) => theme.colors.primary700};
+        // border-radius: ${({ theme }) => theme.borderRadius.topRoundedXl};
 
     ${media.mobile} {
         grid-column: 1 / 3;
@@ -17,12 +17,18 @@ export const CategoryMenuBox = styled.div`
 export const CategoryMenuItemBox = styled.div.withConfig({
     shouldForwardProp: getShouldForwardProps(['isSelected']),
 })<IsSelectedI>`
-    color: ${({theme, isSelected}) =>
+    padding: 1rem 2rem;
+    border-radius: ${({ theme }) => theme.borderRadius.xxl};
+    color: ${({ theme, isSelected }) =>
+        isSelected
+            ? theme.colors.primary700
+            : theme.colors.primary100};
+    background: ${({ theme, isSelected }) =>
         isSelected
             ? theme.colors.primary100
-            : theme.colors.primary300};
-    font-weight: ${({isSelected}) => isSelected ? 800 : 500};
-    font-size: ${({theme}) => theme.fontSizes.lg};
+            : theme.colors.primary700};
+    font-weight: ${({ isSelected }) => isSelected ? 500 : 800};
+    font-size: ${({ theme }) => theme.fontSizes.lg};
     white-space: nowrap;
     cursor: pointer;
 
