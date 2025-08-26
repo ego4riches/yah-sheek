@@ -2,6 +2,7 @@ export const ROUTES = {
     HOME: '/',
     LOGIN: '/login',
     JOIN: '/join',
+    MY: '/my',
     NOT_FOUND: '*',
     KIA: '/kia-tigers',
     DOOSAN: '/doosan-bears',
