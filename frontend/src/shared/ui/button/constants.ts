@@ -1,6 +1,7 @@
 export const BUTTON_VARIANTS = {
     LIGHT_GRAY: 'light-gray',
     GRAY: 'gray',
+    LIGHT_PRIMARY: 'light-primary',
     PRIMARY: 'primary',
     SECONDARY: 'secondary',
     DANGER: 'danger',
