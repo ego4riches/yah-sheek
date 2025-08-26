@@ -1,4 +1,4 @@
-import type { SortTabsStoreI } from "@/shared/ui/sort-tabs/types";
+import type { SortTabsStoreI } from "@/shared";
 import { create } from "zustand/index";
 
 export const useSortTabsStore = create<SortTabsStoreI>((set) => ({

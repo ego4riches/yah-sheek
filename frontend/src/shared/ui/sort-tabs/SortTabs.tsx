@@ -1,5 +1,5 @@
-import { CategoryMenuBox, CategoryMenuItem, sortTabsList } from "@/features";
-import { useSortTabsStore } from "@/shared/ui/sort-tabs/sort-tabs.store";
+import { CategoryMenuBox, CategoryMenuItem } from "@/features";
+import { sortTabsList, useSortTabsStore } from "@/shared";
 
 export const SortTabs = () => {
     const { selectedTab, setSelectedTab } = useSortTabsStore();

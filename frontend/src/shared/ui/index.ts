@@ -10,4 +10,5 @@ export * from '@/shared/ui/rating-selector';
 export * from '@/shared/ui/review-content-input';
 export * from '@/shared/ui/search';
 export * from '@/shared/ui/sort-options';
+export * from '@/shared/ui/sort-tabs';
 export * from '@/shared/ui/tag-manager';
