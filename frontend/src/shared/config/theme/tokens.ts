@@ -45,6 +45,7 @@ export const borderRadius = {
     md: '0.5rem',
     lg: '0.75rem',
     xl: '1.25rem',
+    xxl: '2rem',
     round: '50%',
     topRoundedSm: '0.25rem 0.25rem 0 0',
     topRoundedMd: '0.5rem 0.5rem 0 0',
