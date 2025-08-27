@@ -10,7 +10,7 @@ export const TeamItem = ({ team, children }: TeamItemT) => {
         setTeam(team);
         return () => reset();
     }, [])
-    
+
     if (!team) {
         console.warn(TEAMS_MESSAGES.TEAM_NOT_FOUND);
         return null;
