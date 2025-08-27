@@ -13,8 +13,10 @@ import java.util.stream.Collectors;
 @Getter
 @AllArgsConstructor
 public class ReviewResponse {
-    private Long id;
-    private Long userId;
+//    private Long id;
+//    private Long userId;
+    private String id;
+    private String userId;
     private String nickname;
     private Long teamId;
     private String teamKey;
@@ -39,20 +41,22 @@ public class ReviewResponse {
 
     public static ReviewResponse from(Review review) {
         return new ReviewResponse(
-                review.getId(),
-                review.getUser().getId(),
-                review.getUser().getNickname(),
-                review.getTeam().getId(),
-                review.getTeam().getTeamKey(),
-                review.getCategory().getId(),
-                review.getCategory().getCategoryName(),
-                review.getContent(),
-                review.getRating(),
-                review.getViewsCount(),
-                review.getLikesCount(),
-                review.getCreatedAt(),
-                review.getReviewTags().stream().map(ReviewTag::getTagName).collect(Collectors.toList()),
-                review.getReviewMedia().stream().map(m -> new MediaItem(m.getMediaType(), m.getMediaUrl(), m.getThumbnailUrl(), m.getOrderIndex())).collect(Collectors.toList())
+//                review.getId(),
+//                review.getUser().getId(),
+                review.getCode()
+                , review.getUser().getCode()
+                , review.getUser().getNickname()
+                , review.getTeam().getId()
+                , review.getTeam().getTeamKey()
+                , review.getCategory().getId()
+                , review.getCategory().getCategoryName()
+                , review.getContent()
+                , review.getRating()
+                , review.getViewsCount()
+                , review.getLikesCount()
+                , review.getCreatedAt()
+                , review.getReviewTags().stream().map(ReviewTag::getTagName).collect(Collectors.toList())
+                , review.getReviewMedia().stream().map(m -> new MediaItem(m.getMediaType(), m.getMediaUrl(), m.getThumbnailUrl(), m.getOrderIndex())).collect(Collectors.toList())
         );
     }
 }

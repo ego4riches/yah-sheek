@@ -2,12 +2,19 @@ package com.ego.yahsheek.review.controller;
 
 import com.ego.yahsheek.review.dto.ReviewCreateRequest;
 import com.ego.yahsheek.review.dto.ReviewResponse;
+import com.ego.yahsheek.review.dto.ReviewSearchRequestDto;
+import com.ego.yahsheek.review.dto.ReviewSort;
 import com.ego.yahsheek.review.service.ReviewService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.aspectj.apache.bcel.classfile.Code;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -15,37 +22,44 @@ import org.springframework.web.bind.annotation.*;
 public class ReviewController {
 
     private final ReviewService reviewService;
+    private final Long userId = 1L;
 
+    @Operation(summary = "리뷰 작성", description = "리뷰를 작성합니다.")
     @PostMapping
     public ReviewResponse create(@Valid @RequestBody ReviewCreateRequest request) {
+
         return reviewService.create(request);
     }
 
+    @Operation(summary = "리뷰 목록 조회", description = "조회/정렬 조건에 따라 리뷰 목록을 조회합니다.")
     @GetMapping
-    public Page<ReviewResponse> getReviews(@RequestParam Long teamId,
-                                           @RequestParam(required = false) Long categoryId,
-                                           @RequestParam(required = false, defaultValue = "recent") String sort,
-                                           Pageable pageable) {
-        return reviewService.getReviews(teamId, categoryId, sort, pageable);
+    public List<ReviewResponse> getReviews(@Valid @ParameterObject ReviewSearchRequestDto request) {
+
+        return reviewService.getReviews(request, userId);
     }
 
-    @GetMapping("/{reviewId}")
-    public ReviewResponse get(@PathVariable Long reviewId) {
-        return reviewService.getReviewAndIncreaseView(reviewId);
+    @Operation(summary = "리뷰 상세 조회", description = "리뷰 상세 내용을 조회합니다.")
+    @GetMapping("/{id}")
+    public ReviewResponse get(@PathVariable String id) {
+
+        return reviewService.getReviewAndIncreaseView(id);
     }
 
-    @DeleteMapping("/{reviewId}")
-    public void delete(@PathVariable Long reviewId) {
-        reviewService.delete(reviewId);
+    @DeleteMapping("/{id}")
+    public ReviewResponse delete(@PathVariable String id) {
+
+        return reviewService.delete(id, userId);
     }
 
-    @PostMapping("/{reviewId}/like")
-    public void like(@PathVariable Long reviewId, @RequestParam Long userId) {
-        reviewService.like(reviewId, userId);
+    @PostMapping("/{id}/like")
+    public ReviewResponse like(@PathVariable String id) {
+
+        return reviewService.like(id, userId);
     }
 
-    @DeleteMapping("/{reviewId}/like")
-    public void unlike(@PathVariable Long reviewId, @RequestParam Long userId) {
-        reviewService.unlike(reviewId, userId);
+    @DeleteMapping("/{id}/like")
+    public ReviewResponse unlike(@PathVariable String id) {
+
+        return reviewService.unlike(id, userId);
     }
 }
