@@ -27,6 +27,9 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "code", nullable = false)
+    private String code;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -43,13 +46,13 @@ public class Review {
     private String content;
 
     @Column(name = "rating")
-    private Integer rating;
+    private int rating;
 
     @Column(name = "views_count")
-    private Integer viewsCount = 0;
+    private int viewsCount = 0;
 
     @Column(name = "likes_count")
-    private Integer likesCount = 0;
+    private int likesCount = 0;
 
     @Column(name = "is_active")
     private boolean isActive = true;
@@ -72,7 +75,8 @@ public class Review {
     private List<ReviewLike> reviewLikes = new ArrayList<>();
 
     @Builder
-    public Review(User user, Team team, Category category, String content, Integer rating) {
+    public Review(String code, User user, Team team, Category category, String content, Integer rating) {
+        this.code = code;
         this.user = user;
         this.team = team;
         this.category = category;
@@ -137,4 +141,9 @@ public class Review {
         this.reviewLikes.remove(reviewLike);
         reviewLike.setReview(null);
     }
+
+    public void refreshLikesCount() {
+        this.likesCount = this.reviewLikes.size();
+    }
+
 }

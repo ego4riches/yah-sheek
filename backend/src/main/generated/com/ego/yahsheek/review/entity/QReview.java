@@ -24,6 +24,8 @@ public class QReview extends EntityPathBase<Review> {
 
     public final com.ego.yahsheek.category.entity.QCategory category;
 
+    public final StringPath code = createString("code");
+
     public final StringPath content = createString("content");
 
     public final DateTimePath<java.time.LocalDateTime> createdAt = createDateTime("createdAt", java.time.LocalDateTime.class);

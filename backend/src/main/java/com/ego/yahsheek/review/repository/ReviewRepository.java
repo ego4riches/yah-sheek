@@ -1,14 +1,20 @@
 package com.ego.yahsheek.review.repository;
 
 import com.ego.yahsheek.review.entity.Review;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import com.ego.yahsheek.user.entity.User;
+import jakarta.persistence.LockModeType;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Lock;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
-public interface ReviewRepository extends JpaRepository<Review, Long> {
-    Page<Review> findByTeam_IdOrderByCreatedAtDesc(Long teamId, Pageable pageable);
-    Page<Review> findByTeam_IdAndCategory_IdOrderByCreatedAtDesc(Long teamId, Long categoryId, Pageable pageable);
+import java.util.List;
+import java.util.Optional;
 
-    Page<Review> findByTeam_IdOrderByLikesCountDescCreatedAtDesc(Long teamId, Pageable pageable);
-    Page<Review> findByTeam_IdAndCategory_IdOrderByLikesCountDescCreatedAtDesc(Long teamId, Long categoryId, Pageable pageable);
+public interface ReviewRepository extends JpaRepository<Review, Long>, ReviewRepositoryCustom {
+
+    Optional<Review> findByCode(String code);
+
+    Optional<Review> findByCodeAndUserId(String code, Long userId);
+
 }

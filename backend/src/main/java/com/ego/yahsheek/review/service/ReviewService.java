@@ -4,9 +4,7 @@ import com.ego.yahsheek.category.entity.Category;
 import com.ego.yahsheek.category.repository.CategoryRepository;
 import com.ego.yahsheek.common.exception.BusinessException;
 import com.ego.yahsheek.common.exception.ExceptionCode;
-import com.ego.yahsheek.review.dto.ReviewCreateRequest;
-import com.ego.yahsheek.review.dto.ReviewMediaRequest;
-import com.ego.yahsheek.review.dto.ReviewResponse;
+import com.ego.yahsheek.review.dto.*;
 import com.ego.yahsheek.review.entity.*;
 import com.ego.yahsheek.review.repository.*;
 import com.ego.yahsheek.team.entity.Team;
@@ -14,14 +12,16 @@ import com.ego.yahsheek.team.repository.TeamRepository;
 import com.ego.yahsheek.user.entity.User;
 import com.ego.yahsheek.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class ReviewService {
 
@@ -39,8 +39,10 @@ public class ReviewService {
                 .orElseThrow(() -> new BusinessException(ExceptionCode.ENTITY_NOT_FOUND));
         Category category = categoryRepository.findById(request.getCategoryId())
                 .orElseThrow(() -> new BusinessException(ExceptionCode.ENTITY_NOT_FOUND));
+        Long seq = reviewRepository.getNextSeq();
 
         Review review = Review.builder()
+                .code(String.format("%s%05d", "R", seq))
                 .user(user)
                 .team(team)
                 .category(category)
@@ -77,55 +79,83 @@ public class ReviewService {
     }
 
     @Transactional(readOnly = true)
-    public Page<ReviewResponse> getReviews(Long teamId, Long categoryId, String sort, Pageable pageable) {
-        Page<Review> page;
-        boolean sortByLike = "likes".equalsIgnoreCase(sort);
-
-        if (categoryId == null) {
-            page = sortByLike
-                    ? reviewRepository.findByTeam_IdOrderByLikesCountDescCreatedAtDesc(teamId, pageable)
-                    : reviewRepository.findByTeam_IdOrderByCreatedAtDesc(teamId, pageable);
-        } else {
-            page = sortByLike
-                    ? reviewRepository.findByTeam_IdAndCategory_IdOrderByLikesCountDescCreatedAtDesc(teamId, categoryId, pageable)
-                    : reviewRepository.findByTeam_IdAndCategory_IdOrderByCreatedAtDesc(teamId, categoryId, pageable);
-        }
-
-        return page.map(ReviewResponse::from);
+    public List<ReviewResponse> getReviews(ReviewSearchRequestDto request, Long userId) {
+        return reviewRepository.findReviews(request, userId)
+                .stream()
+                .map(ReviewResponse::from)
+                .collect(Collectors.toList());
     }
 
     @Transactional
-    public ReviewResponse getReviewAndIncreaseView(Long reviewId) {
-        Review review = reviewRepository.findById(reviewId)
+    public ReviewResponse getReviewAndIncreaseView(String code) {
+        Review review = reviewRepository.findByCode(code)
                 .orElseThrow(() -> new BusinessException(ExceptionCode.ENTITY_NOT_FOUND));
         review.increaseViewsCount();
         return ReviewResponse.from(review);
     }
 
     @Transactional
-    public void delete(Long reviewId) {
-        Review review = reviewRepository.findById(reviewId)
+    public ReviewResponse delete(String code, Long userId) {
+        Review review = reviewRepository.findByCodeAndUserId(code, userId)
                 .orElseThrow(() -> new BusinessException(ExceptionCode.ENTITY_NOT_FOUND));
-        reviewRepository.delete(review);
+        review.deactivate();
+
+        return ReviewResponse.from(review);
     }
 
     @Transactional
-    public void like(Long reviewId, Long userId) {
-        Review review = reviewRepository.findById(reviewId)
+    public ReviewResponse like(String reviewCode, Long userId) {
+        Review review = reviewRepository.findByCode(reviewCode)
                 .orElseThrow(() -> new BusinessException(ExceptionCode.ENTITY_NOT_FOUND));
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new BusinessException(ExceptionCode.ENTITY_NOT_FOUND));
 
-        if (reviewLikeRepository.existsByReview_IdAndUser_Id(review.getId(), user.getId())) {
-            return; // idempotent
+        log.info("리뷰 좋아요 수 (before): {}", review.getLikesCount());
+
+        // 이미 좋아요 눌렀는지 확인
+        boolean alreadyLiked = reviewLikeRepository.existsByReviewIdAndUserId(review.getId(), user.getId());
+        if (alreadyLiked) {
+            throw new BusinessException(ExceptionCode.ALREADY_LIKED);
         }
-        review.addReviewLike(ReviewLike.builder().user(user).build());
+
+        // 좋아요 추가
+        ReviewLike reviewLike = ReviewLike.builder()
+                .review(review)
+                .user(user)
+                .build();
+
+        // 컬렉션에 추가
+        review.addReviewLike(reviewLike);
+
+        // likesCount 컬렉션 기반으로 동기화
+        review.refreshLikesCount();
+
+        log.info("리뷰 좋아요 수 (after): {}", review.getLikesCount());
+
+        return ReviewResponse.from(review);
     }
 
     @Transactional
-    public void unlike(Long reviewId, Long userId) {
-        Review review = reviewRepository.findById(reviewId)
+    public ReviewResponse unlike(String reviewCode, Long userId) {
+        Review review = reviewRepository.findByCode(reviewCode)
                 .orElseThrow(() -> new BusinessException(ExceptionCode.ENTITY_NOT_FOUND));
-        reviewLikeRepository.deleteByReview_IdAndUser_Id(review.getId(), userId);
+
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new BusinessException(ExceptionCode.ENTITY_NOT_FOUND));
+
+        ReviewLike reviewLike = reviewLikeRepository.findByReviewIdAndUserId(review.getId(), user.getId())
+                .orElseThrow(() -> new BusinessException(ExceptionCode.LIKE_NOT_FOUND));
+
+        log.info("리뷰 좋아요 수 (before): {}", review.getLikesCount());
+
+        // 컬렉션에서 제거
+        review.removeReviewLike(reviewLike);
+
+        // likesCount 컬렉션 기반으로 동기화
+        review.refreshLikesCount();
+
+        log.info("리뷰 좋아요 수 (after): {}", review.getLikesCount());
+
+        return ReviewResponse.from(review);
     }
 }
