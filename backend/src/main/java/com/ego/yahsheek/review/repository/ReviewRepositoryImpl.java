@@ -32,14 +32,16 @@ public class ReviewRepositoryImpl implements ReviewRepositoryCustom {
 
         JPAQuery<Review> query = factory.selectFrom(review);
 
-        if (request.getTeamId() != null) {
+        if (request.getTeamId() != null)
             query.where(review.team.id.eq(request.getTeamId()));
-        }
-        if (request.getCategoryId() != null) {
+        if (request.getCategoryId() != null)
             query.where(review.category.id.eq(request.getCategoryId()));
-        }
-        if (request.isWithMedia()) query.where(review.reviewMedia.isNotEmpty());
-        if (request.isMyReview()) query.where(review.user.id.eq(userId));
+        if (request.getSearchKeyword() != null && !request.getSearchKeyword().isEmpty())
+            query.where(review.content.contains(request.getSearchKeyword()));
+        if (request.isWithMedia())
+            query.where(review.reviewMedia.isNotEmpty());
+        if (request.isMyReview())
+            query.where(review.user.id.eq(userId));
 
         query.where(review.isActive.isTrue());
 

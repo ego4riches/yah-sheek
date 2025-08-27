@@ -39,4 +39,7 @@ public class ReviewSearchRequestDto {
     @Schema(description = "조회할 글 수", example = "20")
     private int size = 20;
 
+    @Schema(description = "검색어", example = "존맛")
+    private String searchKeyword;
+
 }
