@@ -1,8 +1,8 @@
-import { TeamItem, type TeamsLayoutT, useTeamByKeyQuery } from "@/features";
+import { TeamLayoutItem, type TeamsLayoutT, useTeamByKeyQuery } from "@/entities";
 import { AsyncBoundary } from "@/shared";
 import type { AxiosError } from "axios";
 
-export const TeamsLayout = ({ teamKey, children }: TeamsLayoutT) => {
+export const TeamLayout = ({ teamKey, children }: TeamsLayoutT) => {
     const { data, status, error } = useTeamByKeyQuery(teamKey);
 
     return (
@@ -12,9 +12,9 @@ export const TeamsLayout = ({ teamKey, children }: TeamsLayoutT) => {
                     errorCode={(error as AxiosError)?.response?.status}
             >
                 {(team) =>
-                        <TeamItem team={team}>
+                        <TeamLayoutItem team={team}>
                             {children}
-                        </TeamItem>}
+                        </TeamLayoutItem>}
             </AsyncBoundary>
     );
 };

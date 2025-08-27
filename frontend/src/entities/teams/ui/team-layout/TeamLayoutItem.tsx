@@ -1,10 +1,9 @@
-import type { TeamItemT } from "@/features";
-import { useLayoutStore } from "@/features/teams/layout/model/layout.store";
+import { type TeamLayoutItemT, useTeamLayoutStore } from "@/entities";
 import { TEAMS_MESSAGES } from "@/shared";
 import { useEffect } from "react";
 
-export const TeamItem = ({ team, children }: TeamItemT) => {
-    const { setTeam, reset } = useLayoutStore();
+export const TeamLayoutItem = ({ team, children }: TeamLayoutItemT) => {
+    const { setTeam, reset } = useTeamLayoutStore();
 
     useEffect(() => {
         setTeam(team);

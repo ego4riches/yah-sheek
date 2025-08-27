@@ -1,13 +1,12 @@
-import { ReviewFeeds } from "@/entities";
-import { TEAMS_KEY, TeamsLayout } from "@/features";
+import { ReviewFeeds, TeamLayout, TEAMS_KEY } from "@/entities";
 import { ReviewHeader } from "@/widgets";
 
 export const SSGPage = () =>
-        <TeamsLayout teamKey={TEAMS_KEY.SSG}>
+        <TeamLayout teamKey={TEAMS_KEY.SSG}>
             {(team) => (
                     <>
                         <ReviewHeader title={team.ballPark}/>
                         <ReviewFeeds teamId={team.id}/>
                     </>
             )}
-        </TeamsLayout>
+        </TeamLayout>

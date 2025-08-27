@@ -1,7 +1,8 @@
-import {AuthButton, TeamsDrawer} from "@/features";
-import {ROUTES} from "@/shared";
+import { TeamsDrawer } from "@/entities";
+import { AuthButton } from "@/features";
+import { ROUTES } from "@/shared";
 import BaseBall from '@/shared/config/assets/baseball.png'
-import {HeaderBox, LogoBox} from "@/widgets";
+import { HeaderBox, LogoBox } from "@/widgets";
 
 export const Header = () => {
     return (

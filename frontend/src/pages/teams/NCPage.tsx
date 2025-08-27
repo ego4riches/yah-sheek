@@ -1,13 +1,12 @@
-import { ReviewFeeds } from "@/entities";
-import { TEAMS_KEY, TeamsLayout } from "@/features";
+import { ReviewFeeds, TeamLayout, TEAMS_KEY } from "@/entities";
 import { ReviewHeader } from "@/widgets";
 
 export const NCPage = () =>
-        <TeamsLayout teamKey={TEAMS_KEY.NC}>
+        <TeamLayout teamKey={TEAMS_KEY.NC}>
             {(team) => (
                     <>
                         <ReviewHeader title={team.ballPark}/>
                         <ReviewFeeds teamId={team.id}/>
                     </>
             )}
-        </TeamsLayout>
+        </TeamLayout>

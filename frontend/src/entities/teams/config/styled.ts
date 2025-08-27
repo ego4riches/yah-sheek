@@ -1,9 +1,10 @@
-import type { DrawerBoxT, DrawerItemBoxT } from "@/features";
+import type { DrawerBoxT, TeamsDrawerItemBoxT } from "@/entities";
 import { getShouldForwardProps } from "@/shared";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
-export const TeamsDrawerWrapper = styled.div`
+// Teams Drawer
+export const TeamDrawerWrapper = styled.div`
     width: fit-content;
     z-index: 1;
 `
@@ -30,9 +31,9 @@ export const DrawerBox = styled.nav.withConfig({
         (status === "error" || open ? "translateX(0)" : "translateX(-100%)")};
 `
 
-export const DrawerItemBox = styled(Link).withConfig({
+export const TeamsDrawerItemBox = styled(Link).withConfig({
     shouldForwardProp: getShouldForwardProps(['active']),
-})<DrawerItemBoxT>`
+})<TeamsDrawerItemBoxT>`
     text-align: center;
     padding: calc(100vh / 25) 0;
     color: ${({ theme, active }) =>

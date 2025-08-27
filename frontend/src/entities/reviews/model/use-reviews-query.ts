@@ -1,14 +1,13 @@
 import { fetchReviews, type GetReviewsRequestT, type GetReviewsResponseT, REVIEWS_QUERY_KEYS } from "@/entities";
-import { useCategoryMenuStore } from "@/features";
-import { mergeIfPresent, useSortOptionsStore, useZustandQuery } from "@/shared";
+import { mergeIfPresent, useZustandQuery } from "@/shared";
 
 export const useReviewsQuery = (params: GetReviewsRequestT) => {
-    const category = useCategoryMenuStore((s) => s.selectedCategory);
-    const sort = useSortOptionsStore((s) => s.selectedSortOption.id);
+    // const categoryId = useCategoryMenuStore((s) => s.selectedCategoryId);
+    // const sort = useSortOptionsStore((s) => s.selectedSortOption.value);
 
     const mergedParams = mergeIfPresent(params, {
-        category,
-        sort,
+        // categoryId,
+        // sort,
     });
 
     return useZustandQuery<GetReviewsResponseT>(
@@ -16,7 +15,6 @@ export const useReviewsQuery = (params: GetReviewsRequestT) => {
         () => fetchReviews(mergedParams),
         {
             enabled: !!params.teamId,
-            staleTime: 1000 * 60,
         }
     );
 };

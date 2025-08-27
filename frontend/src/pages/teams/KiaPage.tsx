@@ -1,13 +1,12 @@
-import { ReviewFeeds } from "@/entities";
-import { TEAMS_KEY, TeamsLayout } from "@/features";
+import { ReviewFeeds, TeamLayout, TEAMS_KEY } from "@/entities";
 import { ReviewHeader } from "@/widgets";
 
 export const KiaPage = () =>
-        <TeamsLayout teamKey={TEAMS_KEY.KIA}>
+        <TeamLayout teamKey={TEAMS_KEY.KIA}>
             {(team) => (
                     <>
                         <ReviewHeader title={team.ballPark}/>
                         <ReviewFeeds teamId={team.id}/>
                     </>
             )}
-        </TeamsLayout>
+        </TeamLayout>
