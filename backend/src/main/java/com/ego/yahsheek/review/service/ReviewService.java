@@ -13,6 +13,7 @@ import com.ego.yahsheek.user.entity.User;
 import com.ego.yahsheek.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -105,56 +106,53 @@ public class ReviewService {
 
     @Transactional
     public ReviewResponse like(String reviewCode, Long userId) {
-        Review review = reviewRepository.findByCode(reviewCode)
+        // 1) Review + reviewLikes + user까지 fetch join으로 로드
+        Review review = reviewRepository.findByCodeWithLikesAndUsers(reviewCode)
                 .orElseThrow(() -> new BusinessException(ExceptionCode.ENTITY_NOT_FOUND));
+
+        // 2) User 로드(프록시로도 충분)
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new BusinessException(ExceptionCode.ENTITY_NOT_FOUND));
 
-        log.info("리뷰 좋아요 수 (before): {}", review.getLikesCount());
-
-        // 이미 좋아요 눌렀는지 확인
-        boolean alreadyLiked = reviewLikeRepository.existsByReviewIdAndUserId(review.getId(), user.getId());
-        if (alreadyLiked) {
+        // 3) 중복 검사(in-memory)
+        if (review.hasLikeByUserId(userId)) {
             throw new BusinessException(ExceptionCode.ALREADY_LIKED);
         }
 
-        // 좋아요 추가
-        ReviewLike reviewLike = ReviewLike.builder()
-                .review(review)
-                .user(user)
-                .build();
+        // 4) 추가(양방향 세팅)
+        review.addLike(user);
 
-        // 컬렉션에 추가
-        review.addReviewLike(reviewLike);
-
-        // likesCount 컬렉션 기반으로 동기화
+        // 5) 카운트 동기화
         review.refreshLikesCount();
 
-        log.info("리뷰 좋아요 수 (after): {}", review.getLikesCount());
+        // 6) flush 시 uk_review_user로 동시성 중복 방지
+        try {
+            // JPA는 트랜잭션 커밋 시 flush. 즉시 검증하려면 flush 호출 가능.
+            // entityManager.flush(); // 필요 시 주석 해제
+        } catch (DataIntegrityViolationException e) {
+            // 유니크 제약 위반 → 이미 좋아요 처리
+            throw new BusinessException(ExceptionCode.ALREADY_LIKED);
+        }
 
         return ReviewResponse.from(review);
     }
 
     @Transactional
     public ReviewResponse unlike(String reviewCode, Long userId) {
-        Review review = reviewRepository.findByCode(reviewCode)
+        // 1) Review + reviewLikes + user까지 fetch join으로 로드
+        Review review = reviewRepository.findByCodeWithLikesAndUsers(reviewCode)
                 .orElseThrow(() -> new BusinessException(ExceptionCode.ENTITY_NOT_FOUND));
 
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new BusinessException(ExceptionCode.ENTITY_NOT_FOUND));
+        // 2) 없는 좋아요면 예외
+        if (!review.hasLikeByUserId(userId)) {
+            throw new BusinessException(ExceptionCode.LIKE_NOT_FOUND);
+        }
 
-        ReviewLike reviewLike = reviewLikeRepository.findByReviewIdAndUserId(review.getId(), user.getId())
-                .orElseThrow(() -> new BusinessException(ExceptionCode.LIKE_NOT_FOUND));
+        // 3) 제거(양방향 끊기 + orphanRemoval로 delete)
+        review.removeLikeByUserId(userId);
 
-        log.info("리뷰 좋아요 수 (before): {}", review.getLikesCount());
-
-        // 컬렉션에서 제거
-        review.removeReviewLike(reviewLike);
-
-        // likesCount 컬렉션 기반으로 동기화
+        // 4) 카운트 동기화
         review.refreshLikesCount();
-
-        log.info("리뷰 좋아요 수 (after): {}", review.getLikesCount());
 
         return ReviewResponse.from(review);
     }

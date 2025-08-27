@@ -3,11 +3,13 @@ package com.ego.yahsheek.review.repository;
 import com.ego.yahsheek.review.dto.ReviewSearchRequestDto;
 import com.ego.yahsheek.review.entity.QReview;
 import com.ego.yahsheek.review.entity.Review;
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -28,39 +30,24 @@ public class ReviewRepositoryImpl implements ReviewRepositoryCustom {
 
     @Override
     public List<Review> findReviews(ReviewSearchRequestDto request, Long userId) {
-        QReview review = QReview.review;
+        BooleanBuilder where = new BooleanBuilder().and(review.isActive.isTrue());
 
-        JPAQuery<Review> query = factory.selectFrom(review);
+        if (request.getTeamId() != null) where.and(review.team.id.eq(request.getTeamId()));
+        if (request.getCategoryId() != null) where.and(review.category.id.eq(request.getCategoryId()));
+        if (StringUtils.hasText(request.getSearchKeyword())) where.and(review.content.contains(request.getSearchKeyword()));
+        if (request.isWithMedia()) where.and(review.reviewMedia.isNotEmpty());
+        if (request.isMyReview()) where.and(review.user.id.eq(userId));
 
-        if (request.getTeamId() != null)
-            query.where(review.team.id.eq(request.getTeamId()));
-        if (request.getCategoryId() != null)
-            query.where(review.category.id.eq(request.getCategoryId()));
-        if (request.getSearchKeyword() != null && !request.getSearchKeyword().isEmpty())
-            query.where(review.content.contains(request.getSearchKeyword()));
-        if (request.isWithMedia())
-            query.where(review.reviewMedia.isNotEmpty());
-        if (request.isMyReview())
-            query.where(review.user.id.eq(userId));
-
-        query.where(review.isActive.isTrue());
+        JPAQuery<Review> query = factory.selectFrom(review).where(where);
 
         switch (request.getSort()) {
-            case POPULAR:
-                query.orderBy(review.likesCount.desc(), review.id.desc());
-                break;
-            case VIEWS:
-                query.orderBy(review.viewsCount.desc(), review.id.desc());
-                break;
-            case LATEST:
-                query.orderBy(review.createdAt.desc(), review.id.desc());
-            default:
-                query.orderBy(review.id.desc());
-                break;
+            case POPULAR -> query.orderBy(review.likesCount.desc(), review.id.desc());
+            case VIEWS   -> query.orderBy(review.viewsCount.desc(), review.id.desc());
+            case LATEST  -> query.orderBy(review.createdAt.desc(), review.id.desc());
+            default      -> query.orderBy(review.id.desc());
         }
 
-        return query
-                .offset(request.getOffset())
+        return query.offset(request.getOffset())
                 .limit(request.getSize())
                 .fetch();
     }

@@ -17,4 +17,12 @@ public interface ReviewRepository extends JpaRepository<Review, Long>, ReviewRep
 
     Optional<Review> findByCodeAndUserId(String code, Long userId);
 
+    @Query("""
+    select distinct r from Review r
+    left join fetch r.reviewLikes rl
+    left join fetch rl.user u
+    where r.code = :code
+    """)
+    Optional<Review> findByCodeWithLikesAndUsers(@Param("code") String code);
+
 }

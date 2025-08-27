@@ -1,6 +1,8 @@
 package com.ego.yahsheek.review.entity;
 
 import com.ego.yahsheek.category.entity.Category;
+import com.ego.yahsheek.common.exception.BusinessException;
+import com.ego.yahsheek.common.exception.ExceptionCode;
 import com.ego.yahsheek.team.entity.Team;
 import com.ego.yahsheek.user.entity.User;
 import jakarta.persistence.*;
@@ -15,6 +17,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "reviews")
@@ -94,16 +97,6 @@ public class Review {
         this.viewsCount++;
     }
 
-    public void increaseLikesCount() {
-        this.likesCount++;
-    }
-
-    public void decreaseLikesCount() {
-        if (this.likesCount > 0) {
-            this.likesCount--;
-        }
-    }
-
     public void deactivate() {
         this.isActive = false;
     }
@@ -132,18 +125,56 @@ public class Review {
         reviewMedia.setReview(null);
     }
 
-    public void addReviewLike(ReviewLike reviewLike) {
-        this.reviewLikes.add(reviewLike);
-        reviewLike.setReview(this);
+    /** 유저가 이미 좋아요 했는지 컬렉션에서 검사 */
+    public boolean hasLikeByUserId(Long userId) {
+        return reviewLikes.stream()
+                .anyMatch(rl -> rl.getUser() != null && Objects.equals(rl.getUser().getId(), userId));
     }
 
-    public void removeReviewLike(ReviewLike reviewLike) {
-        this.reviewLikes.remove(reviewLike);
-        reviewLike.setReview(null);
+    /** 좋아요 추가(중복 방지 + 양방향 세팅) */
+    public void addLike(User user) {
+        if (user == null) throw new IllegalArgumentException("user is null");
+        if (hasLikeByUserId(user.getId())) return; // 이중 방어
+        ReviewLike rl = ReviewLike.of(this, user);
+        this.reviewLikes.add(rl);
     }
 
+    /** 유저의 좋아요 제거(없으면 예외) */
+    public void removeLikeByUserId(Long userId) {
+        ReviewLike target = reviewLikes.stream()
+                .filter(rl -> rl.getUser() != null && Objects.equals(rl.getUser().getId(), userId))
+                .findFirst()
+                .orElseThrow(() -> new BusinessException(ExceptionCode.LIKE_NOT_FOUND));
+
+        reviewLikes.remove(target);   // orphanRemoval=true → delete
+        target.detach();              // 양방향 참조 끊기(안전)
+    }
+
+    /** likesCount를 컬렉션 기반으로 동기화 */
     public void refreshLikesCount() {
-        this.likesCount = this.reviewLikes.size();
+        this.likesCount = reviewLikes != null ? reviewLikes.size() : 0;
+    }
+
+    // Review.java
+    @Override
+    public String toString() {
+        return "Review{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", userId=" + (user != null ? user.getId() : null) +
+                ", teamId=" + (team != null ? team.getId() : null) +
+                ", category=" + (category != null ? category : null) +
+                ", content='" + content + '\'' +
+                ", rating=" + rating +
+                ", viewsCount=" + viewsCount +
+                ", likesCount=" + likesCount +
+                ", isActive=" + isActive +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                ", reviewTagsCount=" + (reviewTags != null ? reviewTags.size() : 0) +
+                ", reviewMediaCount=" + (reviewMedia != null ? reviewMedia.size() : 0) +
+                ", reviewLikesCount=" + (reviewLikes != null ? reviewLikes.size() : 0) +
+                '}';
     }
 
 }

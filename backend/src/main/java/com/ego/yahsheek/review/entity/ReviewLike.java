@@ -2,10 +2,7 @@ package com.ego.yahsheek.review.entity;
 
 import com.ego.yahsheek.user.entity.User;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -22,6 +19,7 @@ public class ReviewLike {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Setter
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "review_id", nullable = false)
     private Review review;
@@ -40,7 +38,34 @@ public class ReviewLike {
         this.user = user;
     }
 
-    public void setReview(Review review) {
-        this.review = review;
+    protected ReviewLike() {}
+
+    public static ReviewLike of(Review review, User user) {
+        if (review == null || user == null) throw new IllegalArgumentException("null arg");
+        return new ReviewLike(review, user);
+    }
+
+    public void detach() {
+        this.review = null;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ReviewLike)) return false;
+        ReviewLike that = (ReviewLike) o;
+        return id != null && id.equals(that.id);
+    }
+    @Override
+    public int hashCode() { return 31; }
+
+    @Override
+    public String toString() {
+        return "ReviewLike{" +
+                "id=" + id +
+                ", reviewId=" + (review != null ? review.getId() : null) +
+                ", userId=" + (user != null ? user.getId() : null) +
+                ", createdAt=" + createdAt +
+                '}';
     }
 }
