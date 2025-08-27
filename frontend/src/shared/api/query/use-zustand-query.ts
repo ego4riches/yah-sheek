@@ -1,6 +1,5 @@
-import {type BaseResponseT, useQueryEffects, useQueryStore, type ZustandQueryOptions} from "@/shared";
-import {type QueryKey, useQuery} from "@tanstack/react-query";
-
+import { type BaseResponseT, useQueryEffects, useQueryStore, type ZustandQueryOptions } from "@/shared";
+import { type QueryKey, useQuery } from "@tanstack/react-query";
 
 export const useZustandQuery = <TData, TError = unknown>(
     key: QueryKey,

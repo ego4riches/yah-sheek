@@ -1,14 +1,15 @@
-import { CategoryMenu } from "@/features";
+import { CategoriesMenu } from "@/entities";
 import { Search, SortOptions } from "@/shared";
-import { ReviewHeaderControlBox, type ReviewHeaderT, ReviewHeaderTitle, ReviewHeaderWrapper } from "@/widgets";
+import { ReviewComposer, ReviewHeaderControlBox, type ReviewHeaderT, ReviewHeaderTitle, ReviewHeaderWrapper } from "@/widgets";
 
 export const ReviewHeader = ({ title }: ReviewHeaderT) => {
     return (
             <ReviewHeaderWrapper>
                 <ReviewHeaderTitle>{title}</ReviewHeaderTitle>
+                <ReviewComposer/>
+                <CategoriesMenu/>
                 <ReviewHeaderControlBox>
                     <SortOptions/>
-                    <CategoryMenu/>
                     <Search/>
                 </ReviewHeaderControlBox>
             </ReviewHeaderWrapper>

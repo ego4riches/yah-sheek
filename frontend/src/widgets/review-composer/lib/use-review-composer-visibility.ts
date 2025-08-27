@@ -1,16 +1,16 @@
-import {useCategorySelectorStore} from "@/features";
-import {useClickOutside, useMediaUploadStore, useRatingSelectorStore, useReviewContentInputStore, useTagManagerStore, useTagSuggestionsStore} from "@/shared";
-import {useReviewComposerStore} from "@/widgets/review-composer";
-import {useEffect} from "react";
+import { useCategoriesSelectorStore } from "@/entities";
+import { useClickOutside, useMediaUploadStore, useRatingSelectorStore, useReviewContentInputStore, useTagManagerStore, useTagSuggestionsStore } from "@/shared";
+import { useReviewComposerStore } from "@/widgets/review-composer";
+import { useEffect } from "react";
 
 export const useReviewComposerVisibility = () => {
-    const {isOpen: isCategoryOpen, setIsOpen: setIsCategoryOpen, reset: resetCategory} = useCategorySelectorStore();
-    const {setRating} = useRatingSelectorStore();
-    const {isExpanded: isTagsExpanded, setIsExpanded: setIsTagsExpanded, reset: resetTags} = useTagManagerStore();
-    const {reset: resetTagSuggestions} = useTagSuggestionsStore();
-    const {setContent} = useReviewContentInputStore();
-    const {reset: resetMedia} = useMediaUploadStore();
-    const {isExpanded, setIsExpanded} = useReviewComposerStore();
+    const { isOpen: isCategoryOpen, setIsOpen: setIsCategoryOpen, reset: resetCategory } = useCategoriesSelectorStore();
+    const { setRating } = useRatingSelectorStore();
+    const { isExpanded: isTagsExpanded, setIsExpanded: setIsTagsExpanded, reset: resetTags } = useTagManagerStore();
+    const { reset: resetTagSuggestions } = useTagSuggestionsStore();
+    const { setContent } = useReviewContentInputStore();
+    const { reset: resetMedia } = useMediaUploadStore();
+    const { isExpanded, setIsExpanded } = useReviewComposerStore();
 
     // 컴포저 접기
     const collapse = () => {

@@ -1,4 +1,4 @@
-import { CATEGORIES_KEY } from "@/features";
+import { CATEGORIES_KEY } from "@/entities";
 import { flexCenter, flexColumnCenter, flexSpaceBetween, flexStart, getShouldForwardProps, type hasSrcT, type IsValueI, textEllipsis } from "@/shared";
 import LikeHoverIcon from "@/shared/config/assets/like-hover.png"
 import LikeIcon from "@/shared/config/assets/like.png"
@@ -7,13 +7,14 @@ import styled from "styled-components";
 export const FeedWrapper = styled.div`
     ${flexSpaceBetween};
     width: 100%;
+    background: ${({ theme }) => theme.colors.light};
     border-top: 1px solid ${({ theme }) => theme.colors.gray200};
     gap: 2.5rem;
     padding: 2.5rem 2rem;
     cursor: pointer;
 
     &:hover {
-        background: ${({ theme }) => theme.colors.light};
+        background: ${({ theme }) => theme.colors.gray100};
     }
 `
 
@@ -36,8 +37,7 @@ export const FeedThumbnailBox = styled.div.withConfig({
 `
 
 export const FeedPreviewWrapper = styled.div`
-    min-width: 0;
-    gap: 0.5rem;
+    margin-right: auto;
 `
 
 export const PreviewCategoryBox = styled.span.withConfig({

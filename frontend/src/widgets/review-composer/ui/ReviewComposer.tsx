@@ -1,4 +1,5 @@
-import { CategorySelector, useAddReviewForm } from '@/features';
+import { CategoriesSelector } from "@/entities/categories/ui/selector";
+import { useAddReviewForm } from '@/features';
 import { RatingSelector, ReviewContentInput, TagManager } from '@/shared';
 import { MediaUpload } from '@/shared/ui/media-upload/MediaUpload.tsx';
 import { ComposerExpandedWrapper, ComposerHeaderBox, ReviewComposerWrapper, useReviewComposerStore, useReviewComposerVisibility, } from '@/widgets/review-composer';
@@ -11,10 +12,10 @@ export const ReviewComposer = () => {
     const handleFocus = () => setIsExpanded(true);
 
     return (
-            <ReviewComposerWrapper ref={composerRef}>
+            <ReviewComposerWrapper ref={composerRef} isExpanded={isExpanded}>
                 <ComposerExpandedWrapper isExpanded={isExpanded}>
                     <ComposerHeaderBox>
-                        <CategorySelector/>
+                        <CategoriesSelector/>
                         <RatingSelector/>
                     </ComposerHeaderBox>
                     <TagManager/>

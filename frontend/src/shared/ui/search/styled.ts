@@ -1,13 +1,9 @@
-import { flexCenter, media } from "@/shared";
+import { flexCenter } from "@/shared";
 import styled from "styled-components";
 
 export const SearchWrapper = styled.div`
     width: fit-content;
     position: relative;
-
-    ${media.mobile} {
-        top: 13.5rem;
-    }
 `;
 
 export const SearchInputBox = styled.input`
@@ -21,10 +17,6 @@ export const SearchInputBox = styled.input`
     &:focus {
         box-shadow: 0 0 0 0.4rem ${({ theme }) => theme.colors.primary300};
         border-color: ${({ theme }) => theme.colors.primary400};
-    }
-
-    ${media.mobile} {
-        min-width: auto;
     }
 `;
 

@@ -1,37 +1,20 @@
-import {flexColumnCenter, gridCenterX, media} from "@/shared";
+import { flexColumnCenter, flexSpaceBetween } from "@/shared";
 import styled from "styled-components";
 
 export const ReviewHeaderWrapper = styled.div`
     ${flexColumnCenter};
+    padding: 3rem 3rem 1.5rem 3rem;
+    color: ${({ theme }) => theme.colors.light};
+    background: ${({ theme }) => theme.colors.primary700};
+    gap: 2rem;
 `;
 
 export const ReviewHeaderTitle = styled.h1`
-    font-family: ${({theme}) => theme.fontFamilies.Accent600};
-    font-size: ${({theme}) => theme.fontSizes.h1};
-    color: ${({theme}) => theme.colors.gray900};
-    text-align: center;
-    margin-bottom: 1rem;
+    font-family: ${({ theme }) => theme.fontFamilies.Accent400};
+    font-size: ${({ theme }) => theme.fontSizes.h1};
 `;
 
 export const ReviewHeaderControlBox = styled.div`
-    ${gridCenterX};
+    ${flexSpaceBetween};
     width: 100%;
-    gap: 1rem;
-
-    > *:first-child {
-        justify-self: start;
-    }
-
-    > *:nth-child(2) {
-        justify-self: center;
-    }
-
-    > *:last-child {
-        justify-self: end;
-    }
-
-    ${media.mobile} {
-        grid-template-rows: auto auto;
-        grid-template-columns: 1fr 1fr;
-    }
 `;

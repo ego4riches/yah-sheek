@@ -1,11 +1,12 @@
-import { useAddReviewMutation, useCategorySelectorStore } from "@/features";
+import { useCategoriesSelectorStore } from "@/entities";
+import { useAddReviewMutation } from "@/features";
 import { useLayoutStore } from "@/features/teams/layout/model/layout.store";
 import { mediaUploadFormatter, useMediaUploadStore, useRatingSelectorStore, useReviewContentInputStore, useTagManagerStore } from "@/shared";
 import { useReviewComposerVisibility } from "@/widgets/review-composer";
 
 export const useAddReviewForm = () => {
     const teamId = useLayoutStore((s) => s.team?.id);
-    const category = useCategorySelectorStore((s) => s.category);
+    const category = useCategoriesSelectorStore((s) => s.category);
     const content = useReviewContentInputStore((s) => s.content);
     const rating = useRatingSelectorStore((s) => s.rating);
     const tags = useTagManagerStore((s) => s.tags);
@@ -28,7 +29,7 @@ export const useAddReviewForm = () => {
             tags,
             mediaList: mediaUploadFormatter(attachments)
         }
-        
+
         mutate(review, {
             onSuccess: () => {
                 alert("Review submitted successfully");

@@ -1,11 +1,11 @@
-import { CategoryMenuBox, CategoryMenuItem } from "@/features";
+import { CategoriesMenuBox, CategoryMenuItem } from "@/entities";
 import { sortTabsList, useSortTabsStore } from "@/shared";
 
 export const SortTabs = () => {
     const { selectedTab, setSelectedTab } = useSortTabsStore();
 
     return (
-            <CategoryMenuBox>
+            <CategoriesMenuBox>
                 {
                     sortTabsList.map(({ id, key, label }) =>
                             <CategoryMenuItem
@@ -15,6 +15,6 @@ export const SortTabs = () => {
                                     onClick={() => setSelectedTab(key)}
                             />)
                 }
-            </CategoryMenuBox>
+            </CategoriesMenuBox>
     );
 };
