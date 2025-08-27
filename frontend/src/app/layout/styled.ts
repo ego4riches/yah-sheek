@@ -5,7 +5,7 @@ export const LayoutWrapper = styled.div`
     display: flex;
     flex-direction: column;
     min-width: 40rem;
-    min-height: 100vh;
+    min-height: 100dvh;
 `
 
 export const MainWrapper = styled.main`
