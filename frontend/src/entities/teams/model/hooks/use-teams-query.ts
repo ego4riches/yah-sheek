@@ -3,10 +3,8 @@ import { useZustandQuery } from "@/shared";
 
 export const useTeamsQuery = () => {
     return useZustandQuery<GetTeamsResponseT>(
-        [TEAMS_QUERY_KEYS.BASE],
+        TEAMS_QUERY_KEYS.all,
         () => fetchTeams(),
-        {
-            staleTime: 1000 * 60 * 60 * 24
-        }
+        { staleTime: 1000 * 60 * 60 * 24 }
     );
 };

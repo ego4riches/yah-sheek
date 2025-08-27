@@ -1,9 +1,9 @@
-export const CATEGORIES_KEY = {
-    ALL: 'all',
-    FOOD: 'food',
-    SNACK: 'snack',
-    DRINK: 'drink',
-    ALCOHOL: 'alcohol',
+export const CATEGORY_ID = {
+    ALL: 0,
+    FOOD: 1,
+    SNACK: 2,
+    DRINK: 3,
+    ALCOHOL: 4,
 }
 
 export const defaultCategory = {

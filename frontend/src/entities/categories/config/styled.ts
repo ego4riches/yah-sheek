@@ -14,7 +14,7 @@ export const CategoriesMenuBox = styled.div`
 export const CategoryMenuItemBox = styled.div.withConfig({
     shouldForwardProp: getShouldForwardProps(['isSelected']),
 })<IsSelectedI>`
-    padding: 1rem 2rem;
+    padding: 0.5rem 2rem;
     border-radius: ${({ theme }) => theme.borderRadius.xxl};
     color: ${({ theme, isSelected }) =>
         isSelected

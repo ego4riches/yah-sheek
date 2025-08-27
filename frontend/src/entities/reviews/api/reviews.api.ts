@@ -7,8 +7,8 @@ export const fetchReviews = async (params: GetReviewsRequestT) => {
     return await httpClient.get<GetReviewsResponseT>(BASE_URL, params);
 }
 
-export const fetchReviewById = async (reviewId: number) => {
-    return await httpClient.get<GetReviewByIdResponseT>(`${BASE_URL}/${reviewId}`);
+export const fetchReviewById = async (id: number) => {
+    return await httpClient.get<GetReviewByIdResponseT>(`${BASE_URL}/${id}`);
 }
 
 export const createReview = async (body: PostReviewRequestT) => {

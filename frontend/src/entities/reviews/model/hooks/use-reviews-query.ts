@@ -11,10 +11,8 @@ export const useReviewsQuery = (params: GetReviewsRequestT) => {
     });
 
     return useZustandQuery<GetReviewsResponseT>(
-        [REVIEWS_QUERY_KEYS.BASE, mergedParams],
+        REVIEWS_QUERY_KEYS.list(mergedParams),
         () => fetchReviews(mergedParams),
-        {
-            enabled: !!params.teamId,
-        }
+        { enabled: !!params.teamId }
     );
 };

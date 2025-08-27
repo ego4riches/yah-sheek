@@ -11,13 +11,14 @@ export const useAddReviewForm = () => {
     const tags = useTagManagerStore((s) => s.tags);
     const attachments = useMediaUploadStore((s) => s.attachments);
 
+    // userId: 1 임시 하드 코딩
+    const { mutate } = useAddReviewMutation(1);
     const { reset } = useReviewComposerVisibility();
-    const { mutate } = useAddReviewMutation();
 
     const isSubmitDisabled = !teamId || !category.categoryKey || !content.trim() || rating === 0;
 
     const submitReview = () => {
-        if (!teamId) return;
+        if (!teamId) return console.error("Cannot submit review: Missing teamId");
 
         const review = {
             userId: 0,

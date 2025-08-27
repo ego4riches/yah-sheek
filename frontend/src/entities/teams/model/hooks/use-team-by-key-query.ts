@@ -3,7 +3,7 @@ import { useZustandQuery } from "@/shared";
 
 export const useTeamByKeyQuery = (team: string) => {
     return useZustandQuery<GetTeamByKeyResponseT>(
-        [TEAMS_QUERY_KEYS.TEAM],
+        TEAMS_QUERY_KEYS.detail(team),
         () => fetchTeamByKey(team),
     );
 };

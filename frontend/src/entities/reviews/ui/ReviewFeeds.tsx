@@ -1,8 +1,8 @@
-import { Feeds, type ReviewFeedT, ReviewFeedWrapper, useReviewsQuery } from "@/entities";
+import { FeedList, type ReviewFeedT, ReviewFeedWrapper, useReviewsQuery } from "@/entities";
 import { AsyncBoundary, } from '@/shared';
 import type { AxiosError } from "axios";
 
-export const ReviewFeeds = ({ teamId }: ReviewFeedT) => {
+export const ReviewFeeds = ({ teamId, onClick }: ReviewFeedT) => {
     const { data, status, error } = useReviewsQuery({ teamId });
 
     return (
@@ -12,7 +12,7 @@ export const ReviewFeeds = ({ teamId }: ReviewFeedT) => {
                         status={status}
                         errorCode={(error as AxiosError)?.response?.status}
                 >
-                    {(reviews) => <Feeds reviews={reviews}/>}
+                    {(reviews) => <FeedList reviews={reviews} onClick={onClick}/>}
                 </AsyncBoundary>
             </ReviewFeedWrapper>
     );
