@@ -8,5 +8,5 @@ export const fetchTeams = async () => {
 }
 
 export const fetchTeamByKey = async (teamKey: string) => {
-    return await httpClient.get<GetTeamByKeyResponseT>(BASE_URL, { teamKey });
+    return await httpClient.get<GetTeamByKeyResponseT>(`${BASE_URL}/${teamKey}`);
 }
