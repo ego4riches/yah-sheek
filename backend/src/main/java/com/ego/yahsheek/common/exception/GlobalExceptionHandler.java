@@ -4,6 +4,7 @@ import jakarta.persistence.PersistenceException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.CannotCreateTransactionException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
@@ -36,6 +37,15 @@ public class GlobalExceptionHandler {
         log.info("✅ [No Content Error] 예외 발생: {}", e.getMessage());
 
         return ResponseEntity.noContent().build();
+    }
+
+    @ExceptionHandler(CannotCreateTransactionException.class)
+    public ResponseEntity<ErrorResponse> handleCannotCreateTransactionException(CannotCreateTransactionException e) {
+        log.info("✅ [더는 트랜잭션을 못 만들어 Error] 예외 발생: {}", e.getMessage());
+
+        return ResponseEntity
+                .status(ExceptionCode.INTERNAL_ERROR.getStatus())
+                .body(ErrorResponse.of(ExceptionCode.SUPABASE_ERROR));
     }
 
     @ExceptionHandler(Exception.class)

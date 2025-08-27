@@ -1,5 +1,6 @@
 package com.ego.yahsheek.review.controller;
 
+import com.ego.yahsheek.common.response.BaseResponse;
 import com.ego.yahsheek.review.dto.ReviewCreateRequest;
 import com.ego.yahsheek.review.dto.ReviewResponse;
 import com.ego.yahsheek.review.dto.ReviewSearchRequestDto;
@@ -52,14 +53,18 @@ public class ReviewController {
     }
 
     @PostMapping("/{id}/like")
-    public ReviewResponse like(@PathVariable String id) {
+    public BaseResponse<?> like(@PathVariable String id) {
 
-        return reviewService.like(id, userId);
+        reviewService.like(id, userId);
+
+        return BaseResponse.ok(null);
     }
 
     @DeleteMapping("/{id}/like")
-    public ReviewResponse unlike(@PathVariable String id) {
+    public BaseResponse<?> unlike(@PathVariable String id) {
 
-        return reviewService.unlike(id, userId);
+        reviewService.unlike(id, userId);
+
+        return BaseResponse.ok(null);
     }
 }

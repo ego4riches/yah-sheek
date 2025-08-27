@@ -20,11 +20,11 @@ public class ReviewLike {
     private Long id;
 
     @Setter
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "review_id", nullable = false)
     private Review review;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
@@ -37,8 +37,6 @@ public class ReviewLike {
         this.review = review;
         this.user = user;
     }
-
-    protected ReviewLike() {}
 
     public static ReviewLike of(Review review, User user) {
         if (review == null || user == null) throw new IllegalArgumentException("null arg");

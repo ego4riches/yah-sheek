@@ -105,55 +105,41 @@ public class ReviewService {
     }
 
     @Transactional
-    public ReviewResponse like(String reviewCode, Long userId) {
-        // 1) Review + reviewLikes + user까지 fetch join으로 로드
+    public void like(String reviewCode, Long userId) {
         Review review = reviewRepository.findByCodeWithLikesAndUsers(reviewCode)
                 .orElseThrow(() -> new BusinessException(ExceptionCode.ENTITY_NOT_FOUND));
 
-        // 2) User 로드(프록시로도 충분)
+        log.info("[like - before] review: {}", review);
+        log.info("[like - before] review.getReviewLikes().size(): {}", review.getReviewLikes().size());
+
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new BusinessException(ExceptionCode.ENTITY_NOT_FOUND));
 
-        // 3) 중복 검사(in-memory)
-        if (review.hasLikeByUserId(userId)) {
-            throw new BusinessException(ExceptionCode.ALREADY_LIKED);
-        }
+        boolean exists = reviewLikeRepository.existsByReviewIdAndUserId(review.getId(), userId);
+        if (exists) throw new BusinessException(ExceptionCode.ALREADY_LIKED);
 
-        // 4) 추가(양방향 세팅)
-        review.addLike(user);
+        ReviewLike like = ReviewLike.of(review, user);
+        review.addLike(like);
 
-        // 5) 카운트 동기화
-        review.refreshLikesCount();
-
-        // 6) flush 시 uk_review_user로 동시성 중복 방지
-        try {
-            // JPA는 트랜잭션 커밋 시 flush. 즉시 검증하려면 flush 호출 가능.
-            // entityManager.flush(); // 필요 시 주석 해제
-        } catch (DataIntegrityViolationException e) {
-            // 유니크 제약 위반 → 이미 좋아요 처리
-            throw new BusinessException(ExceptionCode.ALREADY_LIKED);
-        }
-
-        return ReviewResponse.from(review);
+        log.info("[like - after] review: {}", review);
+        log.info("[like - after] review.getReviewLikes().size(): {}", review.getReviewLikes().size());
     }
 
     @Transactional
-    public ReviewResponse unlike(String reviewCode, Long userId) {
+    public void unlike(String reviewCode, Long userId) {
         // 1) Review + reviewLikes + user까지 fetch join으로 로드
         Review review = reviewRepository.findByCodeWithLikesAndUsers(reviewCode)
                 .orElseThrow(() -> new BusinessException(ExceptionCode.ENTITY_NOT_FOUND));
 
-        // 2) 없는 좋아요면 예외
-        if (!review.hasLikeByUserId(userId)) {
-            throw new BusinessException(ExceptionCode.LIKE_NOT_FOUND);
-        }
+        log.info("[unlike - before] review: {}", review);
+        log.info("[unlike - before] review.getReviewLikes().size(): {}", review.getReviewLikes().size());
 
-        // 3) 제거(양방향 끊기 + orphanRemoval로 delete)
-        review.removeLikeByUserId(userId);
+        ReviewLike like = reviewLikeRepository.findByReviewIdAndUserId(review.getId(), userId)
+                .orElseThrow(() -> new BusinessException(ExceptionCode.LIKE_NOT_FOUND));
 
-        // 4) 카운트 동기화
-        review.refreshLikesCount();
+        review.removeLike(like);
 
-        return ReviewResponse.from(review);
+        log.info("[unlike - after] review: {}", review);
+        log.info("[unlike - after] review.getReviewLikes().size(): {}", review.getReviewLikes().size());
     }
 }

@@ -22,7 +22,8 @@ public enum ExceptionCode {
     // 500 Internal Server Error 관련 예외
     // ----------------------------------
     INTERNAL_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "서버 내부 오류입니다."),
-    DATABASE_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "데이터 베이스 서버 오류입니다.");
+    DATABASE_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "데이터 베이스 서버 오류입니다."),
+    SUPABASE_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "🔒 유료 회원한테만 보이는 Response입니다.");
 
     private final HttpStatus status;
     private final String message;
