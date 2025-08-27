@@ -1,9 +1,10 @@
-import type {ReviewI} from "@/entities";
-import type {REVIEW_MEDIA_TYPE} from "@/shared";
+import type { ReviewI } from "@/entities";
+import type { REVIEW_MEDIA_TYPE } from "@/shared";
 
 // Props
 export type FeedT = {
     review: ReviewI;
+    onClick: (id: number) => void;
 }
 
 export type FeedPreviewT = {
@@ -24,6 +25,12 @@ export type hasSrcT = {
     hasSrc: boolean;
 }
 
+// Store
+export interface FeedStoreI {
+    selectedFeedId: number | null;
+    setSelectedFeedId: (id: number) => void;
+    reset: () => void;
+}
 
 // Item
 export type ReviewMediaTypeT = keyof typeof REVIEW_MEDIA_TYPE;

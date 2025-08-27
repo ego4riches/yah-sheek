@@ -1,5 +1,5 @@
-import { CATEGORIES_KEY } from "@/entities";
-import { flexCenter, flexColumnCenter, flexSpaceBetween, flexStart, getShouldForwardProps, type hasSrcT, type IsValueI, textEllipsis } from "@/shared";
+import { CATEGORY_ID } from "@/entities";
+import { flexCenter, flexColumnCenter, flexSpaceBetween, flexStart, getShouldForwardProps, type hasSrcT, type IsNumberIdI, textEllipsis } from "@/shared";
 import LikeHoverIcon from "@/shared/config/assets/like-hover.png"
 import LikeIcon from "@/shared/config/assets/like.png"
 import styled from "styled-components";
@@ -41,16 +41,16 @@ export const FeedPreviewWrapper = styled.div`
 `
 
 export const PreviewCategoryBox = styled.span.withConfig({
-    shouldForwardProp: getShouldForwardProps(['isValue']),
-})<IsValueI>`
+    shouldForwardProp: getShouldForwardProps(['isId']),
+})<IsNumberIdI>`
     padding: 0.3rem 0.6rem;
     color: white;
     border-radius: ${({ theme }) => theme.borderRadius.xl};
-    background: ${({ theme, isValue }) =>
-        isValue === CATEGORIES_KEY.FOOD ? theme.colors.danger
-            : isValue === CATEGORIES_KEY.SNACK ? theme.colors.warning
-                : isValue === CATEGORIES_KEY.DRINK ? theme.colors.info
-                    : isValue === CATEGORIES_KEY.ALCOHOL ? theme.colors.secondary
+    background: ${({ theme, isId }) =>
+        isId === CATEGORY_ID.FOOD ? theme.colors.danger
+            : isId === CATEGORY_ID.SNACK ? theme.colors.warning
+                : isId === CATEGORY_ID.DRINK ? theme.colors.info
+                    : isId === CATEGORY_ID.ALCOHOL ? theme.colors.secondary
                         : theme.colors.gray200};
     font-size: ${({ theme }) => theme.fontSizes.sm};
     font-family: ${({ theme }) => theme.fontFamilies.Accent400};

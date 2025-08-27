@@ -31,7 +31,6 @@ export const TeamPage = () => {
     const handleCloseDetail = () => {
         reset();
         history.back();
-        // navigate(`${teamKey}`);
     };
 
     return (

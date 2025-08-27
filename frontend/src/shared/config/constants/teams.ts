@@ -10,3 +10,6 @@ export const TEAMS_KEY = {
     KT: 'kt-wiz',
     HANHWA: 'hanhwa-eagles',
 };
+
+// TEAMS_KEY 객체 값 배열
+export const VALID_TEAMS = Object.values(TEAMS_KEY);
