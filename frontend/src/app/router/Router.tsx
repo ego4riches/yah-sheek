@@ -5,17 +5,8 @@ import { JoinPage } from "@/pages/JoinPage.tsx";
 import { LoginPage } from "@/pages/LoginPage.tsx";
 import { MainPage } from "@/pages/MainPage.tsx";
 import { MyPage } from "@/pages/MyPage";
-import { DoosanPage } from "@/pages/teams/DoosanPage.tsx";
-import { HanhwaPage } from "@/pages/teams/HanhwaPage.tsx";
-import { KiaPage } from "@/pages/teams/KiaPage.tsx";
-import { KiwoomPage } from "@/pages/teams/KiwoomPage.tsx";
-import { KTPage } from "@/pages/teams/KTPage.tsx";
-import { LGPage } from "@/pages/teams/LGPage.tsx";
-import { LottePage } from "@/pages/teams/LottePage.tsx";
-import { NCPage } from "@/pages/teams/NCPage.tsx";
-import { SamsungPage } from "@/pages/teams/SamsungPage.tsx";
-import { SSGPage } from "@/pages/teams/SSGPage.tsx";
-import { ROUTES } from "@/shared";
+import { TeamPage } from "@/pages/TeamPage";
+import { ROUTES, VALID_TEAMS } from "@/shared";
 import { createBrowserRouter } from "react-router-dom";
 
 export const Router = createBrowserRouter([
@@ -24,67 +15,22 @@ export const Router = createBrowserRouter([
         element: <Layout/>,
         errorElement: <ErrorPage/>,
         children: [
+            { index: true, element: <MainPage/> },
+            { path: ROUTES.MY, element: <PublicOnly><MyPage/></PublicOnly> },
+            { path: ROUTES.LOGIN, element: <LoginPage/> },
+            { path: ROUTES.JOIN, element: <JoinPage/> },
             {
-                index: true,
-                element: <MainPage/>
+                path: "/:teamKey",
+                element: <TeamPage/>,
+                loader: ({ params }) => {
+                    if (!VALID_TEAMS.includes(params.teamKey!)) throw new Response("Not Found", { status: 404 });
+                    return null;
+                },
+                children: [
+                    { path: "review/:reviewId", element: <TeamPage/> },
+                ],
             },
-            {
-                path: ROUTES.MY,
-                element: (
-                        <PublicOnly>
-                            <MyPage/>
-                        </PublicOnly>
-                ),
-            },
-            {
-                path: ROUTES.LOGIN,
-                element: <LoginPage/>
-            },
-            {
-                path: ROUTES.JOIN,
-                element: <JoinPage/>,
-            },
-            {
-                path: ROUTES.KIA,
-                element: <KiaPage/>
-            },
-            {
-                path: ROUTES.DOOSAN,
-                element: <DoosanPage/>
-            },
-            {
-                path: ROUTES.LOTTE,
-                element: <LottePage/>
-            },
-            {
-                path: ROUTES.SAMSUNG,
-                element: <SamsungPage/>
-            },
-            {
-                path: ROUTES.SSG,
-                element: <SSGPage/>,
-            },
-            {
-                path: ROUTES.NC,
-                element: <NCPage/>
-            },
-            {
-                path: ROUTES.LG,
-                element: <LGPage/>
-            },
-            {
-                path: ROUTES.KIWOOM,
-                element: <KiwoomPage/>
-            },
-            {
-                path: ROUTES.KT,
-                element: <KTPage/>
-            },
-            {
-                path: ROUTES.HANHWA,
-                element: <HanhwaPage/>
-            },
-        ]
+        ],
     },
     {
         path: ROUTES.NOT_FOUND,
