@@ -12,3 +12,5 @@ export const defaultCategory = {
     categoryName: '전체',
     displayOrder: 0,
 }
+
+export const DEFAULT_SELECTOR_CATEGORY = '카테고리';

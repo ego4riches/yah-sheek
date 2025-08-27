@@ -1,28 +1,27 @@
-import { useCategoriesQuery } from "@/entities";
-import { CategoryMenuBox, CategoryMenuItem, defaultCategory, useCategoryMenuStore } from "@/features";
+import { CategoriesMenuBox, CategoryMenuItem, defaultCategory, useCategoriesMenuStore, useCategoriesQuery } from "@/entities";
 import { AsyncBoundary, } from "@/shared";
 import type { AxiosError } from "axios";
 
-export const CategoryMenu = () => {
+export const CategoriesMenu = () => {
     const { data, status, error } = useCategoriesQuery();
-    const { selectedCategory, setSelectedCategory } = useCategoryMenuStore();
+    const { selectedCategoryId, setSelectedCategoryId } = useCategoriesMenuStore();
 
     return (
-            <CategoryMenuBox>
+            <CategoriesMenuBox>
                 <AsyncBoundary
                         data={data}
                         status={status}
                         errorCode={(error as AxiosError)?.response?.status}
                 >
                     {(categories) =>
-                            [defaultCategory, ...categories].map(({ id, categoryKey, categoryName }) =>
+                            [defaultCategory, ...categories].map(({ id, categoryName }) =>
                                     <CategoryMenuItem
                                             key={id}
                                             label={categoryName}
-                                            isSelected={selectedCategory === categoryKey}
-                                            onClick={() => setSelectedCategory(categoryKey)}
+                                            isSelected={selectedCategoryId === id}
+                                            onClick={() => setSelectedCategoryId(id)}
                                     />)}
                 </AsyncBoundary>
-            </CategoryMenuBox>
+            </CategoriesMenuBox>
     );
 };

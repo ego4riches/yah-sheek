@@ -1,4 +1,4 @@
-import { CategoryMenuItemBox, type CategoryMenuItemT } from "@/features";
+import { CategoryMenuItemBox, type CategoryMenuItemT } from "@/entities";
 
 export const CategoryMenuItem = ({ label, isSelected, onClick }: CategoryMenuItemT) => {
     return (

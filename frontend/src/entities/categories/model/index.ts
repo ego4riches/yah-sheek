@@ -1,3 +1,3 @@
-export * from '@/entities/categories/model/types.api';
-export * from '@/entities/categories/model/types.item';
-export * from '@/entities/categories/model/use-categories-query';
+export * from '@/entities/categories/model/hooks/use-categories-query';
+export * from '@/entities/categories/model/stores';
+export * from '@/entities/categories/model/types';

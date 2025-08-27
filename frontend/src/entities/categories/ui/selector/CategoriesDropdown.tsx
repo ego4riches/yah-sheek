@@ -1,15 +1,15 @@
-import { useCategoriesQuery } from "@/entities";
-import { CategoryDropdownBox, type CategorySelectorDropdownT } from "@/features";
-import { CategoryDropdownItem } from "@/features/categories/selector/ui/CategoryDropdownItem";
+import { CategoriesDropdownBox, type CategoriesDropdownT, useCategoriesQuery } from "@/entities";
+import { CategoryDropdownItem } from "@/entities/categories/ui/selector/CategoryDropdownItem";
+
 import { AsyncBoundary, Portal } from "@/shared";
 import type { AxiosError } from "axios";
 
-export const CategoryDropdown = ({ onCategorySelect, isOpen, style }: CategorySelectorDropdownT) => {
+export const CategoriesDropdown = ({ onCategorySelect, isOpen, style }: CategoriesDropdownT) => {
     const { data, status, error } = useCategoriesQuery();
 
     return (
             <Portal>
-                <CategoryDropdownBox style={style || { display: 'none' }} isOpen={isOpen}>
+                <CategoriesDropdownBox style={style || { display: 'none' }} isOpen={isOpen}>
                     <AsyncBoundary
                             data={data}
                             status={status}
@@ -24,7 +24,7 @@ export const CategoryDropdown = ({ onCategorySelect, isOpen, style }: CategorySe
                                                 onClick={() => onCategorySelect(id, categoryKey, categoryName)}
                                         />)}
                     </AsyncBoundary>
-                </CategoryDropdownBox>
+                </CategoriesDropdownBox>
             </Portal>
     );
 };
