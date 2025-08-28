@@ -1,4 +1,5 @@
-import { getShouldForwardProps, type IsOpenI, type IsSelectedI, textEllipsis } from "@/shared";
+import { getShouldForwardProps, type IsOpenI, type IsSelectedI, type TeamKeyObjI, textEllipsis } from "@/shared";
+import { getTeamColor } from "@/shared/lib/utils/get-team-color";
 import styled from "styled-components";
 
 export const SortOptionsWrapper = styled.div`
@@ -6,7 +7,9 @@ export const SortOptionsWrapper = styled.div`
     width: 13rem;
 `;
 
-export const SortOptionsButtonBox = styled.button`
+export const SortOptionsButtonBox = styled.button.withConfig({
+    shouldForwardProp: getShouldForwardProps(['teamKey']),
+}) <TeamKeyObjI>`
     ${textEllipsis};
     display: flex;
     align-items: center;
@@ -21,12 +24,15 @@ export const SortOptionsButtonBox = styled.button`
     background: white;
 
     &:hover {
-        border-color: ${({ theme }) => theme.colors.primary400};
+        border-color: ${({ theme, teamKey }) =>
+            teamKey ? getTeamColor(teamKey, 300) : theme.colors.primary400};
     }
 
     &:focus {
-        box-shadow: 0 0 0 0.4rem ${({ theme }) => theme.colors.primary300};
-        border-color: ${({ theme }) => theme.colors.primary400};
+        box-shadow: 0 0 0 0.4rem ${({ theme, teamKey }) =>
+            teamKey ? getTeamColor(teamKey, 100) : theme.colors.primary300};
+        border-color: ${({ theme, teamKey }) =>
+            teamKey ? getTeamColor(teamKey, 300) : theme.colors.primary400};
     }
 `;
 
@@ -49,13 +55,19 @@ export const SortOptionsDropdownBox = styled.div.withConfig({
 `
 
 export const SortOptionsItemBox = styled.div.withConfig({
-    shouldForwardProp: getShouldForwardProps(['isSelected']),
-})<IsSelectedI>`
+    shouldForwardProp: getShouldForwardProps(['isSelected', 'teamKey']),
+})<IsSelectedI & TeamKeyObjI>`
     width: 100%;
     padding: 0.75rem 1rem;
     cursor: pointer;
-    color: ${({ theme, isSelected }) => isSelected ? theme.colors.primary700 : theme.colors.gray700};
-    background-color: ${({ theme, isSelected }) => isSelected ? theme.colors.gray100 : 'transparent'};
+    color: ${({ theme, isSelected, teamKey }) =>
+        isSelected
+            ? teamKey
+                ? getTeamColor(teamKey, 500)
+                : theme.colors.primary700
+            : theme.colors.gray700};
+    background-color: ${({ theme, isSelected }) =>
+        isSelected ? theme.colors.gray100 : 'transparent'};
     font-weight: 500;
     font-size: ${({ theme }) => theme.fontSizes.md};
 

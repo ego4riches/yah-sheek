@@ -1,10 +1,10 @@
-import { useCategoriesSelectorStore, useTeamLayoutStore } from "@/entities";
+import { useCategoriesSelectorStore, useTeamStore } from "@/entities";
 import { useAddReviewMutation } from "@/features";
 import { mediaUploadFormatter, useMediaUploadStore, useRatingSelectorStore, useReviewContentInputStore, useTagManagerStore } from "@/shared";
 import { useReviewComposerVisibility } from "@/widgets/review-composer";
 
 export const useAddReviewForm = () => {
-    const teamId = useTeamLayoutStore((s) => s.team?.id);
+    const teamId = useTeamStore((s) => s.team?.id);
     const category = useCategoriesSelectorStore((s) => s.category);
     const content = useReviewContentInputStore((s) => s.content);
     const rating = useRatingSelectorStore((s) => s.rating);

@@ -1,11 +1,6 @@
-import { EMPTY_REVIEWS, type FeedsT } from "@/entities";
-import { EmptyState, Feed } from "@/shared";
+import { type FeedsT } from "@/entities";
 
-export const FeedList = ({ reviews, onClick }: FeedsT) =>
-        reviews.content.length > 0
-                ? reviews.content.map((review) =>
-                        <Feed key={review.id} review={review} onClick={onClick}/>)
-                : <EmptyState
-                        message={EMPTY_REVIEWS.MESSAGE}
-                        subMessage={EMPTY_REVIEWS.SUB_MESSAGE}
-                />
+export const FeedList = ({ reviews, onClick }: FeedsT) => {
+    console.log('reviews', reviews)
+    return (<></>)
+}

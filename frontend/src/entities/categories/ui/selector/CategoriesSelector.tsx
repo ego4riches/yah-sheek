@@ -1,9 +1,10 @@
-import { CategoriesSelectorBox, DEFAULT_SELECTOR_CATEGORY, getDropdownStyle, useCategoriesDropdownStore, useCategoriesSelectorStore } from "@/entities";
+import { CategoriesSelectorBox, DEFAULT_SELECTOR_CATEGORY, getDropdownStyle, useCategoriesDropdownStore, useCategoriesSelectorStore, useTeamStore } from "@/entities";
 import { CategoriesDropdown } from "@/entities/categories/ui/selector/CategoriesDropdown";
 import { useClickOutside } from "@/shared";
 import { useRef } from "react";
 
 export const CategoriesSelector = () => {
+    const { team } = useTeamStore();
     const { category, setCategory, isOpen, setIsOpen } = useCategoriesSelectorStore();
     const { style, setStyle } = useCategoriesDropdownStore();
     const buttonRef = useRef<HTMLButtonElement>(null);
@@ -29,7 +30,12 @@ export const CategoriesSelector = () => {
 
     return (
             <div ref={categoryRef}>
-                <CategoriesSelectorBox ref={buttonRef} isOpen={isOpen} onClick={handleCategoryToggle}>
+                <CategoriesSelectorBox
+                        ref={buttonRef}
+                        teamKey={team?.teamKey}
+                        isOpen={isOpen}
+                        onClick={handleCategoryToggle}
+                >
                     {category.categoryName || DEFAULT_SELECTOR_CATEGORY}
                 </CategoriesSelectorBox>
                 <CategoriesDropdown style={style} isOpen={isOpen} onCategorySelect={onCategorySelect}/>

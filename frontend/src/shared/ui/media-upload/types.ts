@@ -1,11 +1,13 @@
-import type { InputChangeEventT } from "@/shared";
+import type { InputChangeEventT, TeamKeyT } from "@/shared";
 
 // Props
 export type MediaUploadInputT = {
+    teamKey: TeamKeyT | undefined;
     onChange: (e: InputChangeEventT) => void;
 }
 
 export type MediaPreviewT = {
+    teamKey: TeamKeyT | undefined;
     file: File;
     text: string;
     onClick: () => void;

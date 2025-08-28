@@ -10,6 +10,7 @@ export const TeamDrawerWrapper = styled.div`
 `
 
 export const DrawerToggleBox = styled.div`
+    color: ${({ theme }) => theme.colors.light};
     font-size: 2rem;
     cursor: pointer;
 `;
@@ -20,10 +21,12 @@ export const DrawerBox = styled.nav.withConfig({
     position: fixed;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     top: 0;
     left: 0;
     width: 22rem;
     height: 100dvh;
+    min-height: fit-content;
     background-color: ${({ theme }) => theme.colors.gray100};
     border-right: ${({ theme }) => `0.1rem solid ${theme.colors.gray200}`};
     box-shadow: ${({ theme }) => theme.shadows.md};
@@ -35,13 +38,14 @@ export const TeamsDrawerItemBox = styled(Link).withConfig({
     shouldForwardProp: getShouldForwardProps(['active']),
 })<TeamsDrawerItemBoxT>`
     text-align: center;
-    padding: calc(100vh / 25) 0;
+    padding: calc(100vh / 27) 0;
     color: ${({ theme, active }) =>
         (active ? theme.colors.gray600 : theme.colors.gray400)};
     background: ${({ theme, active }) =>
         (active ? theme.colors.gray200 : "transparent")};
-    font-family: ${({ theme, active }) =>
-        (active ? theme.fontFamilies.Accent800 : theme.fontFamilies.Accent600)};
+    font-size: ${({ theme }) => theme.fontSizes.lg};
+    font-family: 'KboDiamondGothic', serif;
+    font-weight: ${({ active }) => (active ? 700 : 500)};
     text-decoration: none;
 
     &:hover {

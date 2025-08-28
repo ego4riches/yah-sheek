@@ -1,12 +1,10 @@
-import {TagBox, TagRemoveButtonBox, type TagT} from "@/shared";
+import { TagBox, type TagT } from "@/shared";
 
-export const Tag = ({tag, onClick}: TagT) => {
+export const Tag = ({ tag, teamKey, onClick }: TagT) => {
     return (
-            <TagBox>
+            <TagBox teamKey={teamKey}>
                 {tag}
-                <TagRemoveButtonBox onClick={onClick}>
-                    ×
-                </TagRemoveButtonBox>
+                <button onClick={onClick}>×</button>
             </TagBox>
     );
 };

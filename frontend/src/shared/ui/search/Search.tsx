@@ -1,10 +1,12 @@
-import {FindIcon, SearchIconBox, SearchInputBox, SearchWrapper} from "@/shared";
+import { useTeamStore } from "@/entities";
+import { FindIcon, SearchIconBox, SearchInputBox, SearchWrapper } from "@/shared";
 
 export const Search = () => {
-
+    const { team } = useTeamStore();
+    
     return (
             <SearchWrapper>
-                <SearchInputBox type="text" placeholder="Search..."/>
+                <SearchInputBox teamKey={team?.teamKey} type="text" placeholder="Search..."/>
                 <SearchIconBox>
                     <FindIcon/>
                 </SearchIconBox>

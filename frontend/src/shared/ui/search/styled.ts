@@ -1,4 +1,5 @@
-import { flexCenter } from "@/shared";
+import { flexCenter, getShouldForwardProps, type TeamKeyObjI } from "@/shared";
+import { getTeamColor } from "@/shared/lib/utils/get-team-color";
 import styled from "styled-components";
 
 export const SearchWrapper = styled.div`
@@ -6,7 +7,9 @@ export const SearchWrapper = styled.div`
     position: relative;
 `;
 
-export const SearchInputBox = styled.input`
+export const SearchInputBox = styled.input.withConfig({
+    shouldForwardProp: getShouldForwardProps(['teamKey']),
+}) <TeamKeyObjI>`
     min-width: 20vw;
     padding: 1rem 3rem 1rem 1rem;
     border-radius: ${({ theme }) => theme.borderRadius.xl};
@@ -15,8 +18,10 @@ export const SearchInputBox = styled.input`
     color: ${({ theme }) => theme.colors.gray800};
 
     &:focus {
-        box-shadow: 0 0 0 0.4rem ${({ theme }) => theme.colors.primary300};
-        border-color: ${({ theme }) => theme.colors.primary400};
+        box-shadow: 0 0 0 0.4rem ${({ theme, teamKey }) =>
+            teamKey ? getTeamColor(teamKey, 100) : theme.colors.primary300};
+        border-color: ${({ theme, teamKey }) =>
+            teamKey ? getTeamColor(teamKey, 300) : theme.colors.primary400};
     }
 `;
 

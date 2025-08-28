@@ -1,6 +1,8 @@
+import { useTeamStore } from "@/entities";
 import { type InputChangeEventT, MediaPreview, MediaPreviewWrapper, MediaUploadInput, useMediaUploadStore } from "@/shared";
 
 export const MediaUpload = () => {
+    const { team } = useTeamStore();
     const { attachments, addAttachment, removeAttachment } = useMediaUploadStore();
 
     const handleFileChange = (e: InputChangeEventT) => {
@@ -17,13 +19,14 @@ export const MediaUpload = () => {
 
     return (
             <>
-                <MediaUploadInput onChange={handleFileChange}/>
+                <MediaUploadInput teamKey={team?.teamKey} onChange={handleFileChange}/>
                 {attachments.length > 0
                         &&
                         <MediaPreviewWrapper>
                             {attachments.map((file, index) => (
                                     <MediaPreview
                                             key={index}
+                                            teamKey={team?.teamKey}
                                             file={file}
                                             text={`첨부파일 ${index + 1}`}
                                             onClick={() => removeAttachment(index)}

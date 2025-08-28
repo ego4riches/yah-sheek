@@ -1,4 +1,5 @@
-import { flexCenter, getShouldForwardProps, type IsOpenI, type IsSelectedI, media } from "@/shared";
+import { flexCenter, getShouldForwardProps, type IsOpenI, type IsSelectedI, media, type TeamKeyObjI } from "@/shared";
+import { getTeamColor } from "@/shared/lib/utils/get-team-color";
 import styled from 'styled-components';
 
 // Categories Menu
@@ -12,19 +13,24 @@ export const CategoriesMenuBox = styled.div`
 `
 
 export const CategoryMenuItemBox = styled.div.withConfig({
-    shouldForwardProp: getShouldForwardProps(['isSelected']),
-})<IsSelectedI>`
-    padding: 0.5rem 2rem;
+    shouldForwardProp: getShouldForwardProps(['isSelected', 'teamKey']),
+})<IsSelectedI & TeamKeyObjI>`
+    padding: 1rem 3rem;
     border-radius: ${({ theme }) => theme.borderRadius.xxl};
-    color: ${({ theme, isSelected }) =>
-        isSelected
-            ? theme.colors.primary700
-            : theme.colors.primary100};
+    color: ${({ theme, isSelected, teamKey }) =>
+        teamKey
+            ? isSelected
+                ? getTeamColor(teamKey, 500)
+                : getTeamColor(teamKey, 100)
+            : isSelected
+                ? theme.colors.primary700
+                : theme.colors.primary100};
     background: ${({ theme, isSelected }) =>
         isSelected
-            ? theme.colors.primary100
-            : theme.colors.primary700};
-    font-weight: ${({ isSelected }) => isSelected ? 600 : 700};
+            ? theme.colors.light
+            : 'transparent'};
+    font-family: 'KboDiamondGothic', serif;
+    font-weight: ${({ isSelected }) => isSelected ? 500 : 700};
     font-size: ${({ theme }) => theme.fontSizes.lg};
     white-space: nowrap;
     cursor: pointer;
@@ -34,14 +40,14 @@ export const CategoryMenuItemBox = styled.div.withConfig({
     }
 
     ${media.mobile} {
-        padding: 0.5rem 1rem;
+        padding: 0.5rem 1.4rem;
     }
 `
 
 // Categories Selector
 export const CategoriesSelectorBox = styled.button.withConfig({
-    shouldForwardProp: getShouldForwardProps(['isOpen']),
-})<IsOpenI>`
+    shouldForwardProp: getShouldForwardProps(['isOpen', 'teamKey']),
+})<IsOpenI & TeamKeyObjI>`
     ${flexCenter};
     background: ${({ theme, isOpen }) => isOpen ? theme.colors.gray100 : 'white'};
     border: 1px solid ${({ theme }) => theme.colors.gray200};
@@ -54,7 +60,12 @@ export const CategoriesSelectorBox = styled.button.withConfig({
     gap: 0.5rem;
 
     &:hover {
-        background: ${({ theme }) => theme.colors.gray100};
+        background: ${({ theme, teamKey }) =>
+            teamKey ? getTeamColor(teamKey, 100) : theme.colors.primary200};
+        border-color: ${({ theme, teamKey }) =>
+            teamKey ? getTeamColor(teamKey, 300) : theme.colors.primary400};
+        color: ${({ theme, teamKey }) =>
+            teamKey ? getTeamColor(teamKey, 500) : theme.colors.primary700};
     }
 
     &::after {

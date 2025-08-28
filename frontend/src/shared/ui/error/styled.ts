@@ -67,7 +67,6 @@ export const NotFoundBox = styled.div`
     height: 100dvh;
     position: relative;
     background-color: ${({ theme }) => theme.colors.gray500};
-    font-family: ${({ theme }) => theme.fontFamilies.Accent800};
 `;
 
 export const ErrorCodeBox = styled.div`

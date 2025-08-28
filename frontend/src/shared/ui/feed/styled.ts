@@ -53,7 +53,6 @@ export const PreviewCategoryBox = styled.span.withConfig({
                     : isId === CATEGORY_ID.ALCOHOL ? theme.colors.secondary
                         : theme.colors.gray200};
     font-size: ${({ theme }) => theme.fontSizes.sm};
-    font-family: ${({ theme }) => theme.fontFamilies.Accent400};
 `
 
 export const PreviewContentBox = styled.p`
@@ -133,5 +132,4 @@ export const LikeIconBox = styled.div`
 
 export const LikeCountBox = styled.span`
     font-size: ${({ theme }) => theme.fontSizes.xs};
-    font-family: ${({ theme }) => theme.fontFamilies.Accent600};
 `

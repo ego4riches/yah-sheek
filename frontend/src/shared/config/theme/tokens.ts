@@ -27,17 +27,6 @@ export const colors = {
     warning: '#ffc107',
     info: '#17a2b8',
     secondary: '#6b2dd2',
-
-    kia: '#EA0029',
-    doosan: '#1A1748',
-    lotte: '#D00F31',
-    samsung: '#074CA1',
-    ssg: '#CE0E2D',
-    nc: '#315288',
-    lg: '#C30452',
-    kiwoom: '#570514',
-    kt: '#000000',
-    hanhwa: '#FC4E00',
 };
 
 export const borderRadius = {

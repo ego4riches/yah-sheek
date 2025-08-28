@@ -1,10 +1,10 @@
 export const BUTTON_VARIANTS = {
+    TRANSPARENT: 'transparent',
     LIGHT_GRAY: 'light-gray',
     GRAY: 'gray',
-    LIGHT_PRIMARY: 'light-primary',
-    PRIMARY: 'primary',
-    SECONDARY: 'secondary',
-    DANGER: 'danger',
+    PRIMARY_100: 'primary-100',
+    PRIMARY_300: 'primary-300',
+    PRIMARY_500: 'primary-500',
 };
 
 export const BUTTON_SIZES = {
@@ -15,8 +15,11 @@ export const BUTTON_SIZES = {
 }
 
 export const BUTTON_WEIGHTS = {
-    NORMAL: 'normal',
-    SEMIBOLD: 'semibold',
+    LIGHT: 'light',
     BOLD: 'bold',
-    EXTRABOLD: 'extrabold',
+}
+
+export const BUTTON_FONTS = {
+    NOTO_SANS: 'Noto Sans KR',
+    KBO: 'KboDiamondGothic',
 }

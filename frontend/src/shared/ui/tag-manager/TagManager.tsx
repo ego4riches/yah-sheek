@@ -1,31 +1,23 @@
-import {useRef} from 'react';
-import {
-    Tag,
-    TagExpandedBox,
-    TagInputBox,
-    TagManagerWrapper,
-    TagSuggestions,
-    useTagInput,
-    useTagManagerStore,
-    useTagSuggest,
-    useTagVisibility,
-} from "@/shared";
+import { useTeamStore } from "@/entities";
+import { Tag, TagExpandedBox, TagManagerWrapper, TagSuggestions, useTagInput, useTagManagerStore, useTagSuggest, useTagVisibility, } from "@/shared";
+import { useRef } from 'react';
 
 export const TagManager = () => {
     const tagInputRef = useRef<HTMLInputElement>(null);
-    const {tags, tag, isExpanded, removeTag} = useTagManagerStore();
-    const {tagInputChange, tagInputKeydown} = useTagInput(tagInputRef);
-    const {selectedSuggestion} = useTagSuggest();
-    const {tagToggle} = useTagVisibility();
+    const { team } = useTeamStore();
+    const { tags, tag, isExpanded, removeTag } = useTagManagerStore();
+    const { tagInputChange, tagInputKeydown } = useTagInput(tagInputRef);
+    const { selectedSuggestion } = useTagSuggest();
+    const { tagToggle } = useTagVisibility();
 
     return (
             <TagManagerWrapper>
                 {tags.map((tag, index) => (
-                        <Tag key={index} tag={tag} onClick={() => removeTag(index)}/>
+                        <Tag key={index} tag={tag} teamKey={team?.teamKey} onClick={() => removeTag(index)}/>
                 ))}
-                <TagExpandedBox onClick={tagToggle} isExpanded={isExpanded}>
+                <TagExpandedBox onClick={tagToggle} isExpanded={isExpanded} teamKey={team?.teamKey}>
                     <span>#</span>
-                    <TagInputBox
+                    <input
                             ref={tagInputRef}
                             value={tag}
                             onChange={tagInputChange}
@@ -34,7 +26,7 @@ export const TagManager = () => {
                             disabled={!isExpanded}
                             placeholder="TAG"
                     />
-                    <TagSuggestions onClick={selectedSuggestion}/>
+                    <TagSuggestions teamKey={team?.teamKey} onClick={selectedSuggestion}/>
                 </TagExpandedBox>
             </TagManagerWrapper>
     );

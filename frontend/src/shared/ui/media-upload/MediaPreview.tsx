@@ -1,6 +1,6 @@
-import {MediaPreviewBox, type MediaPreviewT, MediaRemoveButtonBox, PreviewImageBox, PreviewVideoBox} from "@/shared";
+import { MediaPreviewBox, type MediaPreviewT, MediaRemoveButtonBox, PreviewImageBox, PreviewVideoBox } from "@/shared";
 
-export const MediaPreview = ({file, text, onClick}: MediaPreviewT) => {
+export const MediaPreview = ({ teamKey, file, text, onClick }: MediaPreviewT) => {
     return (
             <MediaPreviewBox>
                 {file.type.startsWith('image/')
@@ -14,7 +14,7 @@ export const MediaPreview = ({file, text, onClick}: MediaPreviewT) => {
                             🎥
                         </PreviewVideoBox>
                 }
-                <MediaRemoveButtonBox onClick={onClick}>
+                <MediaRemoveButtonBox teamKey={teamKey} onClick={onClick}>
                     X
                 </MediaRemoveButtonBox>
             </MediaPreviewBox>

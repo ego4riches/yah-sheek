@@ -1,4 +1,4 @@
-import type { InputChangeEventT, IsExpandedStoreI, KeyboardEventT } from "@/shared";
+import type { InputChangeEventT, IsExpandedStoreI, KeyboardEventT, TeamKeyT } from "@/shared";
 
 // Props
 export type TagManagerT = {
@@ -18,10 +18,12 @@ export type TagManagerT = {
 
 export type TagT = {
     tag: string;
+    teamKey?: TeamKeyT;
     onClick: () => void;
 }
 
 export type TagSuggestionsT = {
+    teamKey?: TeamKeyT;
     onClick: (suggestion: string) => void;
 }
 

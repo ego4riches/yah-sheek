@@ -9,8 +9,8 @@ export const NotFound = ({ code }: NotFoundT) =>
                         children={GO_TO_HOME}
                         onClick={() => window.location.replace(ROUTES.HOME)}
                         size={BUTTON_SIZES.MEDIUM}
-                        variant={BUTTON_VARIANTS.PRIMARY}
-                        weight={BUTTON_WEIGHTS.SEMIBOLD}
+                        variant={BUTTON_VARIANTS.PRIMARY_500}
+                        weight={BUTTON_WEIGHTS.BOLD}
                 />
             </GoToHomeBox>
         </NotFoundBox>
