@@ -1,4 +1,4 @@
-import {css} from 'styled-components';
+import { css } from "styled-components";
 
 export const fontSizes = {
     xs: '1rem',
@@ -11,25 +11,25 @@ export const fontSizes = {
     h1: '4rem',
 };
 
-export const fontFamilies = {
-    Accent400: 'Paperlogy-4Regular',
-    Accent600: 'Paperlogy-6SemiBold',
-    Accent800: 'Paperlogy-8ExtraBold',
-}
-
 export const fontFaces = css`
     @font-face {
-        font-family: 'Paperlogy-4Regular';
-        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-4Regular.woff2') format('woff2');
+        font-family: 'KboDiamondGothic';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/KBO-Dia-Gothic_light.woff') format('woff');
+        font-weight: 300;
+        font-display: swap;
     }
 
     @font-face {
-        font-family: 'Paperlogy-6SemiBold';
-        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2') format('woff2');
+        font-family: 'KboDiamondGothic';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/KBO-Dia-Gothic_medium.woff') format('woff');
+        font-weight: 500;
+        font-display: swap;
     }
 
     @font-face {
-        font-family: 'Paperlogy-8ExtraBold';
-        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');
+        font-family: 'KboDiamondGothic';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/KBO-Dia-Gothic_bold.woff') format('woff');
+        font-weight: 700;
+        font-display: swap;
     }
 `;

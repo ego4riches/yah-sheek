@@ -1,5 +1,5 @@
-import {fontFaces, transitionBase} from "@/shared";
-import {createGlobalStyle} from "styled-components";
+import { fontFaces, transitionBase } from "@/shared";
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
     ${fontFaces}
@@ -17,10 +17,11 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        font-family: 'Noto Sans', sans-serif;
+        font-family: 'Noto Sans KR', 'KboDiamondGothic', sans-serif;
+        font-weight: 500;
         font-size: 1.6rem;
         background-color: white;
-        color: ${({theme}) => theme.colors.gray900};
+        color: ${({ theme }) => theme.colors.gray900};
     }
 
     a {
@@ -48,8 +49,9 @@ export const GlobalStyle = createGlobalStyle`
         border-spacing: 0;
     }
 
-    input, textarea {
-        font-family: 'Noto Sans', sans-serif;
+    input, textarea, button {
+        font-family: 'Noto Sans KR', 'KboDiamondGothic', sans-serif;
+        font-weight: 500;
         outline: none;
     }
 

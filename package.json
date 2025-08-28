@@ -5,11 +5,15 @@
     "all": "concurrently \"yarn fe\" \"yarn be\""
   },
   "devDependencies": {
+    "@types/react": "19",
+    "@types/react-dom": "19",
     "concurrently": "^9.2.0",
     "dotenv-cli": "^7.0.0"
   },
   "dependencies": {
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-helmet-async": "^2.0.5",
+    "react-textarea-autosize": "^8.5.9"
   }
 }
