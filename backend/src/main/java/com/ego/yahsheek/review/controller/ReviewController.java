@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/reviews")
+@RequestMapping("/reviews")
 public class ReviewController {
 
     private final ReviewService reviewService;
@@ -42,6 +42,14 @@ public class ReviewController {
         return reviewService.getReviewAndIncreaseView(id, userId);
     }
 
+    @Operation(summary = "리뷰 수정", description = "리뷰를 수정합니다.")
+    @PatchMapping("/{id}")
+    public ReviewResponse update(@PathVariable String id, @Valid @RequestBody ReviewCreateRequest request) {
+
+//        return reviewService.update(id, request, userId);
+        return null;
+    }
+
     @Operation(summary = "리뷰 삭제", description = "리뷰를 삭제합니다.")
     @DeleteMapping("/{id}")
     public ReviewResponse delete(@PathVariable String id) {
@@ -50,7 +58,7 @@ public class ReviewController {
     }
 
     @Operation(summary = "리뷰 삭제 철회", description = "리뷰 삭제를 철회합니다.")
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/restore")
     public ReviewResponse restore(@PathVariable String id) {
 
         return reviewService.restore(id
