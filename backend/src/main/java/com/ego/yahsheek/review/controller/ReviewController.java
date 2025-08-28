@@ -39,21 +39,33 @@ public class ReviewController {
     @GetMapping("/{id}")
     public ReviewResponse get(@PathVariable String id) {
 
-        return reviewService.getReviewAndIncreaseView(id);
+        return reviewService.getReviewAndIncreaseView(id, userId);
     }
 
+    @Operation(summary = "리뷰 삭제", description = "리뷰를 삭제합니다.")
     @DeleteMapping("/{id}")
     public ReviewResponse delete(@PathVariable String id) {
 
         return reviewService.delete(id, userId);
     }
 
+    @Operation(summary = "리뷰 삭제 철회", description = "리뷰 삭제를 철회합니다.")
+    @PatchMapping("/{id}")
+    public ReviewResponse restore(@PathVariable String id) {
+
+        return reviewService.restore(id
+//                , userId
+        );
+    }
+
+    @Operation(summary = "좋아요", description = "해당 리뷰에 좋아요를 합니다. 이미 좋아요 한 유저라면 예외가 발생합니다.")
     @PostMapping("/{id}/like")
     public ReviewLikeAndUnlikeResponse like(@PathVariable String id) {
 
         return reviewService.like(id, userId);
     }
 
+    @Operation(summary = "좋아요 취소", description = "해당 리뷰에 좋아요를 취소합니다. 좋아요 기록이 없다면 예외가 발생합니다.")
     @DeleteMapping("/{id}/like")
     public ReviewLikeAndUnlikeResponse unlike(@PathVariable String id) {
 

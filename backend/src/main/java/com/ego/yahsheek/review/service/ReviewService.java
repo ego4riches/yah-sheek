@@ -87,18 +87,39 @@ public class ReviewService {
     }
 
     @Transactional
-    public ReviewResponse getReviewAndIncreaseView(String code) {
+    public ReviewResponse getReviewAndIncreaseView(String code, Long userId) {
         Review review = reviewRepository.findByCode(code)
                 .orElseThrow(() -> new BusinessException(ExceptionCode.ENTITY_NOT_FOUND));
+
+        if (!review.isActive()) {
+            log.info("[삭제된 글 열람 시도] reviewId: {}, userId: {}", review.getId(), userId);
+
+            throw new BusinessException(ExceptionCode.ENTITY_NOT_FOUND);
+        }
+
         review.increaseViewsCount();
         return ReviewResponse.from(review);
     }
 
     @Transactional
     public ReviewResponse delete(String code, Long userId) {
-        Review review = reviewRepository.findByCodeAndUserId(code, userId)
+        Review review = reviewRepository.findByCodeAndUserIdAndIsActiveTrue(code, userId)
                 .orElseThrow(() -> new BusinessException(ExceptionCode.ENTITY_NOT_FOUND));
         review.deactivate();
+
+        return ReviewResponse.from(review);
+    }
+
+    @Transactional
+    public ReviewResponse restore(String code
+//            , Long userId
+    ) {
+        Review review = reviewRepository.findByCodeAndIsActiveFalse(code)
+                .orElseThrow(() -> new BusinessException(ExceptionCode.ENTITY_NOT_FOUND));
+
+        // todo: 추후 (마이페이지 내에서 삭제된 글 확인 - 복구) 기능 추가 시, userId 검증 로직 필요
+
+        review.activate();
 
         return ReviewResponse.from(review);
     }
