@@ -2,8 +2,6 @@ package com.ego.yahsheek.review.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(description = "리뷰 목록 조회")
-public class ReviewSearchRequestDto {
+public class ReviewSearchRequest {
 
     @Schema(description = "팀 ID", example = "1")
     private Long teamId;

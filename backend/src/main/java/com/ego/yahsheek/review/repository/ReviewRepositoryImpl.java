@@ -1,7 +1,6 @@
 package com.ego.yahsheek.review.repository;
 
-import com.ego.yahsheek.review.dto.ReviewSearchRequestDto;
-import com.ego.yahsheek.review.entity.QReview;
+import com.ego.yahsheek.review.dto.ReviewSearchRequest;
 import com.ego.yahsheek.review.entity.Review;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQuery;
@@ -29,7 +28,7 @@ public class ReviewRepositoryImpl implements ReviewRepositoryCustom {
     }
 
     @Override
-    public List<Review> findReviews(ReviewSearchRequestDto request, Long userId) {
+    public List<Review> findReviews(ReviewSearchRequest request, Long userId) {
         BooleanBuilder where = new BooleanBuilder().and(review.isActive.isTrue());
 
         if (request.getTeamId() != null) where.and(review.team.id.eq(request.getTeamId()));

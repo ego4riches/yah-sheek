@@ -1,18 +1,14 @@
 package com.ego.yahsheek.review.controller;
 
-import com.ego.yahsheek.common.response.BaseResponse;
 import com.ego.yahsheek.review.dto.ReviewCreateRequest;
+import com.ego.yahsheek.review.dto.ReviewLikeAndUnlikeResponse;
 import com.ego.yahsheek.review.dto.ReviewResponse;
-import com.ego.yahsheek.review.dto.ReviewSearchRequestDto;
-import com.ego.yahsheek.review.dto.ReviewSort;
+import com.ego.yahsheek.review.dto.ReviewSearchRequest;
 import com.ego.yahsheek.review.service.ReviewService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.aspectj.apache.bcel.classfile.Code;
 import org.springdoc.core.annotations.ParameterObject;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,7 +30,7 @@ public class ReviewController {
 
     @Operation(summary = "리뷰 목록 조회", description = "조회/정렬 조건에 따라 리뷰 목록을 조회합니다.")
     @GetMapping
-    public List<ReviewResponse> getReviews(@Valid @ParameterObject ReviewSearchRequestDto request) {
+    public List<ReviewResponse> getReviews(@Valid @ParameterObject ReviewSearchRequest request) {
 
         return reviewService.getReviews(request, userId);
     }
@@ -53,18 +49,14 @@ public class ReviewController {
     }
 
     @PostMapping("/{id}/like")
-    public BaseResponse<?> like(@PathVariable String id) {
+    public ReviewLikeAndUnlikeResponse like(@PathVariable String id) {
 
-        reviewService.like(id, userId);
-
-        return BaseResponse.ok(null);
+        return reviewService.like(id, userId);
     }
 
     @DeleteMapping("/{id}/like")
-    public BaseResponse<?> unlike(@PathVariable String id) {
+    public ReviewLikeAndUnlikeResponse unlike(@PathVariable String id) {
 
-        reviewService.unlike(id, userId);
-
-        return BaseResponse.ok(null);
+        return reviewService.unlike(id, userId);
     }
 }

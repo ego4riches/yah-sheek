@@ -13,7 +13,6 @@ import com.ego.yahsheek.user.entity.User;
 import com.ego.yahsheek.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -80,7 +79,7 @@ public class ReviewService {
     }
 
     @Transactional(readOnly = true)
-    public List<ReviewResponse> getReviews(ReviewSearchRequestDto request, Long userId) {
+    public List<ReviewResponse> getReviews(ReviewSearchRequest request, Long userId) {
         return reviewRepository.findReviews(request, userId)
                 .stream()
                 .map(ReviewResponse::from)
@@ -105,7 +104,7 @@ public class ReviewService {
     }
 
     @Transactional
-    public void like(String reviewCode, Long userId) {
+    public ReviewLikeAndUnlikeResponse like(String reviewCode, Long userId) {
         Review review = reviewRepository.findByCodeWithLikesAndUsers(reviewCode)
                 .orElseThrow(() -> new BusinessException(ExceptionCode.ENTITY_NOT_FOUND));
 
@@ -123,10 +122,15 @@ public class ReviewService {
 
         log.info("[like - after] review: {}", review);
         log.info("[like - after] review.getReviewLikes().size(): {}", review.getReviewLikes().size());
+
+        return ReviewLikeAndUnlikeResponse.builder()
+                .reviewCode(reviewCode)
+                .likeCount(review.getReviewLikes().size())
+                .build();
     }
 
     @Transactional
-    public void unlike(String reviewCode, Long userId) {
+    public ReviewLikeAndUnlikeResponse unlike(String reviewCode, Long userId) {
         // 1) Review + reviewLikes + user까지 fetch join으로 로드
         Review review = reviewRepository.findByCodeWithLikesAndUsers(reviewCode)
                 .orElseThrow(() -> new BusinessException(ExceptionCode.ENTITY_NOT_FOUND));
@@ -141,5 +145,10 @@ public class ReviewService {
 
         log.info("[unlike - after] review: {}", review);
         log.info("[unlike - after] review.getReviewLikes().size(): {}", review.getReviewLikes().size());
+
+        return ReviewLikeAndUnlikeResponse.builder()
+                .reviewCode(reviewCode)
+                .likeCount(review.getReviewLikes().size())
+                .build();
     }
 }
