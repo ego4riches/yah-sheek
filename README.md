@@ -150,7 +150,7 @@ yarn all
 
 서버 실행 후 아래 주소에서 Swagger 문서를 확인할 수 있습니다:
 
-[Swagger Link](http://localhost:8080/swagger-ui.html)
+[Swagger Link](http://localhost:8888/api/swagger-ui)
 
 ---
 
