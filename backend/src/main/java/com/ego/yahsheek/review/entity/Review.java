@@ -1,8 +1,6 @@
 package com.ego.yahsheek.review.entity;
 
 import com.ego.yahsheek.category.entity.Category;
-import com.ego.yahsheek.common.exception.BusinessException;
-import com.ego.yahsheek.common.exception.ExceptionCode;
 import com.ego.yahsheek.team.entity.Team;
 import com.ego.yahsheek.user.entity.User;
 import jakarta.persistence.*;
@@ -18,7 +16,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 @Table(name = "reviews")
@@ -88,10 +85,11 @@ public class Review {
         this.rating = rating;
     }
 
-    public void updateReview(String content, Integer rating, Category category) {
+    public void updateReview(String content, Integer rating, Category category, Team team) {
         this.content = content;
         this.rating = rating;
         this.category = category;
+        this.team = team;
     }
 
     public void increaseViewsCount() {
@@ -106,26 +104,26 @@ public class Review {
         this.isActive = true;
     }
 
+    // = = = = = = = = = = Tag 도메인 메서드 = = = = = = = = = =
+    public void clearTags() {
+        this.reviewTags.clear();
+    }
+
     public void addReviewTag(ReviewTag reviewTag) {
         reviewTags.add(reviewTag);
         reviewTag.setReview(this);
     }
 
-    public void removeReviewTag(ReviewTag reviewTag) {
-        reviewTags.remove(reviewTag);
-        reviewTag.setReview(null);
+    // = = = = = = = = = = Media 도메인 메서드 = = = = = = = = = =
+    public void clearMedia() {
+        reviewMedia.clear();
     }
-
     public void addReviewMedia(ReviewMedia reviewMedia) {
         this.reviewMedia.add(reviewMedia);
         reviewMedia.setReview(this);
     }
 
-    public void removeReviewMedia(ReviewMedia reviewMedia) {
-        this.reviewMedia.remove(reviewMedia);
-        reviewMedia.setReview(null);
-    }
-
+    // = = = = = = = = = = Like 도메인 메서드 = = = = = = = = = =
     public void addLike(ReviewLike like) {
         reviewLikes.add(like);
         like.setReview(this);
@@ -133,7 +131,7 @@ public class Review {
 
     public void removeLike(ReviewLike like) {
         reviewLikes.remove(like);
-        like.setReview(null); // 반대편 끊기
+        like.setReview(null);
     }
 
     @Override

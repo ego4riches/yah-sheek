@@ -46,8 +46,7 @@ public class ReviewController {
     @PatchMapping("/{id}")
     public ReviewResponse update(@PathVariable String id, @Valid @RequestBody ReviewCreateRequest request) {
 
-//        return reviewService.update(id, request, userId);
-        return null;
+        return reviewService.update(id, request, userId);
     }
 
     @Operation(summary = "리뷰 삭제", description = "리뷰를 삭제합니다.")

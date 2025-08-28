@@ -51,28 +51,10 @@ public class ReviewService {
                 .build();
 
         // 태그
-        if (request.getTags() != null) {
-            request.getTags().stream()
-                    .filter(Objects::nonNull)
-                    .map(String::trim)
-                    .filter(s -> !s.isEmpty())
-                    .forEach(tagName -> review.addReviewTag(ReviewTag.builder().tagName(tagName).build()));
-        }
+        addTagsToReview(review, request.getTags());
 
         // 미디어
-        if (request.getMediaList() != null) {
-            for (ReviewMediaRequest mediaReq : request.getMediaList()) {
-                ReviewMedia media = ReviewMedia.builder()
-                        .mediaType(mediaReq.getMediaType())
-                        .mediaUrl(mediaReq.getMediaUrl())
-                        .thumbnailUrl(mediaReq.getThumbnailUrl())
-                        .fileSize(mediaReq.getFileSize())
-                        .mimeType(mediaReq.getMimeType())
-                        .orderIndex(mediaReq.getOrderIndex())
-                        .build();
-                review.addReviewMedia(media);
-            }
-        }
+        addMediaToReview(review, request.getMediaList());
 
         Review saved = reviewRepository.save(review);
         return ReviewResponse.from(saved);
@@ -98,6 +80,28 @@ public class ReviewService {
         }
 
         review.increaseViewsCount();
+        return ReviewResponse.from(review);
+    }
+
+    @Transactional
+    public ReviewResponse update(String reviewCode, ReviewCreateRequest request, Long userId) {
+        Review review = reviewRepository.findByCodeAndUserIdAndIsActiveTrue(reviewCode, userId)
+                .orElseThrow(() -> new BusinessException(ExceptionCode.ENTITY_NOT_FOUND));
+        Team team = teamRepository.findById(request.getTeamId())
+                .orElseThrow(() -> new BusinessException(ExceptionCode.ENTITY_NOT_FOUND));
+        Category category = categoryRepository.findById(request.getCategoryId())
+                .orElseThrow(() -> new BusinessException(ExceptionCode.ENTITY_NOT_FOUND));
+
+        review.updateReview(request.getContent(), request.getRating(), category, team);
+
+        // 태그 갱신 (기존 제거 후 새로 추가)
+        review.clearTags();
+        addTagsToReview(review, request.getTags());
+
+        // 미디어 갱신 (기존 제거 후 새로 추가)
+        review.clearMedia();
+        addMediaToReview(review, request.getMediaList());
+
         return ReviewResponse.from(review);
     }
 
@@ -171,5 +175,30 @@ public class ReviewService {
                 .reviewCode(reviewCode)
                 .likeCount(review.getReviewLikes().size())
                 .build();
+    }
+
+    private void addTagsToReview(Review review, List<String> tags) {
+        if (tags == null) return;
+        tags.stream()
+                .filter(Objects::nonNull)
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .forEach(tagName -> review.addReviewTag(
+                        ReviewTag.builder().tagName(tagName).build()
+                ));
+    }
+
+    private void addMediaToReview(Review review, List<ReviewMediaRequest> mediaList) {
+        if (mediaList == null) return;
+        mediaList.stream()
+                .map(mediaReq -> ReviewMedia.builder()
+                        .mediaType(mediaReq.getMediaType())
+                        .mediaUrl(mediaReq.getMediaUrl())
+                        .thumbnailUrl(mediaReq.getThumbnailUrl())
+                        .fileSize(mediaReq.getFileSize())
+                        .mimeType(mediaReq.getMimeType())
+                        .orderIndex(mediaReq.getOrderIndex())
+                        .build())
+                .forEach(review::addReviewMedia);
     }
 }
