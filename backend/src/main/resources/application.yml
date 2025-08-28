@@ -8,7 +8,7 @@ spring:
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
     hikari:
-      maximum-pool-size: 2   # → 각자 2개만 유지
+      maximum-pool-size: 15
       minimum-idle: 1
       idle-timeout: 10000
       max-lifetime: 300000
