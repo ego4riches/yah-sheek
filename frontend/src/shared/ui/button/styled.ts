@@ -1,16 +1,20 @@
-import { BUTTON_FONTS, BUTTON_SIZES, BUTTON_VARIANTS, BUTTON_WEIGHTS, type ButtonT, getShouldForwardProps, type TeamKeyObjI } from "@/shared";
+import { BUTTON_FONTS, BUTTON_SIZES, BUTTON_VARIANTS, BUTTON_WEIGHTS, type ButtonT, flexCenter, getShouldForwardProps, type TeamKeyObjI } from "@/shared";
 import { getTeamColor } from "@/shared/lib/utils/get-team-color";
 import styled from "styled-components";
 
 export const ButtonBox = styled.button.withConfig({
     shouldForwardProp: getShouldForwardProps(['size', 'weight', 'variant', 'fontFamily', 'teamKey']),
 })<ButtonT & TeamKeyObjI>`
+    ${flexCenter};
+    width: ${({ size }) => size === BUTTON_SIZES.ICON && '4rem'};
+    height: ${({ size }) => size === BUTTON_SIZES.ICON && '4rem'};
     padding: ${({ size }) =>
-        size === BUTTON_SIZES.SMALL ? '0.7rem 1.4rem'
-            : size === BUTTON_SIZES.MEDIUM ? '1rem 2.5rem'
-                : size === BUTTON_SIZES.LARGE ? '1.7rem 3.5rem'
-                    : size === BUTTON_SIZES.XLARGE ? '2.5rem 5rem'
-                        : '1.5rem 3rem'};
+        size === BUTTON_SIZES.ICON ? '0'
+            : size === BUTTON_SIZES.SMALL ? '0.7rem 1.4rem'
+                : size === BUTTON_SIZES.MEDIUM ? '1rem 2.5rem'
+                    : size === BUTTON_SIZES.LARGE ? '1.7rem 3.5rem'
+                        : size === BUTTON_SIZES.XLARGE ? '2.5rem 5rem'
+                            : '1.5rem 3rem'};
     background: ${({ theme, variant, teamKey }) =>
         variant === BUTTON_VARIANTS.TRANSPARENT ? 'transparent'
             : variant === BUTTON_VARIANTS.LIGHT_GRAY ? theme.colors.gray100
@@ -103,5 +107,9 @@ export const ButtonBox = styled.button.withConfig({
                                 : variant === BUTTON_VARIANTS.PRIMARY_500 ? theme.colors.primary500
                                     : theme.colors.gray100};
         cursor: not-allowed;
+    }
+
+    img {
+        height: 1.8rem;
     }
 `;

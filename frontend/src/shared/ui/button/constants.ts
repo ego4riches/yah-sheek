@@ -8,6 +8,7 @@ export const BUTTON_VARIANTS = {
 };
 
 export const BUTTON_SIZES = {
+    ICON: 'icon',
     SMALL: 'small',
     MEDIUM: 'medium',
     LARGE: 'large',
