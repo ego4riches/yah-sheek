@@ -29,7 +29,7 @@ export const CategoryMenuItemBox = styled.div.withConfig({
         isSelected
             ? theme.colors.light
             : 'transparent'};
-    font-family: 'KboDiamondGothic', serif;
+    font-family: 'KboDiamondGothic', sans-serif;
     font-weight: ${({ isSelected }) => isSelected ? 500 : 700};
     font-size: ${({ theme }) => theme.fontSizes.lg};
     white-space: nowrap;
