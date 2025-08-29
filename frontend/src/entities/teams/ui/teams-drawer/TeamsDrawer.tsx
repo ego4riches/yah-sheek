@@ -1,5 +1,6 @@
 import { DrawerBox, DrawerToggleBox, TeamDrawerWrapper, TeamsDrawerItem, useTeamsDrawerStore, useTeamsQuery } from "@/entities";
 import { AsyncBoundary } from "@/shared";
+import MenuIcon from '@/shared/config/assets/menu.png'
 import type { AxiosError } from "axios";
 import { useLocation } from "react-router-dom";
 
@@ -15,7 +16,7 @@ export const TeamsDrawer = () => {
 
     return (
             <TeamDrawerWrapper onMouseEnter={openDrawer} onMouseLeave={closeDrawer}>
-                <DrawerToggleBox>☰</DrawerToggleBox>
+                <DrawerToggleBox><img src={MenuIcon} alt="menu"/></DrawerToggleBox>
                 <DrawerBox open={isOpen} status={status}>
                     <AsyncBoundary
                             data={data}
