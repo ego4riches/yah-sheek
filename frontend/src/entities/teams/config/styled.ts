@@ -44,7 +44,7 @@ export const TeamsDrawerItemBox = styled(Link).withConfig({
     background: ${({ theme, active }) =>
         (active ? theme.colors.gray200 : "transparent")};
     font-size: ${({ theme }) => theme.fontSizes.lg};
-    font-family: 'KboDiamondGothic', serif;
+    font-family: 'KboDiamondGothic', sans-serif;
     font-weight: ${({ active }) => (active ? 700 : 500)};
     text-decoration: none;
 
