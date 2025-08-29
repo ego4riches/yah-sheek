@@ -8,7 +8,7 @@ export const ButtonBox = styled.button.withConfig({
     padding: ${({ size }) =>
         size === BUTTON_SIZES.SMALL ? '0.7rem 1.4rem'
             : size === BUTTON_SIZES.MEDIUM ? '1rem 2.5rem'
-                : size === BUTTON_SIZES.LARGE ? '2rem 4rem'
+                : size === BUTTON_SIZES.LARGE ? '1.7rem 3.5rem'
                     : size === BUTTON_SIZES.XLARGE ? '2.5rem 5rem'
                         : '1.5rem 3rem'};
     background: ${({ theme, variant, teamKey }) =>
@@ -24,13 +24,14 @@ export const ButtonBox = styled.button.withConfig({
                                 : variant === BUTTON_VARIANTS.PRIMARY_500 ? theme.colors.primary700
                                     : 'white'};
     color: ${({ theme, variant, teamKey }) =>
-        variant === BUTTON_VARIANTS.TRANSPARENT ? theme.colors.light
-            : variant === BUTTON_VARIANTS.LIGHT_GRAY ? theme.colors.gray500
-                : variant === BUTTON_VARIANTS.GRAY ? theme.colors.gray700
-                    : teamKey
-                        ? variant === BUTTON_VARIANTS.PRIMARY_100 ? getTeamColor(teamKey, 500)
+        variant === BUTTON_VARIANTS.LIGHT_GRAY ? theme.colors.gray500
+            : variant === BUTTON_VARIANTS.GRAY ? theme.colors.gray700
+                : teamKey
+                    ? variant === BUTTON_VARIANTS.TRANSPARENT ? getTeamColor(teamKey, 100)
+                        : variant === BUTTON_VARIANTS.PRIMARY_100 ? getTeamColor(teamKey, 500)
                             : variant === BUTTON_VARIANTS.PRIMARY_300 ? getTeamColor(teamKey, 100)
                                 : getTeamColor(teamKey, 100)
+                    : variant === BUTTON_VARIANTS.TRANSPARENT ? theme.colors.primary300
                         : variant === BUTTON_VARIANTS.PRIMARY_100 ? theme.colors.primary100
                             : variant === BUTTON_VARIANTS.PRIMARY_300 ? theme.colors.primary100
                                 : variant === BUTTON_VARIANTS.PRIMARY_500 ? theme.colors.primary100

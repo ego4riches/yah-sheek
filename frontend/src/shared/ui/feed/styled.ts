@@ -1,5 +1,5 @@
 import { CATEGORY_ID } from "@/entities";
-import { flexCenter, flexColumnCenter, flexSpaceBetween, flexStart, getShouldForwardProps, type hasSrcT, type IsNumberIdI, textEllipsis } from "@/shared";
+import { flexCenter, flexColumnCenter, flexColumnFill, flexSpaceBetween, flexStart, getShouldForwardProps, type hasSrcT, type IsNumberIdI, textEllipsis } from "@/shared";
 import LikeHoverIcon from "@/shared/config/assets/like-hover.png"
 import LikeIcon from "@/shared/config/assets/like.png"
 import styled from "styled-components";
@@ -37,12 +37,15 @@ export const FeedThumbnailBox = styled.div.withConfig({
 `
 
 export const FeedPreviewWrapper = styled.div`
-    margin-right: auto;
+    ${flexColumnFill};
+    gap: 1rem;
 `
 
 export const PreviewCategoryBox = styled.span.withConfig({
     shouldForwardProp: getShouldForwardProps(['isId']),
 })<IsNumberIdI>`
+    width: min-content;
+    white-space: nowrap;
     padding: 0.3rem 0.6rem;
     color: white;
     border-radius: ${({ theme }) => theme.borderRadius.xl};
@@ -60,7 +63,7 @@ export const PreviewContentBox = styled.p`
     width: 100%;
     color: ${({ theme }) => theme.colors.gray700};
     font-size: ${({ theme }) => theme.fontSizes.h3};
-    font-weight: 700;
+    font-weight: 500;
 `
 
 export const PreviewMetaBox = styled.div`

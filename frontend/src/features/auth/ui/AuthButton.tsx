@@ -1,10 +1,10 @@
-import {AuthButtonItem} from "@/features";
-import {AUTH, ROUTES, useAuthStore} from "@/shared";
-import {AuthBox} from "@/widgets";
-import {useNavigate} from "react-router-dom";
+import { AuthButtonItem } from "@/features";
+import { AUTH, ROUTES, useAuthStore } from "@/shared";
+import { AuthBox } from "@/widgets";
+import { useNavigate } from "react-router-dom";
 
 export const AuthButton = () => {
-    const {isLoggedIn, login, logout} = useAuthStore();
+    const { isLoggedIn, login, logout } = useAuthStore();
     const navigate = useNavigate();
 
     const handleLogin = () => {
