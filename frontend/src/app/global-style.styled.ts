@@ -1,5 +1,6 @@
 import { fontFaces, transitionBase } from "@/shared";
 import { createGlobalStyle } from "styled-components";
+import 'swiper/swiper-bundle.css';
 
 export const GlobalStyle = createGlobalStyle`
     ${fontFaces}
