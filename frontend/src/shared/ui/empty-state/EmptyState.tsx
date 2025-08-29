@@ -1,12 +1,15 @@
-import { EmptyStateIcon, EmptyStateSubText, EmptyStateText, EmptyStateWrapper } from "./styled";
+import { useTeamStore } from "@/entities";
+import { EmptyStateWrapper } from "./styled";
 import type { EmptyStateT } from "./types";
 
-export const EmptyState = ({message, subMessage}: EmptyStateT) => {
+export const EmptyState = ({ message, subMessage }: EmptyStateT) => {
+    const { team } = useTeamStore();
+
     return (
-            <EmptyStateWrapper>
-                <EmptyStateIcon>⚾</EmptyStateIcon>
-                <EmptyStateText>{message}</EmptyStateText>
-                <EmptyStateSubText>{subMessage}</EmptyStateSubText>
+            <EmptyStateWrapper teamKey={team?.teamKey}>
+                <div>⚾</div>
+                <h3>{message}</h3>
+                <p>{subMessage}</p>
             </EmptyStateWrapper>
     );
 };
