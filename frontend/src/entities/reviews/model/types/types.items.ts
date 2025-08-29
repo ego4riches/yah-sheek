@@ -2,7 +2,7 @@ import type { ReviewMediaTypeT } from "@/shared";
 
 // Item
 export interface ReviewI {
-    id: number;
+    id: string;
     userId: number;
     nickname: string;
     teamId: number;

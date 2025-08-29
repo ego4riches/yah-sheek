@@ -4,7 +4,7 @@ import type { REVIEW_MEDIA_TYPE } from "@/shared";
 // Props
 export type FeedT = {
     review: ReviewI;
-    onClick: (id: number) => void;
+    onClick: (id: string) => void;
 }
 
 export type FeedPreviewT = {
@@ -27,8 +27,8 @@ export type hasSrcT = {
 
 // Store
 export interface FeedStoreI {
-    selectedFeedId: number | null;
-    setSelectedFeedId: (id: number) => void;
+    selectedFeedId: string | null;
+    setSelectedFeedId: (id: string) => void;
     reset: () => void;
 }
 

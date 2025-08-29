@@ -4,15 +4,15 @@ import type { PageT } from "@/shared";
 // Props
 export type ReviewFeedT = {
     teamId: number;
-    onClick: (id: number) => void;
+    onClick: (id: string) => void;
 }
 
 export type FeedsT = {
     reviews: PageT<ReviewI>;
-    onClick: (id: number) => void;
+    onClick: (id: string) => void;
 }
 
 export type FeedDetailT = {
-    reviewId: number;
+    reviewId: string;
     onClose: () => void;
 };
