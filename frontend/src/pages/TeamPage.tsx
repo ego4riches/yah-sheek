@@ -1,4 +1,4 @@
-import { FeedDetail, ReviewFeeds, TeamLayout } from "@/entities";
+import { FeedDetail, FeedList, TeamLayout } from "@/entities";
 import { type TeamKeyT, useFeedStore } from "@/shared";
 import { ReviewHeader } from "@/widgets";
 import { useEffect } from "react";
@@ -40,7 +40,7 @@ export const TeamPage = () => {
                             <ReviewHeader title={team.ballPark} teamKey={teamKey}/>
                             {selectedFeedId ?
                                     <FeedDetail reviewId={selectedFeedId} onClose={handleCloseDetail}/>
-                                    : <ReviewFeeds teamId={team.id} onClick={handleFeedClick}/>
+                                    : <FeedList teamId={team.id} onClick={handleFeedClick}/>
                             }
                         </>
                 )}

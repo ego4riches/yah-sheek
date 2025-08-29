@@ -2,7 +2,7 @@ import { EMPTY_REVIEWS, type ReviewFeedT, ReviewFeedWrapper, useReviewsQuery } f
 import { AsyncBoundary, EmptyState, Feed, } from '@/shared';
 import type { AxiosError } from "axios";
 
-export const ReviewFeeds = ({ teamId, onClick }: ReviewFeedT) => {
+export const FeedList = ({ teamId, onClick }: ReviewFeedT) => {
     const { data, status, error } = useReviewsQuery({ teamId });
     // const { data, error, status, fetchNextPage, hasNextPage, isFetchingNextPage, } = useReviewsInfiniteQuery({ teamId });
     // const { isIntersecting } = useInfiniteScrollStore();
@@ -12,8 +12,6 @@ export const ReviewFeeds = ({ teamId, onClick }: ReviewFeedT) => {
     // if (isIntersecting && hasNextPage && !isFetchingNextPage) {
     //     fetchNextPage();
     // }
-
-    console.log('data: ', data)
 
     return (
             <ReviewFeedWrapper>

@@ -1,21 +1,37 @@
-import { type FeedDetailT, FeedDetailWrapper } from "@/entities";
+import { FeedDetailContentsBox, type FeedDetailT, FeedDetailWrapper, useReviewByIdQuery } from "@/entities";
+import { AsyncBoundary, FeedDetailHeader, FeedDetailInfo, FeedDetailSwiper, FeedLikeCounter } from "@/shared";
+import Img1 from "@/shared/config/assets/test1.jpg";
+import Img2 from "@/shared/config/assets/test2.jpg";
+import Img3 from "@/shared/config/assets/test3.jpg";
+import Img4 from "@/shared/config/assets/test4.jpg";
+import Img5 from "@/shared/config/assets/test5.jpg";
+import type { AxiosError } from "axios";
 
 export const FeedDetail = ({ reviewId, onClose }: FeedDetailT) => {
+    const { data, status, error } = useReviewByIdQuery(reviewId);
+
+    const testMedia = [Img1, Img2, Img3, Img4, Img5]
+
     return (
-            <FeedDetailWrapper isVisible={!!reviewId}>
-                <button onClick={onClose}>이전</button>
-                디테일 페이지
-                {/*<p>Rating: {review.rating}</p>*/}
-                {/*<p>{review.content}</p>*/}
-                {/*{review.media && review.media.mediaType === REVIEW_MEDIA_TYPE.IMAGE && (*/}
-                {/*        <img alt="image" src={review.media.mediaUrl}*/}
-                {/*             style={{ width: "100%", borderRadius: 8 }}/>*/}
-                {/*)}*/}
-                {/*{review.media && review.media.mediaType === REVIEW_MEDIA_TYPE.VIDEO && (*/}
-                {/*        <video controls style={{ width: "100%", borderRadius: 8 }}>*/}
-                {/*            <source src={review.media.mediaUrl} type="video/mp4"/>*/}
-                {/*        </video>*/}
-                {/*)}*/}
-            </FeedDetailWrapper>
+            <AsyncBoundary
+                    data={data}
+                    status={status}
+                    errorCode={(error as AxiosError)?.response?.status}
+            >
+                {(review) =>
+                        <FeedDetailWrapper isVisible={!!reviewId}>
+                            <FeedDetailHeader
+                                    breadcrumb={[review.teamKey, review.categoryName].filter(Boolean)}
+                                    onClose={onClose}
+                            />
+                            <FeedDetailInfo review={review}/>
+                            <FeedDetailSwiper media={testMedia}/>
+                            <FeedDetailContentsBox>
+                                <p>{review.content}</p>
+                                <FeedLikeCounter likes={review.likesCount}/>
+                            </FeedDetailContentsBox>
+                        </FeedDetailWrapper>
+                }
+            </AsyncBoundary>
     );
 };
