@@ -14,16 +14,16 @@ export const TeamPage = () => {
     const { selectedFeedId, setSelectedFeedId, reset } = useFeedStore();
     const navigate = useNavigate();
 
-    // reviewId 값 들어올 경우 SelectedFeedId 설정
+    // reviewId Params 들어올 경우, SelectedFeedId 설정
     useEffect(() => {
         if (reviewId) {
-            setSelectedFeedId(Number(reviewId));
+            setSelectedFeedId(reviewId);
         } else {
             reset();
         }
     }, [reviewId]);
 
-    const handleFeedClick = (id: number) => {
+    const handleFeedClick = (id: string) => {
         setSelectedFeedId(id);
         navigate(`review/${id}`);
     };
