@@ -20,7 +20,7 @@ export interface ReviewI {
 
 export interface ReviewMediaItemI {
     mediaType: ReviewMediaTypeT;
-    mediaUrl: string[];
+    mediaUrl: string | string[];
     thumbnailUrl: string | null;
     orderIndex: number | null;
 }
