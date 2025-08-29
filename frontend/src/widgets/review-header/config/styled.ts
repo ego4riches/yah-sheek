@@ -14,7 +14,7 @@ export const ReviewHeaderWrapper = styled.div.withConfig({
 `;
 
 export const ReviewHeaderTitle = styled.h1`
-    font-family: 'KboDiamondGothic', serif;
+    font-family: 'KboDiamondGothic', sans-serif;
     font-weight: 700;
     font-size: ${({ theme }) => theme.fontSizes.h1};
 `;
