@@ -1,13 +1,17 @@
 import { useTeamStore } from "@/entities";
-import { DownIcon, sortOptions, SortOptionsButtonBox, SortOptionsDropdownBox, SortOptionsItemBox, SortOptionsWrapper, useSortOptionsStore, } from "@/shared";
+import { DownIcon, sortOptions, SortOptionsButtonBox, SortOptionsDropdownBox, SortOptionsItemBox, SortOptionsWrapper, useClickOutside, useSortOptionsStore, } from "@/shared";
 
 export const SortOptions = () => {
-    const { isOpen, selectedSortOption, toggleDropdown, setSelectedSortOption } = useSortOptionsStore();
+    const { isOpen, setIsOpen, selectedSortOption, setSelectedSortOption } = useSortOptionsStore();
     const { team } = useTeamStore();
 
+    const sortOptionsRef = useClickOutside(() => {
+        if (isOpen) setIsOpen(!isOpen);
+    }, [isOpen]);
+
     return (
-            <SortOptionsWrapper>
-                <SortOptionsButtonBox teamKey={team?.teamKey} onClick={toggleDropdown}>
+            <SortOptionsWrapper ref={sortOptionsRef}>
+                <SortOptionsButtonBox teamKey={team?.teamKey} onClick={() => setIsOpen(!isOpen)}>
                     {selectedSortOption.label}
                     <DownIcon isOpen={isOpen}/>
                 </SortOptionsButtonBox>

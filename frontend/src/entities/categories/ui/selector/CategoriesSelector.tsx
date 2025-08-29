@@ -5,7 +5,7 @@ import { useRef } from "react";
 
 export const CategoriesSelector = () => {
     const { team } = useTeamStore();
-    const { category, setCategory, isOpen, setIsOpen } = useCategoriesSelectorStore();
+    const { isOpen, setIsOpen, category, setCategory } = useCategoriesSelectorStore();
     const { style, setStyle } = useCategoriesDropdownStore();
     const buttonRef = useRef<HTMLButtonElement>(null);
 
