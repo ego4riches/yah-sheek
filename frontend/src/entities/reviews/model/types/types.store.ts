@@ -1,4 +1,4 @@
-export interface InfiniteScrollState {
+export interface InfiniteScrollStoreI {
     isIntersecting: boolean;
     setIntersecting: (state: boolean) => void;
 }
