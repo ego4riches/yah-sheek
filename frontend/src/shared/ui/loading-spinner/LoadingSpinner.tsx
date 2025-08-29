@@ -1,9 +1,11 @@
-import {LoadingSpinnerBox, LoadingSpinnerWrapper} from "@/shared";
+import { LoadingSpinnerBox, LoadingSpinnerItemBox, LoadingSpinnerWrapper } from "@/shared";
 
 export const LoadingSpinner = () => {
     return (
             <LoadingSpinnerWrapper>
-                <LoadingSpinnerBox/>
+                <LoadingSpinnerBox>
+                    <LoadingSpinnerItemBox/>
+                </LoadingSpinnerBox>
             </LoadingSpinnerWrapper>
     );
 };
