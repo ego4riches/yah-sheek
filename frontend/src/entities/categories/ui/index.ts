@@ -1,2 +1,2 @@
-export * from '@/entities/categories/ui/menu/CategoriesMenu';
-export * from '@/entities/categories/ui/menu/CategoryMenuItem';
+export * from '@/entities/categories/ui/menu';
+export * from '@/entities/categories/ui/selector';

@@ -1,7 +1,7 @@
 import { flexColumnCenter, flexStart, getShouldForwardProps, type IsExpandedI } from "@/shared";
 import styled from "styled-components";
 
-export const ReviewComposerWrapper = styled.div.withConfig({
+export const AddReviewWrapper = styled.div.withConfig({
     shouldForwardProp: getShouldForwardProps(['isExpanded']),
 })<IsExpandedI>`
     ${flexColumnCenter};
@@ -26,7 +26,7 @@ export const ReviewComposerWrapper = styled.div.withConfig({
     border-radius: ${({ theme }) => theme.borderRadius.xl};
 `;
 
-export const ComposerExpandedWrapper = styled.div.withConfig({
+export const AddReviewExpandedWrapper = styled.div.withConfig({
     shouldForwardProp: getShouldForwardProps(['isExpanded']),
 })<IsExpandedI>`
     width: 100%;
@@ -36,7 +36,7 @@ export const ComposerExpandedWrapper = styled.div.withConfig({
     transform: translateY(${({ isExpanded }) => isExpanded ? '0' : '-1rem'});
 `;
 
-export const ComposerHeaderBox = styled.div`
+export const AddReviewHeaderBox = styled.div`
     ${flexStart};
     gap: 1.5rem;
     padding-bottom: 1rem;

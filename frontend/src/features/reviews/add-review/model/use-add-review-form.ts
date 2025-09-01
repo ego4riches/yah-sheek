@@ -1,7 +1,6 @@
 import { useCategoriesSelectorStore, useTeamStore } from "@/entities";
-import { useAddReviewMutation } from "@/features";
+import { useAddReviewMutation, useAddReviewVisibility } from "@/features";
 import { mediaUploadFormatter, useMediaUploadStore, useRatingSelectorStore, useReviewContentInputStore, useTagManagerStore } from "@/shared";
-import { useReviewComposerVisibility } from "@/widgets/review-composer";
 
 export const useAddReviewForm = () => {
     const teamId = useTeamStore((s) => s.team?.id);
@@ -13,7 +12,7 @@ export const useAddReviewForm = () => {
 
     // userId: 1 임시 하드 코딩
     const { mutate } = useAddReviewMutation(1);
-    const { reset } = useReviewComposerVisibility();
+    const { reset } = useAddReviewVisibility();
 
     const isSubmitDisabled = !teamId || !category.categoryKey || !content.trim() || rating === 0;
 
