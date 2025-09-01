@@ -5,7 +5,7 @@ export const CategoryMenuItem = ({ label, isSelected, onClick }: CategoryMenuIte
     const { team } = useTeamStore();
 
     return (
-            <Link to={`/${team?.teamKey}`}>
+            <Link to={`/${team?.teamKey ?? ''}`}>
                 <CategoryMenuItemBox isSelected={isSelected} teamKey={team?.teamKey} onClick={onClick}>
                     {label}
                 </CategoryMenuItemBox>
