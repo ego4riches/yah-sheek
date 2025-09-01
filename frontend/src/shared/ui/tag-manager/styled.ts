@@ -15,7 +15,8 @@ export const TagExpandedBox = styled.div.withConfig({
     color: ${({ theme }) => theme.colors.gray500};
     background: ${({ theme }) => theme.colors.gray100};
     border: 1px solid ${({ theme }) => theme.colors.gray200};
-    border-radius: ${({ theme, isExpanded }) => isExpanded ? theme.borderRadius.xl : theme.borderRadius.round};
+    border-radius: ${({ theme, isExpanded }) =>
+        isExpanded ? theme.borderRadius.xl : theme.borderRadius.round};
     width: ${({ isExpanded }) => isExpanded ? '20rem' : '2.5rem'};
     height: 2.5rem;
     font-size: 1.2rem;
@@ -32,10 +33,13 @@ export const TagExpandedBox = styled.div.withConfig({
     }
 
     span {
-        padding: 0.7rem;
+        width: 2.5rem;
+        text-indent: 0.7rem;
+        font-weight: 900;
     }
 
     input {
+        width: ${({ isExpanded }) => isExpanded ? '100%' : '0'};
         height: 100%;
         border: none;
         background: transparent;

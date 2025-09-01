@@ -6,9 +6,8 @@ export const useTagManagerStore = create<TagManagerStoreI>((set, get) => ({
 
     addTag: (tag) => {
         const { tags } = get();
-        const cleanTag = tag.startsWith('#') ? tag : `#${ tag }`;
-        if (tags.length < 10 && !tags.includes(cleanTag)) {
-            set({ tags: [...tags, cleanTag] });
+        if (tags.length < 10 && tag) {
+            set({ tags: [...tags, tag] });
         }
     },
 
