@@ -7,6 +7,7 @@ export const EmptyStateWrapper = styled.div.withConfig({
 }) <TeamKeyObjI>`
     ${flexColumnCenter};
     flex: 1;
+    padding: 2rem;
     gap: 2rem;
     background: ${({ theme, teamKey }) =>
         teamKey ? getTeamColor(teamKey, 100) : theme.colors.primary100};
