@@ -1,7 +1,7 @@
-import { defaultSortOption, type SortOptionsStateI } from '@/shared';
+import { defaultSortOption, type SortOptionsStoreI } from '@/shared';
 import { create } from 'zustand';
 
-export const useSortOptionsStore = create<SortOptionsStateI>((set) => ({
+export const useSortOptionsStore = create<SortOptionsStoreI>((set) => ({
     isOpen: false,
     setIsOpen: (isOpen) => set({ isOpen }),
 

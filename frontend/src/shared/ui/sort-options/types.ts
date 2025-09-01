@@ -8,7 +8,7 @@ export interface SortOptionI {
 }
 
 // Store
-export interface SortOptionsStateI extends IsOpenStoreI {
+export interface SortOptionsStoreI extends IsOpenStoreI {
     selectedSortOption: SortOptionI;
     setSelectedSortOption: (option: SortOptionI) => void;
 }
