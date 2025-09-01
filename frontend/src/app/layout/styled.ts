@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const LayoutWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    min-width: 40rem;
+    min-width: 49rem;
     min-height: 100dvh;
 `
 
