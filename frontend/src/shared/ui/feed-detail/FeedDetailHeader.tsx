@@ -3,7 +3,7 @@ import DeleteIcon from '@/shared/config/assets/delete.png'
 import EditIcon from '@/shared/config/assets/edit.png'
 import PrevIcon from '@/shared/config/assets/prev.png'
 
-export const FeedDetailHeader = ({ breadcrumb, onClose }: FeedDetailHeaderT) => {
+export const FeedDetailHeader = ({ breadcrumb, onClose, onEdit }: FeedDetailHeaderT) => {
     return (
             <FeedDetailHeaderWrapper>
                 <Button
@@ -18,8 +18,7 @@ export const FeedDetailHeader = ({ breadcrumb, onClose }: FeedDetailHeaderT) => 
                             children={<img src={EditIcon} alt='prev'/>}
                             size={BUTTON_SIZES.ICON}
                             variant={BUTTON_VARIANTS.TRANSPARENT}
-                            onClick={() => {
-                            }}/>
+                            onClick={onEdit}/>
                     <Button
                             children={<img src={DeleteIcon} alt='prev'/>}
                             size={BUTTON_SIZES.ICON}

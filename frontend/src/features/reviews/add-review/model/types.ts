@@ -1,4 +1,4 @@
-export interface AddReviewStoreI {
-    isExpanded: boolean;
-    setIsExpanded: (state: boolean) => void;
+import type { IsExpandedStoreI } from "@/shared";
+
+export interface AddReviewStoreI extends IsExpandedStoreI {
 }

@@ -2,19 +2,23 @@ import { flexCenter, getShouldForwardProps, type RatingStarButtonBoxT } from "@/
 import styled from "styled-components";
 
 export const RatingSelectorWrapper = styled.div`
-    ${ flexCenter };
-    gap: 0.5rem;
+    ${flexCenter};
+    gap: 0 !important;
+
+    img {
+        cursor: pointer;
+    }
 `;
 
 export const RatingStarButtonBox = styled.button.withConfig({
     shouldForwardProp: getShouldForwardProps(['filled']),
 })<RatingStarButtonBoxT>`
     font-size: 1.7rem;
-    color: ${ ({ theme, filled }) => filled ? theme.colors.warning : theme.colors.gray300 };
+    color: ${({ theme, filled }) => filled ? theme.colors.warning : theme.colors.gray300};
     cursor: pointer;
 
     &:hover {
         transform: scale(1.1);
-        color: ${ ({ theme }) => theme.colors.warning };
+        color: ${({ theme }) => theme.colors.warning};
     }
 `;

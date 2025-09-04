@@ -1,25 +1,27 @@
-import {MAX_RATING, RatingSelectorWrapper, Star, useRatingSelectorStore} from "@/shared";
+import { MAX_RATING, type RatingSelectorT, RatingSelectorWrapper, RatingStar, useRatingSelectorStore } from "@/shared";
+import { useEffect } from "react";
 
+export const RatingSelector = ({ value }: RatingSelectorT) => {
+    const { rating, setRating } = useRatingSelectorStore();
 
-export const RatingSelector = () => {
-    const {rating, setRating} = useRatingSelectorStore();
-
-    const stars = Array.from({length: MAX_RATING}, (_, i) => {
-        const starValue = i + 1;
-        const isFilled = starValue <= rating;
-
-        return (
-                <Star
-                        key={starValue}
-                        filled={isFilled}
-                        onClick={() => setRating(starValue)}
-                />
-        );
-    });
+    useEffect(() => {
+        if (value) setRating(value);
+    }, [value, setRating]);
 
     return (
             <RatingSelectorWrapper>
-                {stars}
+                {Array.from({ length: MAX_RATING }, (_, i) => {
+                    const starValue = i + 1;
+                    const isFilled = starValue <= rating;
+
+                    return (
+                            <RatingStar
+                                    key={starValue}
+                                    filled={isFilled}
+                                    onClick={() => setRating(starValue)}
+                            />
+                    );
+                })}
             </RatingSelectorWrapper>
-    )
+    );
 };

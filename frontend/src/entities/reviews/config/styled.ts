@@ -1,4 +1,5 @@
 import { flexColumnFill, flexColumnStart, getShouldForwardProps, type IsVisibleI, slideInFromRight, slideOutToRight } from "@/shared";
+import TextareaAutosize from "react-textarea-autosize";
 import styled from "styled-components";
 
 export const ReviewFeedWrapper = styled.div`
@@ -21,9 +22,16 @@ export const FeedDetailContentsBox = styled.div`
         font-size: ${({ theme }) => theme.fontSizes.xl};
     }
 
-    div {
+    & > div:last-child {
         width: 7rem;
         height: 7rem;
         align-self: center;
     }
+`
+
+export const EditReviewTextareaBox = styled(TextareaAutosize)`
+    border: none;
+    resize: none;
+    font-size: ${({ theme }) => theme.fontSizes.xl};
+    color: ${({ theme }) => theme.colors.gray800};
 `

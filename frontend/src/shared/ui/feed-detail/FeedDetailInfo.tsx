@@ -1,13 +1,15 @@
-import { type FeedDetailInfoT, FeedDetailInfoWrapper, formatDate, RatingStar } from "@/shared";
+import { type FeedDetailInfoT, FeedDetailInfoWrapper, formatDate, RatingSelector, RatingStar } from "@/shared";
 
-export const FeedDetailInfo = ({ review }: FeedDetailInfoT) => {
+export const FeedDetailInfo = ({ review, isEdit }: FeedDetailInfoT) => {
     const { nickname, rating, createdAt, viewsCount, likesCount } = review;
 
     return (
             <FeedDetailInfoWrapper>
                 <div>
                     <span>{nickname}</span>
-                    <span>{RatingStar(rating)}</span>
+                    {isEdit
+                            ? <RatingSelector value={rating}/>
+                            : <span>{RatingStar({ rating })}</span>}
                 </div>
                 <div>
                     <span>{formatDate(createdAt)}</span>

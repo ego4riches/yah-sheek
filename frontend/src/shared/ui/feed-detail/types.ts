@@ -4,10 +4,12 @@ import type { ReviewI } from "@/entities";
 export type FeedDetailHeaderT = {
     breadcrumb: string[];
     onClose: () => void;
+    onEdit: () => void;
 }
 
 export type FeedDetailInfoT = {
     review: ReviewI;
+    isEdit: boolean;
 }
 
 export type BreadcrumbsT = {

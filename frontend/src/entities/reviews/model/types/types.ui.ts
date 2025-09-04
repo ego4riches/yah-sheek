@@ -14,5 +14,7 @@ export type FeedsT = {
 
 export type FeedDetailT = {
     reviewId: string;
+    isEdit: boolean;
     onClose: () => void;
+    onEdit: (value: string) => void;
 };

@@ -11,7 +11,7 @@ export const FeedPreview = ({ feed }: FeedPreviewT) => {
                     <span>{nickname}</span>
                     <span>{formatDate(createdAt)}</span>
                     <span>{viewsCount}</span>
-                    <span>{RatingStar(rating)}</span>
+                    <span>{RatingStar({ rating })}</span>
                 </PreviewMetaBox>
             </FeedPreviewWrapper>
     );

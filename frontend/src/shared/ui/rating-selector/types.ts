@@ -4,6 +4,10 @@ export type StarT = {
     onClick: () => void;
 };
 
+export type RatingSelectorT = {
+    value?: number;
+}
+
 // styled-components Props
 export type RatingStarButtonBoxT = {
     filled: boolean;

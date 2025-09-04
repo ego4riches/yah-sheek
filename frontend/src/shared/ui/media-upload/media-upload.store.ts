@@ -4,6 +4,8 @@ import { create } from "zustand/index";
 export const useMediaUploadStore = create<MediaUploadStoreI>((set, get) => ({
     attachments: [],
 
+    setAttachments: (files: File[]) => set({ attachments: files }),
+
     addAttachment: (file) => {
         const { attachments } = get();
         // 최대 첨부 파일 개수 (현재 5)
